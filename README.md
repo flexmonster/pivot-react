@@ -20,7 +20,8 @@ Please find more examples in the repository. Also, [full tutorial is available a
   <script type="text/babel">
     ReactDOM.render(
       <FlexmonsterReact.Pivot 
-        report="http://www.flexmonster.com/download/report.xml" 
+        componentFolder="https://s3.amazonaws.com/flexmonster/2.3/"
+        report="https://s3.amazonaws.com/flexmonster/2.3/reports/report.json" 
         licenseKey="XXX"/>, 
       document.getElementById("fm-container")
     );
