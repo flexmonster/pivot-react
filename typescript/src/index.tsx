@@ -1,9 +1,13 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import { Hello } from "./components/Hello";
+import { FlexmonsterReact } from "./components/FlexmonsterReact";
 
 ReactDOM.render(
-    <FlexmonsterReact.Pivot/>,
-    document.getElementById("example")
+    <FlexmonsterReact.Pivot 
+    	componentFolder="https://cdn.flexmonster.com/2.3/"
+    	report="https://cdn.flexmonster.com/2.3/reports/report.json"
+    	toolbar={true}
+    />,
+    document.getElementById("fm-container")
 );
