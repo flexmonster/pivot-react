@@ -29,6 +29,28 @@ Please find more examples in the repository. Also, [full tutorial is available a
 </body>
 </html>
 ```
+## How to start ES6 project
+
+`npm run setup`
+`npm run start`
+
+## ES6 integration approach
+The flexmonster Pivot class is defined in flexmonster.react.js
+It can be used in the other React classes such as:
+```
+import * as FlexmonsterReact from './flexmonster.react';
+
+export class ReactClass extends React.PureComponent {
+
+render() {
+
+    return (
+      <FlexmonsterReact.Pivot toolbar="true" componentFolder="https://cdn.flexmonster.com/2.3/" width="800px" report="https://cdn.flexmonster.com/2.3/reports/report.json"/>
+    );
+  }
+  
+ }
+```
 
 ## Properties
 All available attributes for FlexmonsterReact.Pivot the same as for [$.flexmonster()](http://www.flexmonster.com/api/flexmonster/).
