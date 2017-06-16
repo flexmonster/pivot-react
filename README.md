@@ -31,13 +31,14 @@ Please find more examples in the repository. Also, [full tutorial is available a
 ```
 ## How to start ES6 project
 
-`npm run setup`
-`npm run start`
+-`npm run setup`
+
+-`npm run start`
 
 ## ES6 integration approach
 The flexmonster Pivot class is defined in flexmonster.react.js
 It can be used in the other React classes such as:
-```
+```js
 import * as FlexmonsterReact from './flexmonster.react';
 
 export class ReactClass extends React.PureComponent {
