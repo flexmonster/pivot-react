@@ -7,10 +7,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react-dom.js"></script>
   <!-- Babel -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.min.js"></script>
-  <!-- jQuery -->
-  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
   <!-- Flexmonster -->
-  <script src="https://s3.amazonaws.com/flexmonster/2.3/flexmonster.js"></script>
+  <script src="https://cdn.flexmonster.com/flexmonster.js"></script>
 </head>
 <body>
   <div id="fm-container"></div>
@@ -57,12 +55,11 @@
         }
         return <FlexmonsterReact.Pivot 
           ref="pivot" 
-          componentFolder="https://s3.amazonaws.com/flexmonster/2.3/"
+          componentFolder="https://cdn.flexmonster.com/"
           width="100%"
           height={500}
           toolbar={true}
           report={report}
-          licenseKey="Z74D-XBE46I-6Y1V3Z-4P6L5K"
         />;                 
       }
     });

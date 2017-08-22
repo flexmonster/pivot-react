@@ -54,7 +54,7 @@ export class Pivot extends React.Component {
 			var config = {};
 			config.container = ReactDOM.findDOMNode(this);
 			this.parseProps(config);
-			this.flexmonster = Flexmonster(config);
+			this.flexmonster = new Flexmonster(config);
 		}
 		
 		shouldComponentUpdate() {

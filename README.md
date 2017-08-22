@@ -12,16 +12,15 @@ Please find more examples in the repository. Also, [full tutorial is available a
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react-dom.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.min.js"></script>
-  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-  <script src="https://s3.amazonaws.com/flexmonster/2.3/flexmonster.js"></script>
+  <script src="https://cdn.flexmonster.com/flexmonster.js"></script>
 </head>
 <body>
   <div id="fm-container"></div>
   <script type="text/babel">
     ReactDOM.render(
       <FlexmonsterReact.Pivot 
-        componentFolder="https://s3.amazonaws.com/flexmonster/2.3/"
-        report="https://s3.amazonaws.com/flexmonster/2.3/reports/report.json" 
+        componentFolder="https://cdn.flexmonster.com/"
+        report="https://cdn.flexmonster.com/reports/report.json" 
         licenseKey="XXX"/>, 
       document.getElementById("fm-container")
     );
@@ -46,7 +45,7 @@ export class ReactClass extends React.PureComponent {
 render() {
 
     return (
-      <FlexmonsterReact.Pivot toolbar="true" componentFolder="https://cdn.flexmonster.com/2.3/" width="800px" report="https://cdn.flexmonster.com/2.3/reports/report.json"/>
+      <FlexmonsterReact.Pivot toolbar="true" componentFolder="https://cdn.flexmonster.com/" width="800px" report="https://cdn.flexmonster.com/reports/report.json"/>
     );
   }
   
