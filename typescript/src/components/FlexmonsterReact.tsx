@@ -15,6 +15,7 @@ export module FlexmonsterReact {
 		componentDidMount() {
 			var config:Flexmonster.Params = {};
 			config.container = ReactDOM.findDOMNode(this);
+			config.container.id = "fm-"+Date.now();
 			this.parseProps(config);
 			this.flexmonster = Flexmonster(config);
 		}
