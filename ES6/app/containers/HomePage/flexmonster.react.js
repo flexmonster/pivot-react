@@ -53,7 +53,6 @@ export class Pivot extends React.Component {
 		componentDidMount() {
 			var config = {};
 			config.container = ReactDOM.findDOMNode(this);
-			config.container.id = "fm-"+Date.now();
 			this.parseProps(config);
 			this.flexmonster = new window.Flexmonster(config);
 		}
