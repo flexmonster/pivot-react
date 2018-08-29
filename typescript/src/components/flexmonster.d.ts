@@ -110,6 +110,7 @@ declare namespace Flexmonster {
         showCharts(type?: string, multiple?: boolean): void;
         showGrid(): void;
         showGridAndCharts(type?: string, position?: string, multiple?: boolean): void;
+        sortingMethod(hierarchyName: string, compareFunction: Function | string): void;
         sortValues(axisName: string, type: string, tuple: number[], measureName: string): void;
         updateData(object: DataSourceParams | Object[]): void;
         customizeCell(customizeCellFunction: (html:string, data:Cell) => string): void;
