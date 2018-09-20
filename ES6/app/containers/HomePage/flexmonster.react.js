@@ -14,6 +14,7 @@ export class Pivot extends React.Component {
                 licenseKey: React.PropTypes.string,
                 toolbar: React.PropTypes.bool,
                 customizeCell: React.PropTypes.func,
+                customizeContextMenu: React.PropTypes.func,
                 cellclick: React.PropTypes.func,
                 celldoubleclick: React.PropTypes.func,
                 dataerror: React.PropTypes.func,
@@ -43,7 +44,9 @@ export class Pivot extends React.Component {
                 reportfileloaded: React.PropTypes.func,
                 runningquery: React.PropTypes.func,
                 update: React.PropTypes.func,
-                beforetoolbarcreated: React.PropTypes.func
+                beforetoolbarcreated: React.PropTypes.func,
+                aftergriddraw: React.PropTypes.func,
+                beforegriddraw: React.PropTypes.func
             }
 
 		render() {
@@ -89,6 +92,9 @@ export class Pivot extends React.Component {
 			}
 			if (this.props.customizeCell != undefined) {
 				config.customizeCell = this.props.customizeCell;
+			}
+			if (this.props.customizeContextMenu != undefined) {
+				config.customizeContextMenu = this.props.customizeContextMenu;
 			}
 			// events
 			if (this.props.cellclick != undefined) {
@@ -180,6 +186,12 @@ export class Pivot extends React.Component {
 			}
 			if (this.props.beforetoolbarcreated != undefined) {
 				config.beforetoolbarcreated = this.props.beforetoolbarcreated;
+			}
+			if (this.props.aftergriddraw != undefined) {
+				config.aftergriddraw = this.props.aftergriddraw;
+			}
+			if (this.props.beforegriddraw != undefined) {
+				config.beforegriddraw = this.props.beforegriddraw;
 			}
 		}
 

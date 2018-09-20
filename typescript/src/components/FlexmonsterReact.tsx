@@ -52,6 +52,9 @@ export module FlexmonsterReact {
 			if (this.props.customizeCell != undefined) {
 				config.customizeCell = this.props.customizeCell;
 			}
+			if (this.props.customizeContextMenu != undefined) {
+				config.customizeContextMenu = this.props.customizeContextMenu;
+			}
 			// events
 			if (this.props.cellclick != undefined) {
 				config.cellclick = this.props.cellclick;
@@ -142,6 +145,12 @@ export module FlexmonsterReact {
 			}
 			if (this.props.beforetoolbarcreated != undefined) {
 				config.beforetoolbarcreated = this.props.beforetoolbarcreated;
+			}
+			if (this.props.aftergriddraw != undefined) {
+				config.aftergriddraw = this.props.aftergriddraw;
+			}
+			if (this.props.beforegriddraw != undefined) {
+				config.beforegriddraw = this.props.beforegriddraw;
 			}
 		}
 	}	
