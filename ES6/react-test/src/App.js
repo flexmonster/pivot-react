@@ -8,7 +8,7 @@ class App extends Component {
     return (
       <div className="App">
           
-          <FlexmonsterReact.Pivot toolbar={true} componentFolder="node_modules/flexmonster/" licenseKey="Z7PO-XCBB6R-2H4U51-2K0G2D" width="100%" report="https://cdn.flexmonster.com/reports/report.json"/>
+          <FlexmonsterReact.Pivot toolbar={true} componentFolder="https://cdn.flexmonster.com/" width="100%" report="https://cdn.flexmonster.com/reports/report.json"/>
 
       </div>
     );
