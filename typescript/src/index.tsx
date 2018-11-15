@@ -1,13 +1,10 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom";
-
-import { FlexmonsterReact } from "./components/FlexmonsterReact";
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import App from './App';
+import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
-    <FlexmonsterReact.Pivot 
-    	componentFolder="https://cdn.flexmonster.com/"
-    	report="https://cdn.flexmonster.com/reports/report.json"
-    	toolbar={true}
-    />,
-    document.getElementById("fm-container")
+  <App />,
+  document.getElementById('root') as HTMLElement
 );
+registerServiceWorker();

@@ -1,8 +1,8 @@
-﻿interface JQuery {
-    flexmonster(params: Flexmonster.Params): Flexmonster.Pivot;
-}
+﻿import * as React from "react";
+import * as ReactDOM from "react-dom";
 
-declare namespace Flexmonster {
+declare module 'react-flexmonster' {
+
     interface Params {
         // params
         toolbar?: boolean;
@@ -12,8 +12,8 @@ declare namespace Flexmonster {
         componentFolder?: string;
         report?: Report | string;
         global?: Report;
-        customizeCell?: (cell: Flexmonster.CellBuilder, data: Flexmonster.Cell) => void;
-        customizeContextMenu?: (items: Flexmonster.Item[], data: Flexmonster.Cell | Flexmonster.Chart, viewType: string) => Flexmonster.Item[];
+        customizeCell?: (cell: CellBuilder, data: CellData) => void;
+        customizeContextMenu?: (items: ContextMenuItem[], data: CellData | ChartData, viewType: string) => ContextMenuItem[];
         // events
         cellclick?: Function;
         celldoubleclick?: Function;
@@ -45,31 +45,37 @@ declare namespace Flexmonster {
         runningquery?: Function;
         update?: Function;
         beforetoolbarcreated?: Function;
-        aftergriddraw?: Function;
         beforegriddraw?: Function;
+        aftergriddraw?: Function;
+        afterchartdraw?: Function;
         // other
         container?: Element | string;
     }
 
-    interface Pivot {
+    class Pivot extends React.Component<Params, any> {
+        flexmonster: Pivot;
+
         addCalculatedMeasure(measure: Measure): void;
         addCondition(condition: ConditionalFormat): void;
         addJSON(json: Object[]): void;
+        alert(options: { title?: string; message?: string; type?: string; buttons?: { label: string; handler?: Function; }[]; blocking?: boolean; }): void;
         clear(): void;
         clearFilter(hierarchyName: string): void;
-        clearXMLACache(proxyUrl: string, databaseId: string, callbackHandler: any, cubeId: string, measuresGroupId: string, username?: string, password?: string): void;
+        clearXMLACache(proxyUrl: string, databaseId: string, callbackHandler: Function | string, cubeId: string, measuresGroupId: string, username?: string, password?: string): void;
         closeFieldsList(): void;
         collapseAllData(): void;
         collapseData(hierarchyName: string): void;
-        connectTo(object: DataSourceParams, callbackHandler: Function | string): void;
+        connectTo(object: DataSource, callbackHandler: Function | string): void;
+        customizeCell(customizeCellFunction: (cell: CellBuilder, data: CellData) => void): void;
+        customizeContextMenu(customizeFunction: (items: ContextMenuItem[], data: CellData | ChartData, viewType: string) => ContextMenuItem[]): void;
         dispose(): void;
         expandAllData(withAllChildren?: boolean): void;
         expandData(hierarchyName: string): void;
         exportTo(type: string, exportOptions?: ExportOptions, callbackHandler?: Function | string): void;
         getAllConditions(): ConditionalFormat[];
-        getAllMeasures(): Measure[];
         getAllHierarchies(): Hierarchy[];
-        getCell(rowIdx: number, colIdx: number): Cell;
+        getAllMeasures(): Measure[];
+        getCell(rowIdx: number, colIdx: number): CellData;
         getColumns(): Hierarchy[];
         getCondition(id: string): ConditionalFormat;
         getData(options: { slice?: Slice }, callbackHandler: Function | string, updateHandler?: Function | string): void;
@@ -82,7 +88,7 @@ declare namespace Flexmonster {
         getReportFilters(): Hierarchy[];
         getReport(format?: string): Report | string;
         getRows(): Hierarchy[];
-        getSelectedCell(): Cell | Cell[];
+        getSelectedCell(): CellData | CellData[];
         getSort(hierarchyName: string): string;
         getXMLACatalogs(proxyURL: string, dataSource: string, callbackHandler: Function | string, username?: string, password?: string): void;
         getXMLACubes(proxyURL: string, dataSource: string, catalog: string, callbackHandler: Function | string, username?: string, password?: string): void;
@@ -93,29 +99,31 @@ declare namespace Flexmonster {
         off(eventType: string, handler?: Function | string): void;
         open(): void;
         openFieldsList(): void;
+        openFilter(hierarchyName: string): void;
+
         print(options?: PrintOptions): void;
         refresh(): void;
         removeAllCalculatedMeasures(): void;
         removeAllConditions(): void;
-        removeCondition(id: string): void;
         removeCalculatedMeasure(uniqueName: string): void;
+        removeCondition(id: string): void;
         removeSelection(): void;
         runQuery(slice: Slice): void;
         save(filename: string, destination: string, callbackHandler?: Function | string, url?: string, embedData?: boolean): string;
-        setBottomX(hierarchyName: string, num: number, measureName: string): void;
+        setBottomX(hierarchyName: string, num: number, measure: MeasureObject): void;
         setFilter(hierarchyName: string, items: string[], negation?: boolean): void;
         setFormat(format: Format, measureName: string): void;
         setOptions(options: Options): void;
         setReport(report: Report): void;
         setSort(hierarchyName: string, sortName: string, customSorting?: string[]): void;
-        setTopX(hierarchyName: string, num: number, measureName: string): void;
+        setTopX(hierarchyName: string, num: number, measure: MeasureObject): void;
         showCharts(type?: string, multiple?: boolean): void;
         showGrid(): void;
         showGridAndCharts(type?: string, position?: string, multiple?: boolean): void;
-        sortValues(axisName: string, type: string, tuple: number[], measureName: string): void;
-        updateData(object: DataSourceParams | Object[]): void;
+        sortingMethod(hierarchyName: string, compareFunction: Function): void;
+        sortValues(axisName: string, type: string, tuple: number[], measure: MeasureObject): void;
+        updateData(object: DataSource | Object[]): void;
         version: number;
-        customizeCell(customizeCellFunction: (cell: CellBuilder, data: Cell) => void): void;
         fusioncharts?: {
             getData(options: { type: string; slice?: Slice; prepareDataFunction?: Function }, callbackHandler: Function, updateHandler?: Function): void;
             getNumberFormat(format: Object): Object;
@@ -132,24 +140,22 @@ declare namespace Flexmonster {
             getPointYFormat(format: Object): string;
             getPointZFormat(format: Object): string;
         };
-        customizeContextMenu(customizeFunction: (items: Flexmonster.Item[], data: Flexmonster.Cell | Flexmonster.Chart, viewType: string) => Flexmonster.Item[]): void;
-        sortingMethod(hierarchyName: string, compareFunction: Function): void
     }
 
     interface Report {
-        dataSource?: DataSourceParams;
+        dataSource?: DataSource;
         slice?: Slice;
         options?: Options;
         conditions?: ConditionalFormat[];
         formats?: Format[];
         tableSizes?: {
-            columns?: ColumnSize[],
-            rows?: RowSize[]
-        }
+            columns?: ColumnSize[];
+            rows?: RowSize[];
+        };
         localization?: Object | string;
     }
 
-    interface DataSourceParams {
+    interface DataSource {
         browseForFile?: boolean;
         catalog?: string;
         cube?: string;
@@ -177,51 +183,51 @@ declare namespace Flexmonster {
         reportFilters?: Hierarchy[];
         rows?: Hierarchy[];
         drills?: {
-            drillAll?: boolean,
-            columns?: Object[],
-            rows?: Object[],
+            drillAll?: boolean;
+            columns?: { tuple: string[]; measure?: MeasureObject; }[];
+            rows?: { tuple: string[]; measure?: MeasureObject; }[];
         };
         expands?: {
-            expandAll?: boolean,
-            columns?: Object[],
-            rows?: Object[]
+            expandAll?: boolean;
+            columns?: { tuple: string[]; measure?: MeasureObject; }[];
+            rows?: { tuple: string[]; measure?: MeasureObject; }[];
         };
         sorting?: {
-            column?: Object,
-            row?: Object
+            column?: { type: string; tuple: string[]; measure: MeasureObject; };
+            row?: { type: string; tuple: string[]; measure: MeasureObject; };
         };
         drillThrough?: string[];
     }
 
     interface Options {
         chart?: {
-            activeMeasure?: string,
-            activeTupleIndex?: number,
-            autoRange?: boolean,
-            labelsHierarchy?: string,
-            multipleMeasures?: boolean,
-            oneLevel?: boolean,
-            showFilter?: boolean,
-            showLegendButton?: boolean,
-            showMeasures?: boolean,
-            showWarning?: boolean,
-            title?: string,
-            type?: string,
-            showDataLabels?: boolean
+            activeMeasure?: MeasureObject;
+            activeTupleIndex?: number;
+            autoRange?: boolean;
+            labelsHierarchy?: string;
+            multipleMeasures?: boolean;
+            oneLevel?: boolean;
+            showFilter?: boolean;
+            showLegendButton?: boolean;
+            showMeasures?: boolean;
+            showWarning?: boolean;
+            title?: string;
+            type?: string;
+            showDataLabels?: boolean;
         };
         grid?: {
-            showFilter?: boolean,
-            showGrandTotals?: string,
-            showHeaders?: boolean,
-            showHierarchies?: boolean,
-            showHierarchyCaptions?: boolean,
-            showReportFiltersArea?: boolean,
-            showTotals?: boolean,
-            title?: string,
-            type?: string,
-            showAutoCalculationBar?: boolean,
-            dragging?: boolean,
-            grandTotalsPosition: string
+            showFilter?: boolean;
+            showGrandTotals?: string;
+            showHeaders?: boolean;
+            showHierarchies?: boolean;
+            showHierarchyCaptions?: boolean;
+            showReportFiltersArea?: boolean;
+            showTotals?: boolean;
+            title?: string;
+            type?: string;
+            showAutoCalculationBar?: boolean;
+            dragging?: boolean;
+            grandTotalsPosition: string;
         };
         configuratorActive?: boolean;
         configuratorButton?: boolean;
@@ -258,10 +264,10 @@ declare namespace Flexmonster {
     }
 
     interface FilterProperties {
-        type?: string;
+        type: string;
         members?: FilterItem[];
         quantity?: number;
-        measure?: string;
+        measure?: MeasureObject;
     }
 
     interface FilterItem {
@@ -270,9 +276,9 @@ declare namespace Flexmonster {
         hierarchyName?: string;
     }
 
-    interface Cell {
+    interface CellData {
         columnIndex?: number;
-        columns?: any[];
+        columns?: Object[];
         escapedLabel?: string;
         height?: number;
         hierarchy?: Hierarchy;
@@ -289,9 +295,9 @@ declare namespace Flexmonster {
         x?: number;
         y?: number;
         label?: string;
-        measure?: string;
+        measure?: MeasureObject;
         rowIndex?: number;
-        rows?: any[];
+        rows?: Object[];
         type?: string;
         value?: number;
     }
@@ -312,13 +318,14 @@ declare namespace Flexmonster {
         caption?: string;
         dimensionName?: string;
         filter?: {
-            members?: string[],
-            negation?: boolean,
-            measure?: string,
-            quantity?: number,
-            type?: string
+            members?: string[];
+            negation?: boolean;
+            measure?: MeasureObject;
+            quantity?: number;
+            type?: string;
         };
         sortName?: string;
+        sortOrder?: string[];
         uniqueName?: string;
     }
 
@@ -333,13 +340,18 @@ declare namespace Flexmonster {
         grandTotalCaption?: string;
     }
 
+    interface MeasureObject {
+        uniqueName: string;
+        aggregation?: string;
+    }
+
     interface ConditionalFormat {
         formula?: string;
         format?: Style;
         formatCSS?: string;
         row?: number;
         column?: number;
-        measure?: string;
+        measureName?: string;
         hierarchy?: string;
         member?: string;
         isTotal?: number;
@@ -380,14 +392,14 @@ declare namespace Flexmonster {
         width?: number;
         idx?: number;
         tuple?: string[];
-        measure?: string;
+        measure?: MeasureObject;
     }
 
     interface RowSize {
         height?: number;
         idx?: number;
         tuple?: string[];
-        measure?: string;
+        measure?: MeasureObject;
     }
 
     interface CellBuilder {
@@ -400,18 +412,18 @@ declare namespace Flexmonster {
         toHtml(): string;
     }
 
-    interface Item {
+    interface ContextMenuItem {
         label?: string;
         handler?: Function | string;
-        submenu?: Item[];
+        submenu?: ContextMenuItem[];
         isSelected?: boolean;
     }
 
-    interface Chart {
+    interface ChartData {
         columnTuple?: number[];
         id?: string;
         label?: string;
-        measure?: Object;
+        measure?: MeasureObject;
         rawTuple?: number[];
         value?: number;
     }
