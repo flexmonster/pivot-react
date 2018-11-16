@@ -23,6 +23,7 @@ declare module 'react-flexmonster' {
         datachanged?: Function;
         fieldslistclose?: Function;
         fieldslistopen?: Function;
+        filterclose?: Function;
         filteropen?: Function;
         fullscreen?: Function;
         loadingdata?: Function;
