@@ -30,6 +30,6 @@ npm start
 
 After that, the working sample will be available if you open `http://localhost:3000/` in your browser.
 
-## Create new React + ES6 application
+## Create new React + TypeScript application
 
 Please refer to [Flexmonster Integration with React](https://www.flexmonster.com/doc/integration-with-react/#!typescript) tutorial.
