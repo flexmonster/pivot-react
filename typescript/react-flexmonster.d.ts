@@ -208,6 +208,7 @@ declare module 'react-flexmonster' {
             multipleMeasures?: boolean;
             oneLevel?: boolean;
             showFilter?: boolean;
+            showLegend?: boolean;
             showLegendButton?: boolean;
             showMeasures?: boolean;
             showWarning?: boolean;
