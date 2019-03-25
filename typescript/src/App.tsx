@@ -9,7 +9,7 @@ class App extends React.Component {
   public render() {
     return (
       <div className="App">
-          <FlexmonsterReact.Pivot ref={this.flexmonsterRef} toolbar={true} componentFolder="https://cdn.flexmonster.com/" ready={() => this.onReady()} width="100%" />
+          <FlexmonsterReact.Pivot ref={this.flexmonsterRef} toolbar={true} ready={() => this.onReady()} width="100%" />
       </div>
     );
   }
