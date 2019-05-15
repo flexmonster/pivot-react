@@ -1,14 +1,21 @@
-import React, { Component } from 'react';
-import * as FlexmonsterReact from 'react-flexmonster';
+import React, {Component} from 'react';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+
+import PivotTable from './PivotTable';
+import APICallsAndEvents from './APICallsAndEvents'
 
 class App extends Component {
-  render() {
+
+  render(){
     return (
-      <div className="App">
-        <FlexmonsterReact.Pivot toolbar={true} width="100%" report="https://cdn.flexmonster.com/reports/report.json"/>
-      </div>
+        <Router>
+          <Route path="/" component={PivotTable} exact/>
+          <Route path="/api-calls" component={APICallsAndEvents}/>
+        </Router>
+
     );
   }
+
 }
 
 export default App;
