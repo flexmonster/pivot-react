@@ -40,27 +40,23 @@ The flexmonster Pivot class is defined in flexmonster.react.js
 It can be used in the other React classes such as:
 ```js
 import * as FlexmonsterReact from './flexmonster.react';
+import 'flexmonster/flexmonster.min.css';
 
 export class ReactClass extends React.PureComponent {
-
-render() {
-
-    return (
-      <FlexmonsterReact.Pivot toolbar="true" componentFolder="https://cdn.flexmonster.com/" width="800px" report="https://cdn.flexmonster.com/reports/report.json"/>
-    );
+  render() {
+    return (<FlexmonsterReact.Pivot toolbar="true" report="https://cdn.flexmonster.com/reports/report.json"/>);
   }
-  
- }
+}
 ```
 
 ## Properties
-All available attributes for FlexmonsterReact.Pivot the same as for [$.flexmonster()](http://www.flexmonster.com/api/flexmonster/).
+All available attributes for FlexmonsterReact.Pivot the same as for [Flexmonster()](http://www.flexmonster.com/api/new-flexmonster/).
 - `toolbar` – parameter to embed the toolbar or not. Default value is false – without the toolbar.
 - `licenseKey` – the license key.
 - `width` – width of the component on the page (pixels or percent). The default value for width is 100%.
 - `height` – height of the component on the page (pixels or percent). The default value for height is 500.
 - `componentFolder` – URL of the component’s folder which contains all necessary files. Also, it is used as a base URL for report files, localization files, styles and images. The default value for is `flexmonster/`.
-- `report` – property to set a report. It can be inline report JSON, URL to report JSON or URL to report XML.
+- `report` – property to set a report. It can be inline [Report Object](https://www.flexmonster.com/api/report-object/) or URL to report JSON.
 - `global` – object that allows you to preset options for all reports. These options can be overwritten for concrete reports. Object structure is the same as for report.
 
 ## Events:
