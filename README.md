@@ -1,5 +1,5 @@
-# Flexmonster Pivot table component integration with React framework
-[![Flexmonster Pivot table component](https://s3.amazonaws.com/flexmonster/github/fm-github-cover.png)](http://flexmonster.com)
+# Flexmonster Pivot Table & Charts integration with React framework
+[![Flexmonster Pivot Table & Charts](https://s3.amazonaws.com/flexmonster/github/fm-github-cover.png)](http://flexmonster.com)
 Website: www.flexmonster.com
 
 ## Example
