@@ -50,14 +50,7 @@ export class ReactClass extends React.PureComponent {
 ```
 
 ## Properties
-All available attributes for FlexmonsterReact.Pivot the same as for [Flexmonster()](http://www.flexmonster.com/api/new-flexmonster/).
-- `toolbar` – parameter to embed the toolbar or not. Default value is false – without the toolbar.
-- `licenseKey` – the license key.
-- `width` – width of the component on the page (pixels or percent). The default value for width is 100%.
-- `height` – height of the component on the page (pixels or percent). The default value for height is 500.
-- `componentFolder` – URL of the component’s folder which contains all necessary files. Also, it is used as a base URL for report files, localization files, styles and images. The default value for is `flexmonster/`.
-- `report` – property to set a report. It can be inline [Report Object](https://www.flexmonster.com/api/report-object/) or URL to report JSON.
-- `global` – object that allows you to preset options for all reports. These options can be overwritten for concrete reports. Object structure is the same as for report.
+All available attributes for `FlexmonsterReact.Pivot` are equivalent to those which are passed to the `new Flexmonster()` API call. Check out [the full list of available attributes](http://www.flexmonster.com/api/new-flexmonster/).
 
 ## Events:
 - `ready`
