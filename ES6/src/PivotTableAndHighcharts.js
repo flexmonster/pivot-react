@@ -30,9 +30,7 @@ class PivotTableAndHighcharts extends Component {
     }
 
     
-    //Please specify the licenseKey property in the component with your license key
-    //Example: <FlexmonsterReact.Pivot licenseKey="YOUR_LICENSE_KEY" />
-    //For more information, please see: https://www.flexmonster.com/doc/typical-errors/#third-party
+
     render() {
         return (
             <div className="App">
@@ -40,7 +38,8 @@ class PivotTableAndHighcharts extends Component {
                     ref={this.myRef} 
                     toolbar={true} 
                     width="100%" 
-                    report="https://cdn.flexmonster.com/reports/report.json"
+                    report="https://cdn.flexmonster.com/reports/report.json" 
+                    licenseKey="Z78L-XH373N-1T2I4R-5E3C5Y-5Q503M-1N2W0I-6R1M2Z-0H3Q2T-3N034Q-4A3K57-60" 
                     reportcomplete={this.reportComplete}
                 />
                 <div id="highcharts-container"></div>
