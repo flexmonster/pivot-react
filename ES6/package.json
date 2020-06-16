@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "flexmonster": "^2.7.13",
+    "highcharts": "^8.1.1",
     "prop-types": "^15.7.2",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
