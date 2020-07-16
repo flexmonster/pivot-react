@@ -39,7 +39,7 @@ class PivotTableAndHighcharts extends Component {
                     toolbar={true} 
                     width="100%" 
                     report="https://cdn.flexmonster.com/reports/report.json" 
-                    licenseKey="Z78L-XH373N-1T2I4R-5E3C5Y-5Q503M-1N2W0I-6R1M2Z-0H3Q2T-3N034Q-4A3K57-60" 
+                    licenseKey="Z7LL-XHJD3G-345Q0Y-0Z0H2H-574P1U-46583P-1K1B66-4K1N4S-0K334G-3R1Q6T-5T0H" 
                     reportcomplete={this.reportComplete}
                 />
                 <div id="highcharts-container"></div>
