@@ -1,0 +1,31 @@
+.button-routes-container {
+    text-align: center;
+}
+
+.btn-route {
+    margin: 5px;
+    vertical-align: middle;
+    padding: 10px 10px;
+    border: 2px solid #df3800;
+    background: #fff;
+    color: #df3800;
+    white-space: nowrap;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: normal;
+    font-size: 14px;
+    text-align: center;
+    align-items: flex-start;
+    box-sizing: border-box;
+    margin-right: 7px;
+    text-decoration: none;
+}
+
+.btn-route:hover,
+.btn-route:focus {
+    outline: none;
+    border: 2px solid #df3800;
+    background: #df3800;
+    color: #fff;
+}
