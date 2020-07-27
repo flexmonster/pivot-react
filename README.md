@@ -26,13 +26,13 @@ git clone https://github.com/flexmonster/pivot-react.git && cd pivot-react
 
 2. Choose one of the following projects:
 
-    - To work with the React+ES6 application, go to the `ES6/` folder:
+    - To work with the **React+ES6** application, go to the `ES6/` folder:
 
     ```bash
     cd ES6
     ```
 
-    - To see how the React+Typescript application works, run the following command:
+    - To see how the **React+Typescript** application works, run the following command:
 
     ```bash
     cd typescript
