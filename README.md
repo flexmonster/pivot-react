@@ -14,7 +14,7 @@ This repository holds the source code for a simple [React](https://reactjs.org/)
 
 ## Prerequisites
 
-To run a simple application, you will need Node.js and npm. [Get it here](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) if it's not already installed on your machine.
+To run a simple application with React pivot table, you will need Node.js and npm. [Get it here](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) if it's not already installed on your machine.
 
 ## Installation
 
