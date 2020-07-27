@@ -32,7 +32,7 @@ git clone https://github.com/flexmonster/pivot-react.git && cd pivot-react
     cd ES6
     ```
 
-    - To see how the **React+Typescript** application works, run the following command:
+    - To see how the **React+TypeScript** application works, run the following command:
 
     ```bash
     cd typescript
