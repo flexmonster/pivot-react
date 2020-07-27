@@ -1,66 +1,57 @@
 # Flexmonster Pivot Table & Charts integration with React framework
-[![Flexmonster Pivot Table & Charts](https://s3.amazonaws.com/flexmonster/github/fm-github-cover.png)](http://flexmonster.com)
+[![Flexmonster Pivot Table & Charts](https://www.flexmonster.com/fm_uploads/2020/06/GitHub_fm.png)](http://flexmonster.com)
 Website: www.flexmonster.com
 
-## Example
-Please find more examples in the repository. Also, [full tutorial is available at the www.flexmonster.com](http://www.flexmonster.com/doc/integration-with-react/).
-```html
-<!DOCTYPE html>
-<html>
-<head>
-  <title>My React/Flexmonster Project</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react-dom.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.min.js"></script>
-  <script src="https://cdn.flexmonster.com/flexmonster.js"></script>
-</head>
-<body>
-  <div id="fm-container"></div>
-  <script type="text/babel">
-    ReactDOM.render(
-      <FlexmonsterReact.Pivot 
-        componentFolder="https://cdn.flexmonster.com/"
-        report="https://cdn.flexmonster.com/reports/report.json" 
-        licenseKey="XXX"/>, 
-      document.getElementById("fm-container")
-    );
-  </script>
-</body>
-</html>
-```
-## How to start ES6 project
+## Flexmonster Pivot Table & Charts
+
+Flexmonster Pivot is a powerful Javascript tool for interactive web reporting. It allows you to visualize and analyze data from JSON, CSV, SQL, NoSQL, Elasticsearch, and OLAP data sources fast and conveniently. Flexmonster is designed to integrate seamlessly with any client-side framework and can be easily embedded into your application.
+
+This repository holds the source code for a simple [React](https://reactjs.org/) and Flexmonster Pivot Table & Charts project:
+
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Usage](#usage)
+
+## Prerequisites
+
+To run a simple application, you will need Node.js and npm. [Get it here](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) if it's not already installed on your machine.
+
+## Installation
+
+1. Download the `.zip` archive with the sample project or clone it from GitHub with the following command:
 
 ```bash
-> npm run setup
-> npm run start
+git clone https://github.com/flexmonster/pivot-react.git && cd pivot-react
 ```
 
-## ES6 integration approach
-The flexmonster Pivot class is defined in flexmonster.react.js
-It can be used in the other React classes such as:
-```js
-import * as FlexmonsterReact from './flexmonster.react';
-import 'flexmonster/flexmonster.min.css';
+2. Choose the project to run: a React+ES6 application or a React+Typescript application.
 
-export class ReactClass extends React.PureComponent {
-  render() {
-    return (<FlexmonsterReact.Pivot toolbar="true" report="https://cdn.flexmonster.com/reports/report.json"/>);
-  }
-}
+To work with the React+ES6 application, go to the `ES6/` folder:
+
+```bash
+cd ES6
 ```
 
-## Properties
-All available attributes for `FlexmonsterReact.Pivot` are equivalent to those which are passed to the `new Flexmonster()` API call. Check out [the full list of available attributes](http://www.flexmonster.com/api/new-flexmonster/).
+To see how the React+Typescript application works, run the following command:
 
-## Events:
-- `ready`
-- `reportcomplete`
-- `reportchange`
-- `update`
-- `cellclick`
-- `celldoubleclick`
-- `filteropen`
-- `fieldslistopen`
-- `fieldslistclose`
+```bash
+cd typescript
+```
 
-Full list of events is [available in the documentation](http://www.flexmonster.com/api/events/).
+3. Install the npm packages described in `package.json`:
+
+```bash
+npm install
+```
+
+4. Run the sample project:
+
+```bash
+npm start 
+```
+
+To see the result, open `http://localhost:3000/` in your browser.
+
+## Usage
+
+For details on usage, refer to the [Flexmonster integration with React](http://www.flexmonster.com/doc/integration-with-react/) tutorial.
