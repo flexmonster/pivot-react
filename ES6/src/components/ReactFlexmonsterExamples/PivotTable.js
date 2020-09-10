@@ -4,9 +4,12 @@ import * as FlexmonsterReact from 'react-flexmonster';
 class PivotTable extends Component {
     render() {
         return (
-            <div className="App">
-                <FlexmonsterReact.Pivot toolbar={true} width="100%" report="https://cdn.flexmonster.com/reports/report.json"/>
-            </div>
+            <>
+                <h3 className="page-title">Simple Usage Example</h3>
+                <div className="App">
+                    <FlexmonsterReact.Pivot toolbar={true} width="100%" report="https://cdn.flexmonster.com/reports/report.json"/>
+                </div>
+            </>
         );
     }
 }
