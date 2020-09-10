@@ -79,11 +79,13 @@ class PivotApiCalls extends Component {
                 <button className="toggle-button-red" onClick={this.showGrid}>Show Grid</button>
                 <button className="toggle-button-red" onClick={this.readOnly}>Make read only</button>
                 <button className="toggle-button-red" onClick={this.interactive}>Make interactive</button>
-                <FlexmonsterReact.Pivot toolbar={true}
+                <FlexmonsterReact.Pivot 
+                    toolbar={true}
                     ref="pivot"
                     componentFolder="https://cdn.flexmonster.com/"
                     width="100%"
                     report="https://cdn.flexmonster.com/reports/report.json"
+                    //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
                 />
             </>
         );

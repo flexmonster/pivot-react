@@ -126,11 +126,13 @@ export default class PivotEvents extends React.Component<any, {}> {
                 <button className="toggle-button-red" onClick={this.signOnAllEvents}>Sign on all events</button>
 
                 <div>
-                    <FlexmonsterReact.Pivot toolbar={true}
-                                            ref={this.pivotRef}
-                                            width="100%"
-                                            ready={this.signOnAllEvents}
-                                            report="https://cdn.flexmonster.com/reports/report.json"
+                    <FlexmonsterReact.Pivot 
+                        toolbar={true}
+                        ref={this.pivotRef}
+                        width="100%"
+                        ready={this.signOnAllEvents}
+                        report="https://cdn.flexmonster.com/reports/report.json"
+                        //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
                     />
                 </div>
 

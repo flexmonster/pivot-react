@@ -15,7 +15,14 @@ function PivotTableHooks (props) {
     return <>
                 <h3 className="page-title">Simple Usage Example (with hooks)</h3>
                 <div className="App">
-                    <FlexmonsterReact.Pivot ref={ref} toolbar={true} width="100%" report="https://cdn.flexmonster.com/reports/report.json" reportcomplete={onReportComplete}/>
+                    <FlexmonsterReact.Pivot 
+                        ref={ref} 
+                        toolbar={true} 
+                        width="100%" 
+                        report="https://cdn.flexmonster.com/reports/report.json" 
+                        reportcomplete={onReportComplete}
+                        //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
+                    />
                 </div>
            </>;    
 }

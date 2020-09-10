@@ -79,6 +79,7 @@ export default class PivotCustomizeGrid extends React.Component<any, {}> {
                     ref={this.pivotRef}
                     report="https://cdn.flexmonster.com/reports/report.json"
                     customizeCell={this.customizeCellFunction}
+                    //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
                 />
             </>
         );

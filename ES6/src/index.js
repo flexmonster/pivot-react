@@ -1,5 +1,4 @@
 import 'flexmonster/flexmonster.css';
-import 'flexmonster/lib/flexmonster.highcharts.js';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';

@@ -62,10 +62,12 @@ export default class PivotCustomizeGrid extends React.Component {
                 <button className="toggle-button-red" onClick={this.removeCustomization}>Remove Customization</button>
                 <button className="toggle-button-red" onClick={this.applyCustomization}>Apply Customization</button>
 
-                <FlexmonsterReact.Pivot toolbar={true}
+                <FlexmonsterReact.Pivot 
+                    toolbar={true}
                     ref="pivot"
                     report="https://cdn.flexmonster.com/reports/report.json"
                     customizeCell={this.customizeCellFunction}
+                    //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
                 />
             </>
         );

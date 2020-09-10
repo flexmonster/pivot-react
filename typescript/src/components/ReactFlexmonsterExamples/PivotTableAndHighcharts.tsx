@@ -56,6 +56,7 @@ class PivotTableAndHighcharts extends React.Component<any, {}> {
                     report="https://cdn.flexmonster.com/reports/report.json" 
                     licenseFilePath="https://cdn.flexmonster.com/jsfiddle.charts.key"
                     reportcomplete={this.reportComplete}
+                    //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
                 />
                 <div id="highcharts-container"></div>
             </div>

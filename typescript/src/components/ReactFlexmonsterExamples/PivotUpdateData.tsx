@@ -84,9 +84,11 @@ export default class PivotUpdateData extends React.Component {
                 </h3>
 
                 <button className="button-red" onClick={this.updateTheData}>Update the data</button>
-                <FlexmonsterReact.Pivot toolbar={true}
+                <FlexmonsterReact.Pivot 
+                    toolbar={true}
                     ref={this.pivotRef}
                     ready={this.onReady}
+                    //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
                 />
             </>
         );

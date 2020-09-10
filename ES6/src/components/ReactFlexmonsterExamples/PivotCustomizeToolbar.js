@@ -36,10 +36,12 @@ export default class PivotCustomizeToolbar extends React.Component {
                     &nbsp;example
                 </h3>
 
-                <FlexmonsterReact.Pivot toolbar={true}
+                <FlexmonsterReact.Pivot 
+                    toolbar={true}
                     ref="pivot"
                     report="https://cdn.flexmonster.com/reports/report.json"
                     beforetoolbarcreated={this.customizeToolbar}
+                    //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
                 />
             </>
         );

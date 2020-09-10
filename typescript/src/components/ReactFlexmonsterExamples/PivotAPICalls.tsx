@@ -89,6 +89,7 @@ class PivotApiCalls extends React.Component<any, {}> {
                     componentFolder="https://cdn.flexmonster.com/"
                     width="100%"
                     report="https://cdn.flexmonster.com/reports/report.json"
+                    //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
                 />
             </>
         );
