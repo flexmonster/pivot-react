@@ -1,25 +1,24 @@
 import * as React from 'react';
-import * as FlexmonsterReact from 'react-flexmonster';
+import {BrowserRouter as Router} from 'react-router-dom';
 
+import './App.css';
+import TopMenu from './components/UIElements/topMenu/TopMenu'
+import SideMenu from './components/UIElements/sideMenu/SideMenu'
+import ExamplesContainer from './components/UIElements/examplesContainer/ExamplesContainer'
 
 class App extends React.Component {
-
-  private flexmonsterRef = React.createRef<FlexmonsterReact.Pivot>();
-
-  public render() {
+  render(){
     return (
-      <div className="App">
-          <FlexmonsterReact.Pivot ref={this.flexmonsterRef} toolbar={true} ready={() => this.onReady()} width="100%" />
+      <div id="app">
+        <Router>
+          <TopMenu/>
+          <div className="wrapper">
+            <SideMenu/>
+            <ExamplesContainer/>
+          </div>
+        </Router>
       </div>
     );
-  }
-
-  public onReady(): void {
-    var pivotObject = this.flexmonsterRef.current as FlexmonsterReact.Pivot;
-    pivotObject.flexmonster.load("https://cdn.flexmonster.com/reports/report.json");
-  }
-
-  public componentDidMount() {
   }
 }
 

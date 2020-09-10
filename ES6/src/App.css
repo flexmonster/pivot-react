@@ -8,6 +8,10 @@
   text-rendering: optimizeLegibility !important;
 }
 
+#highcharts-container {
+  margin-top: 40px;
+}
+
 .wrapper {
   width: 100%;
   max-width: 1240px;
