@@ -30,10 +30,10 @@ export default class SideMenu extends React.Component {
                     <div className="sub-title">Customization</div>
                     <ol>
                         <li className="tab-button">
-                            <Link to="/customize-toolbar">CUSTOMIZING TOOLBAR</Link>
+                            <Link to="/customize-toolbar">CUSTOMIZING THE TOOLBAR</Link>
                         </li>
                         <li className="tab-button">
-                            <Link to="/customize-grid">CUSTOMIZING GRID</Link>
+                            <Link to="/customize-grid">CUSTOMIZING THE GRID</Link>
                         </li>
                     </ol>
                     <div className="sub-title">Integration</div>

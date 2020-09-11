@@ -6,8 +6,14 @@ export default class PivotCustomizeGrid extends React.Component<any, {}> {
     private pivotRef: React.RefObject<FlexmonsterReact.Pivot> = React.createRef<FlexmonsterReact.Pivot>();
     private flexmonster: Flexmonster.Pivot;
 
+    private activeButton : String = "applyCustomization";
+
     constructor(props: any) {
         super(props);
+
+        this.state = {
+            activeButton: "applyCustomization" 
+        }
     }
 
     componentDidMount() {
@@ -57,10 +63,18 @@ export default class PivotCustomizeGrid extends React.Component<any, {}> {
     }
 
     removeCustomization = () => {
+        this.activeButton = "removeCustomization";
+        this.setState({
+            activeButton: this.activeButton
+        });
         this.flexmonster.customizeCell(null as any);
     }
 
     applyCustomization = () => {
+        this.activeButton = "applyCustomization";
+        this.setState({
+            activeButton: this.activeButton
+        });
         //running grid customization using "customizeCellFunction"
         this.flexmonster.customizeCell(this.customizeCellFunction);
     }
@@ -72,8 +86,9 @@ export default class PivotCustomizeGrid extends React.Component<any, {}> {
                     How to <a target="_blank" rel="noopener noreferrer" href="https://www.flexmonster.com/api/customizecell/">customize the grid cells</a>&nbsp;example
                 </h3>
 
-                <button className="toggle-button-red" onClick={this.removeCustomization}>Remove Customization</button>
-                <button className="toggle-button-red" onClick={this.applyCustomization}>Apply Customization</button>
+                <button className={`toggle-button-red ${(this.activeButton === "removeCustomization")?"button-red-active":""}`} onClick={this.removeCustomization}>Remove Customization</button>
+                <button className={`toggle-button-red ${(this.activeButton === "applyCustomization")?"button-red-active":""}`} onClick={this.applyCustomization}>Apply Customization</button>
+
 
                 <FlexmonsterReact.Pivot toolbar={true}
                     ref={this.pivotRef}

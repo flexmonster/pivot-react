@@ -71,7 +71,8 @@ p {
 
 .button-red:hover,
 .toggle-button-red:hover,
-.toggle-button-red:focus {
+.toggle-button-red:focus,
+.button-red-active {
   border: 2px solid #df3800;
   background: #df3800;
   color: #fff;

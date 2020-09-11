@@ -34,7 +34,7 @@ export default class PivotUpdateData extends React.Component {
     }
 
     updateTheData = () => {
-        // If the data in Vue got updated, for example:
+        // If the data in React got updated, for example:
         this.data = [
             {
                 Category: "Accessories",

@@ -9,6 +9,8 @@ export default class PivotEvents extends React.Component<any, {}> {
         event: string
     }[] = [];
 
+    private activeButton : String = "signOnAllEvents";
+
     private pivotRef: React.RefObject<FlexmonsterReact.Pivot> = React.createRef<FlexmonsterReact.Pivot>();
     private flexmonster: Flexmonster.Pivot;
 
@@ -16,7 +18,8 @@ export default class PivotEvents extends React.Component<any, {}> {
         super(props);
 
         this.state = {
-            logs: []
+            logs: [],
+            activeButton: "signOnAllEvents" 
         }
     }
 
@@ -84,6 +87,10 @@ export default class PivotEvents extends React.Component<any, {}> {
     }
 
     signOffAllEvents = () => {
+        this.activeButton = "signOffAllEvents";
+        this.setState({
+            activeButton: this.activeButton
+        });
         for (const eventName of this.eventList) {
             // remove all handlers for specified event
             this.flexmonster.off(eventName);
@@ -91,6 +98,10 @@ export default class PivotEvents extends React.Component<any, {}> {
     }
 
     signOnAllEvents = () => {
+        this.activeButton = "signOnAllEvents";
+        this.setState({
+            activeButton: this.activeButton
+        });
         for (const eventName of this.eventList) {
             // add handler for specified event
             this.flexmonster.on(eventName, () => {
@@ -122,8 +133,8 @@ export default class PivotEvents extends React.Component<any, {}> {
                     </p>
                 </div>
 
-                <button className="toggle-button-red" onClick={this.signOffAllEvents}>Sign off all events</button>
-                <button className="toggle-button-red" onClick={this.signOnAllEvents}>Sign on all events</button>
+                <button className={`toggle-button-red ${(this.activeButton === "signOffAllEvents")?"button-red-active":""}`} onClick={this.signOffAllEvents}>Sign off all events</button>
+                <button className={`toggle-button-red ${(this.activeButton === "signOnAllEvents")?"button-red-active":""}`} onClick={this.signOnAllEvents}>Sign on all events</button>
 
                 <div>
                     <FlexmonsterReact.Pivot 

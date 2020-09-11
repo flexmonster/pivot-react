@@ -7,8 +7,14 @@ class PivotApiCalls extends React.Component<any, {}> {
     private pivotRef: React.RefObject<FlexmonsterReact.Pivot> = React.createRef<FlexmonsterReact.Pivot>();
     private flexmonster: Flexmonster.Pivot;
 
+    private activeButton : String = "";
+
     constructor(props: any) {
         super(props);
+
+        this.state = {
+            activeButton: "" 
+        }
     }
 
     componentDidMount() {
@@ -16,14 +22,26 @@ class PivotApiCalls extends React.Component<any, {}> {
     }
 
     showChart = () => {
+        this.activeButton = "showChart";
+        this.setState({
+            activeButton: this.activeButton
+        });
         this.flexmonster.showCharts("pie");
     }
     
     showGrid = () => {
+        this.activeButton = "showGrid";
+        this.setState({
+            activeButton: this.activeButton
+        });
         this.flexmonster.showGrid();
     }
 
     readOnly = () => {
+        this.activeButton = "readOnly";
+        this.setState({
+            activeButton: this.activeButton
+        });
         //hiding filters, sorting and fieldList buttons, disabling dragging, disabling drill-through
         this.flexmonster.setOptions({
             grid: {
@@ -38,12 +56,16 @@ class PivotApiCalls extends React.Component<any, {}> {
             drillThrough: false,
         });
         //disabling context menu
-        this.showContextMenu();
+        this.hideContextMenu();
         //we need to run refresh to apply new options changes
         this.flexmonster.refresh();
     }
 
     interactive = () => {
+        this.activeButton = "interactive";
+        this.setState({
+            activeButton: this.activeButton
+        });
         //displaying filters, sorting and fieldList buttons, enabling dragging, enabling drill-through
         this.flexmonster.setOptions({
             grid: {
@@ -58,18 +80,18 @@ class PivotApiCalls extends React.Component<any, {}> {
             drillThrough: true,
         });
         //enabling context menu
-        this.hideContextMenu();
+        this.showContextMenu();
         //we need to run refresh to apply new options changes
         this.flexmonster.refresh();
     }
 
-    showContextMenu = () => {
+    hideContextMenu = () => {
         this.flexmonster.customizeContextMenu(() => {
             return [];
         });
     }
 
-    hideContextMenu = () => {
+    showContextMenu = () => {
         this.flexmonster.customizeContextMenu(null as any);
     }
 
@@ -80,10 +102,11 @@ class PivotApiCalls extends React.Component<any, {}> {
                     How to access <a target="blank" href="https://www.flexmonster.com/api/methods/">Flexmonster API calls</a> example
                 </h3>
 
-                <button className="toggle-button-red" onClick={this.showChart}>Show Pie Chart</button>
-                <button className="toggle-button-red" onClick={this.showGrid}>Show Grid</button>
-                <button className="toggle-button-red" onClick={this.readOnly}>Make read only</button>
-                <button className="toggle-button-red" onClick={this.interactive}>Make interactive</button>
+                <button className={`toggle-button-red ${(this.activeButton === "showChart")?"button-red-active":""}`} onClick={this.showChart}>Show Pie Chart</button>
+                <button className={`toggle-button-red ${(this.activeButton === "showGrid")?"button-red-active":""}`} onClick={this.showGrid}>Show Grid</button>
+                <button className={`toggle-button-red ${(this.activeButton === "readOnly")?"button-red-active":""}`} onClick={this.readOnly}>Make read only</button>
+                <button className={`toggle-button-red ${(this.activeButton === "interactive")?"button-red-active":""}`} onClick={this.interactive}>Make interactive</button>
+                
                 <FlexmonsterReact.Pivot toolbar={true}
                     ref={this.pivotRef}
                     componentFolder="https://cdn.flexmonster.com/"

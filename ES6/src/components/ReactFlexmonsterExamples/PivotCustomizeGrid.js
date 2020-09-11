@@ -3,6 +3,14 @@ import * as FlexmonsterReact from 'react-flexmonster';
 
 export default class PivotCustomizeGrid extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.props = props;
+        this.state = {
+            activeButton: "applyCustomization"        
+        }
+    }
+
     report = {
         dataSource: {
             filename: 'https://cdn.flexmonster.com/data/data.csv'
@@ -44,10 +52,16 @@ export default class PivotCustomizeGrid extends React.Component {
     }
 
     removeCustomization = () => {
+        this.setState({
+            activeButton: "removeCustomization"
+        });
         this.refs.pivot.flexmonster.customizeCell(null);
     }
 
     applyCustomization = () => {
+        this.setState({
+            activeButton: "applyCustomization"
+        });
         //running grid customization using "customizeCellFunction"
         this.refs.pivot.flexmonster.customizeCell(this.customizeCellFunction);
     }
@@ -59,8 +73,8 @@ export default class PivotCustomizeGrid extends React.Component {
                     How to <a target="_blank" rel="noopener noreferrer" href="https://www.flexmonster.com/api/customizecell/">customize the grid cells</a>&nbsp;example
                 </h3>
 
-                <button className="toggle-button-red" onClick={this.removeCustomization}>Remove Customization</button>
-                <button className="toggle-button-red" onClick={this.applyCustomization}>Apply Customization</button>
+                <button className={`toggle-button-red ${(this.state.activeButton === "removeCustomization")?"button-red-active":""}`} onClick={this.removeCustomization}>Remove Customization</button>
+                <button className={`toggle-button-red ${(this.state.activeButton === "applyCustomization")?"button-red-active":""}`} onClick={this.applyCustomization}>Apply Customization</button>
 
                 <FlexmonsterReact.Pivot 
                     toolbar={true}
