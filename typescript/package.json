@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "@types/react-router-dom": "^4.3.5",
-    "flexmonster": "^2.7.13",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
     "react-flexmonster": "latest",
@@ -17,7 +16,6 @@
     "eject": "react-scripts-ts eject"
   },
   "devDependencies": {
-    "@types/flexmonster": "latest",
     "@types/jest": "^23.3.9",
     "@types/node": "^10.12.8",
     "@types/react": "^16.7.6",

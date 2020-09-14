@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "flexmonster": "^2.8.12",
+    "flexmonster": "latest",
     "highcharts": "^8.1.1",
     "prop-types": "^15.7.2",
     "react": "^16.8.1",
