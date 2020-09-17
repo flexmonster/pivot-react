@@ -1,5 +1,8 @@
-import 'flexmonster/flexmonster.css';
-import 'flexmonster/lib/flexmonster.highcharts.js';
+import 'flexmonster/theme/softdefault/flexmonster.css';
+//You can use a different theme by specifying the corresponding path
+//For example, to load the Green theme:
+//import 'flexmonster/theme/green/flexmonster.css';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';

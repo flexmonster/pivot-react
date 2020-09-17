@@ -1,0 +1,8 @@
+.pivotContent {
+    float: left;
+    width: 75%;
+    min-width: 605px;
+    padding: 30px 40px;
+    background: #fff;
+    padding-top: 0;
+  }
