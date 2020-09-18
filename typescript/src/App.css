@@ -1,84 +1,84 @@
 #app {
-    padding: 120px 0 60px;
-    font-family: "Open Sans", "Arial", sans-serif, serif;
-    color: #555;
-    line-height: 1;
-    font-size: 15px;
-    -webkit-font-smoothing: antialiased !important;
-    text-rendering: optimizeLegibility !important;
+  padding: 120px 0 60px;
+  font-family: "Open Sans", "Arial", sans-serif, serif;
+  color: #555;
+  line-height: 1;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased !important;
+  text-rendering: optimizeLegibility !important;
 }
 
 #highcharts-container {
-    margin-top: 40px;
+  margin-top: 40px;
 }
 
 .wrapper {
-    width: 100%;
-    max-width: 1240px;
-    margin: 0 auto;
-    padding-left: 20px;
-    padding-right: 20px;
-    display: flex;
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  display: flex;
 }
 
 .pivotContent {
-    float: left;
-    width: 75%;
-    min-width: 605px;
-    padding: 30px 40px;
-    background: #fff;
-    padding-top: 0;
+  float: left;
+  width: 75%;
+  min-width: 605px;
+  padding: 30px 40px;
+  background: #fff;
+  padding-top: 0;
 }
 
 a {
-    color: #00a45a;
-    text-decoration: none;
+  color: #00a45a;
+  text-decoration: none;
 }
 
 a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 p {
-    line-height: 1.5;
+  line-height: 1.5;
 }
 
 .page-title {
-    margin-top: 0;
-    margin-bottom: 18px;
-    font-size: 28px;
-    font-weight: normal;
-    line-height: 1.35714;
-    color: #555555;
-    text-align: center;
+  margin-top: 0;
+  margin-bottom: 18px;
+  font-size: 28px;
+  font-weight: normal;
+  line-height: 1.35714;
+  color: #555555;
+  text-align: center;
 }
 
 .button-red,
 .toggle-button-red {
-    border: 2px solid #df3800;
-    background: #fff;
-    color: #df3800;
-    text-transform: uppercase;
-    cursor: pointer;
-    margin: 5px 5px 5px 0;
-    display: inline-block;
-    -webkit-transition: all 0.3s;
-    transition: all 0.3s;
-    font-weight: normal;
-    padding: 10px 10px;
-    font-size: 14px;
+  border: 2px solid #df3800;
+  background: #fff;
+  color: #df3800;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin: 5px 5px 5px 0;
+  display: inline-block;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  font-weight: normal;
+  padding: 10px 10px;
+  font-size: 14px;
 }
 
 .button-red:hover,
 .toggle-button-red:hover,
 .toggle-button-red:focus,
 .button-red-active {
-    border: 2px solid #df3800;
-    background: #df3800;
-    color: #fff;
+  border: 2px solid #df3800;
+  background: #df3800;
+  color: #fff;
 }
 
 .button-red:focus,
 .toggle-button-red:focus {
-    outline: none;
+  outline: none;
 }

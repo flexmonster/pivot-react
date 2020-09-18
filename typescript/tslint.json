@@ -1,9 +1,0 @@
-{
-    "linterOptions": {
-        "exclude": [
-            "src/*.*"
-        ]
-    },
-    "rules": {
-    }
-}

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Switch, Route, withRouter} from "react-router-dom";
+import { Switch, Route, withRouter } from "react-router-dom";
 import * as H from "history";
 
 import PivotTable from '../../ReactFlexmonsterExamples/PivotTable';
@@ -12,22 +12,22 @@ import PivotCustomizeToolbar from '../../ReactFlexmonsterExamples/PivotCustomize
 import PivotCustomizeGrid from '../../ReactFlexmonsterExamples/PivotCustomizeGrid';
 import './ExamplesContainer.css';
 
-type Props = {location: H.Location<H.History.UnknownFacade> | undefined};
+type Props = { location: H.Location<H.History.LocationState> | undefined };
 
 const ExamplesContainer = (props: Props) => {
 
-    const {location} = props;
+    const { location } = props;
     return (
         <div className="pivotContent">
             <Switch location={location}>
-                <Route path="/" component={PivotTable} exact/>
-                <Route path="/highcharts" component={PivotTableAndHighcharts}/>
-                <Route path="/api-calls" component={PivotApiCalls}/>
-                <Route path="/calling-events" component={PivotEvents}/>
-                <Route path="/hooks" component={PivotTableHooks}/>
-                <Route path="/updating-data" component={PivotUpdateData}/>
-                <Route path="/customize-toolbar" component={PivotCustomizeToolbar}/>
-                <Route path="/customize-grid" component={PivotCustomizeGrid}/>
+                <Route path="/" component={PivotTable} exact />
+                <Route path="/highcharts" component={PivotTableAndHighcharts} />
+                <Route path="/api-calls" component={PivotApiCalls} />
+                <Route path="/calling-events" component={PivotEvents} />
+                <Route path="/hooks" component={PivotTableHooks} />
+                <Route path="/updating-data" component={PivotUpdateData} />
+                <Route path="/customize-toolbar" component={PivotCustomizeToolbar} />
+                <Route path="/customize-grid" component={PivotCustomizeGrid} />
             </Switch>
         </div>
     );

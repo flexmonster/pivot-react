@@ -1,5 +1,10 @@
 import * as React from 'react';
 import * as FlexmonsterReact from 'react-flexmonster/hooks';
+import 'flexmonster';
+import 'flexmonster/flexmonster.css';
+//You can use a different theme by specifying the corresponding path
+//For example, to load the Green theme:
+//import 'flexmonster/theme/green/flexmonster.css';
 
 const PivotTableHooks = (props: any) => {
 

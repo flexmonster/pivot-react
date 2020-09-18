@@ -1,19 +1,23 @@
 import * as React from 'react';
-
 import * as FlexmonsterReact from 'react-flexmonster';
+import 'flexmonster';
+import 'flexmonster/flexmonster.css';
+//You can use a different theme by specifying the corresponding path
+//For example, to load the Green theme:
+//import 'flexmonster/theme/green/flexmonster.css';
 
 class PivotApiCalls extends React.Component<any, {}> {
 
     private pivotRef: React.RefObject<FlexmonsterReact.Pivot> = React.createRef<FlexmonsterReact.Pivot>();
-    private flexmonster: Flexmonster.Pivot;
+    private flexmonster!: Flexmonster.Pivot;
 
-    private activeButton : String = "";
+    private activeButton: String = "";
 
     constructor(props: any) {
         super(props);
 
         this.state = {
-            activeButton: "" 
+            activeButton: ""
         }
     }
 
@@ -28,7 +32,7 @@ class PivotApiCalls extends React.Component<any, {}> {
         });
         this.flexmonster.showCharts("pie");
     }
-    
+
     showGrid = () => {
         this.activeButton = "showGrid";
         this.setState({
@@ -95,24 +99,24 @@ class PivotApiCalls extends React.Component<any, {}> {
         this.flexmonster.customizeContextMenu(null as any);
     }
 
-    render(){
+    render() {
         return (
             <>
                 <h3 className="page-title">
                     How to access <a target="blank" href="https://www.flexmonster.com/api/methods/">Flexmonster API calls</a> example
                 </h3>
 
-                <button className={`toggle-button-red ${(this.activeButton === "showChart")?"button-red-active":""}`} onClick={this.showChart}>Show Pie Chart</button>
-                <button className={`toggle-button-red ${(this.activeButton === "showGrid")?"button-red-active":""}`} onClick={this.showGrid}>Show Grid</button>
-                <button className={`toggle-button-red ${(this.activeButton === "readOnly")?"button-red-active":""}`} onClick={this.readOnly}>Make read only</button>
-                <button className={`toggle-button-red ${(this.activeButton === "interactive")?"button-red-active":""}`} onClick={this.interactive}>Make interactive</button>
-                
+                <button className={`toggle-button-red ${(this.activeButton === "showChart") ? "button-red-active" : ""}`} onClick={this.showChart}>Show Pie Chart</button>
+                <button className={`toggle-button-red ${(this.activeButton === "showGrid") ? "button-red-active" : ""}`} onClick={this.showGrid}>Show Grid</button>
+                <button className={`toggle-button-red ${(this.activeButton === "readOnly") ? "button-red-active" : ""}`} onClick={this.readOnly}>Make read only</button>
+                <button className={`toggle-button-red ${(this.activeButton === "interactive") ? "button-red-active" : ""}`} onClick={this.interactive}>Make interactive</button>
+
                 <FlexmonsterReact.Pivot toolbar={true}
                     ref={this.pivotRef}
                     componentFolder="https://cdn.flexmonster.com/"
                     width="100%"
                     report="https://cdn.flexmonster.com/reports/report.json"
-                    //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
+                //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
                 />
             </>
         );

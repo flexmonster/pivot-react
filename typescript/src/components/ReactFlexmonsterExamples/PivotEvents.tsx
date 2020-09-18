@@ -1,6 +1,11 @@
 import * as React from "react";
 import LogsList from "../UIElements/logsList/LogsList";
 import * as FlexmonsterReact from 'react-flexmonster';
+import 'flexmonster';
+import 'flexmonster/flexmonster.css';
+//You can use a different theme by specifying the corresponding path
+//For example, to load the Green theme:
+//import 'flexmonster/theme/green/flexmonster.css';
 
 export default class PivotEvents extends React.Component<any, {}> {
 
@@ -12,7 +17,7 @@ export default class PivotEvents extends React.Component<any, {}> {
     private activeButton : String = "signOnAllEvents";
 
     private pivotRef: React.RefObject<FlexmonsterReact.Pivot> = React.createRef<FlexmonsterReact.Pivot>();
-    private flexmonster: Flexmonster.Pivot;
+    private flexmonster!: Flexmonster.Pivot;
 
     constructor(props: any) {
         super(props);
