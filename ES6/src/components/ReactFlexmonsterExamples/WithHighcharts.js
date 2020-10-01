@@ -4,7 +4,7 @@ import 'flexmonster/lib/flexmonster.highcharts.js';
 import Highcharts from 'highcharts';
 
 
-class PivotTableAndHighcharts extends Component {
+class WithHighcharts extends Component {
 
     constructor(props) {
         super(props);
@@ -58,4 +58,4 @@ class PivotTableAndHighcharts extends Component {
     }
 }
 
-export default PivotTableAndHighcharts;
+export default WithHighcharts;

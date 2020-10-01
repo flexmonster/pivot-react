@@ -1,9 +1,9 @@
 import React from "react";
-import LogsList from "../UIElements/logsList/LogsList";
+import LogsList from "../UIElements/LogsList";
 import ToggleButton from "../UIElements/ToggleButton";
 import * as FlexmonsterReact from 'react-flexmonster';
 
-export default class PivotEvents extends React.Component {
+export default class CallingEvents extends React.Component {
 
     constructor(props) {
         super(props);

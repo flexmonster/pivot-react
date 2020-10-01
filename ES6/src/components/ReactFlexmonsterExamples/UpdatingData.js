@@ -1,7 +1,7 @@
 import React from 'react';
 import * as FlexmonsterReact from 'react-flexmonster';
 
-export default class PivotUpdateData extends React.Component {
+export default class UpdatingData extends React.Component {
 
     data = [
         {

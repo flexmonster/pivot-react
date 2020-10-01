@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import ToggleSwitch from '../UIElements/ToggleSwitch';
 import * as FlexmonsterReact from 'react-flexmonster';
 
-class PivotApiCalls extends Component {
+class UsingAPICalls extends Component {
 
     constructor(props) {
         super(props);
@@ -113,4 +113,4 @@ class PivotApiCalls extends Component {
 
 }
 
-export default PivotApiCalls;
+export default UsingAPICalls;

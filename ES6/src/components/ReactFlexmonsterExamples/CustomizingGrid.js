@@ -2,7 +2,7 @@ import React from "react";
 import * as FlexmonsterReact from 'react-flexmonster';
 import ToggleButton from '../UIElements/ToggleButton';
 
-export default class PivotCustomizeGrid extends React.Component {
+export default class CustomizingGrid extends React.Component {
 
     constructor(props) {
         super(props);

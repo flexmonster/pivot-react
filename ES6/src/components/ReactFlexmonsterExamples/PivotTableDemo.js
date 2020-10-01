@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import * as FlexmonsterReact from 'react-flexmonster';
 
-class PivotTable extends Component {
+class PivotTableDemo extends Component {
     render() {
         return (
             <>
@@ -19,4 +19,4 @@ class PivotTable extends Component {
     }
 }
 
-export default PivotTable;
+export default PivotTableDemo;

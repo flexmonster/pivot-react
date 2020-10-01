@@ -1,7 +1,7 @@
 import React from "react";
 import * as FlexmonsterReact from 'react-flexmonster';
 
-export default class PivotCustomizeToolbar extends React.Component {
+export default class CustomizingToolbar extends React.Component {
 
     showInfo = () => {
         this.refs.pivot.flexmonster.alert({
