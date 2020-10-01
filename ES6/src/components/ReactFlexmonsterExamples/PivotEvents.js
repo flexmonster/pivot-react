@@ -1,5 +1,6 @@
 import React from "react";
 import LogsList from "../UIElements/logsList/LogsList";
+import ToggleButton from "../UIElements/ToggleButton";
 import * as FlexmonsterReact from 'react-flexmonster';
 
 export default class PivotEvents extends React.Component {
@@ -69,11 +70,15 @@ export default class PivotEvents extends React.Component {
             logs: this.logs
         });
         requestAnimationFrame(() => {
-            const logsContainer = this.logsContainer.current._reactInternalFiber.child.stateNode;
+            const logsContainer = document.querySelector(".event-logs-wrapper .content");
             if (logsContainer) {
                 logsContainer.scrollTop = logsContainer.scrollHeight;
             }
         });
+    }
+
+    eventsSignerController = (isSigned) => {
+        isSigned ? this.signOnAllEvents() : this.signOffAllEvents();
     }
 
     signOffAllEvents = () => {
@@ -109,20 +114,19 @@ export default class PivotEvents extends React.Component {
 
         return (
             <>
-                <h3 className="page-title">
-                    How to call <a target="blank" href="https://www.flexmonster.com/api/events/">Flexmonster events</a> example
+                <h3 className="title-one page-title">
+                    How to call <a target="blank" className="title-link" href="https://www.flexmonster.com/api/events/">Flexmonster events</a> example
                 </h3>
 
                 <div className="description-blocks first-description-block">
                     <p>
-                        Perform an action (for example, click on a grid cell) to trigger a 
-                        <a target="blank" href="https://www.flexmonster.com/api/events/"> Flexmonster event</a>.
-                        Scroll down to the log output to see which events get triggered.
+                        Perform an action (for example, click on a grid cell) to trigger a <a className="title-link" target="blank" 
+                        href="https://www.flexmonster.com/api/events/">Flexmonster event</a>
+                        . Scroll down to the log output to see which events get triggered.
                     </p>
                 </div>
 
-                <button className={`toggle-button-red ${(this.state.activeButton === "signOffAllEvents")?"button-red-active":""}`} onClick={this.signOffAllEvents}>Sign off all events</button>
-                <button className={`toggle-button-red ${(this.state.activeButton === "signOnAllEvents")?"button-red-active":""}`} onClick={this.signOnAllEvents}>Sign on all events</button>
+               <ToggleButton triggerFunction={this.eventsSignerController} labelChecked="Events are tracked" labelUnChecked="Events are not tracked"/>
 
                 <div>
                     <FlexmonsterReact.Pivot 
@@ -135,9 +139,9 @@ export default class PivotEvents extends React.Component {
                     />
                 </div>
 
-                <div className="description-blocks first-description-block">
+                <div className="section">
+                    <LogsList title="Log output" ref={this.logsContainer} logsList={this.logs}/>
                     <button className="button-red" onClick={this.clearLogs}>Clear Log Output</button>
-                    <LogsList ref={this.logsContainer} logsList={this.logs}/>
                 </div>
             </>
         );

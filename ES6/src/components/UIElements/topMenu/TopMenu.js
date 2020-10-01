@@ -1,5 +1,4 @@
 import React from "react";
-import './TopMenu.css';
 
 export default function TopMenu() {
 

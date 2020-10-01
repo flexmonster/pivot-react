@@ -38,7 +38,7 @@ class PivotTableAndHighcharts extends Component {
         return (
             <div className="App">
                 <h3 className="page-title">
-                    How to <a target="_blank" rel="noopener noreferrer" href="https://www.flexmonster.com/doc/integration-with-highcharts/">integrate with
+                    How to <a target="_blank" className="title-link" rel="noopener noreferrer" href="https://www.flexmonster.com/doc/integration-with-highcharts/">integrate with
                         Highcharts</a> example
                 </h3>
                 <FlexmonsterReact.Pivot 
@@ -50,7 +50,9 @@ class PivotTableAndHighcharts extends Component {
                     reportcomplete={this.reportComplete}
                     //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
                 />
-                <div id="highcharts-container"></div>
+                <div class="chart-container">
+                    <div id="highcharts-container"></div>
+                </div>
             </div>
         );
     }

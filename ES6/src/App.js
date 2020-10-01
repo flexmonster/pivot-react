@@ -12,7 +12,7 @@ class App extends Component {
       <div id="app">
         <Router>
           <TopMenu/>
-          <div className="wrapper">
+          <div className="wrap">
             <SideMenu/>
             <ExamplesContainer/>
           </div>

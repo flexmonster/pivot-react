@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import ToggleSwitch from '../UIElements/ToggleSwitch';
 import * as FlexmonsterReact from 'react-flexmonster';
 
 class PivotApiCalls extends Component {
@@ -8,7 +8,7 @@ class PivotApiCalls extends Component {
         super(props);
         this.props = props;
         this.state = {
-            activeButton: ""        
+            activeButton: ""
         }
     }
 
@@ -24,6 +24,14 @@ class PivotApiCalls extends Component {
             activeButton: "showGrid"
         });
         this.refs.pivot.flexmonster.showGrid();
+    }
+
+    controllGridCharts = (isGrid) => {
+        isGrid ? this.showGrid() : this.showChart();
+    }
+
+    controllInteractiveness = (isInteractive) => {
+        isInteractive ? this.interactive() : this.readOnly()
     }
 
     readOnly = () => {
@@ -86,13 +94,11 @@ class PivotApiCalls extends Component {
         return (
             <>
                 <h3 className="page-title">
-                    How to access <a target="blank" href="https://www.flexmonster.com/api/methods/">Flexmonster API calls</a> example
+                    How to access <a target="blank" className="title-link" href="https://www.flexmonster.com/api/methods/">Flexmonster API calls</a> example
                 </h3>
 
-                <button className={`toggle-button-red ${(this.state.activeButton === "showChart")?"button-red-active":""}`} onClick={this.showChart}>Show Pie Chart</button>
-                <button className={`toggle-button-red ${(this.state.activeButton === "showGrid")?"button-red-active":""}`} onClick={this.showGrid}>Show Grid</button>
-                <button className={`toggle-button-red ${(this.state.activeButton === "readOnly")?"button-red-active":""}`} onClick={this.readOnly}>Make read only</button>
-                <button className={`toggle-button-red ${(this.state.activeButton === "interactive")?"button-red-active":""}`} onClick={this.interactive}>Make interactive</button>
+                <ToggleSwitch triggerFunction={this.controllGridCharts} labelChecked="Show grid" labelUnChecked="Show Pie chart"/>
+                <ToggleSwitch triggerFunction={this.controllInteractiveness} labelChecked="Make interactive" labelUnChecked="Make read-only"/>
                 <FlexmonsterReact.Pivot 
                     toolbar={true}
                     ref="pivot"

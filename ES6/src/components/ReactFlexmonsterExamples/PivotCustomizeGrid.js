@@ -1,5 +1,6 @@
 import React from "react";
 import * as FlexmonsterReact from 'react-flexmonster';
+import ToggleButton from '../UIElements/ToggleButton';
 
 export default class PivotCustomizeGrid extends React.Component {
 
@@ -51,6 +52,10 @@ export default class PivotCustomizeGrid extends React.Component {
         }
     }
 
+    controllCustomization = (isCustomized) => {
+        isCustomized ? this.applyCustomization() : this.removeCustomization()
+    }
+
     removeCustomization = () => {
         this.setState({
             activeButton: "removeCustomization"
@@ -70,11 +75,10 @@ export default class PivotCustomizeGrid extends React.Component {
         return (
             <>
                 <h3 className="page-title">
-                    How to <a target="_blank" rel="noopener noreferrer" href="https://www.flexmonster.com/api/customizecell/">customize the grid cells</a>&nbsp;example
+                    How to <a target="_blank" className="title-link" rel="noopener noreferrer" href="https://www.flexmonster.com/api/customizecell/">customize the grid cells</a>&nbsp;example
                 </h3>
 
-                <button className={`toggle-button-red ${(this.state.activeButton === "removeCustomization")?"button-red-active":""}`} onClick={this.removeCustomization}>Remove Customization</button>
-                <button className={`toggle-button-red ${(this.state.activeButton === "applyCustomization")?"button-red-active":""}`} onClick={this.applyCustomization}>Apply Customization</button>
+                <ToggleButton triggerFunction={this.controllCustomization} labelChecked="The grid cells are customized" labelUnChecked="The grid cells are not customized"/>
 
                 <FlexmonsterReact.Pivot 
                     toolbar={true}
