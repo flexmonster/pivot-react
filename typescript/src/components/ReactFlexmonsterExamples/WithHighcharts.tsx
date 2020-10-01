@@ -10,7 +10,7 @@ import 'flexmonster/lib/flexmonster.highcharts.js';
 import * as Highcharts from 'highcharts';
 
 
-class PivotTableAndHighcharts extends React.Component<any, {}> {
+class WithHighcharts extends React.Component<any, {}> {
 
     private pivotRef: React.RefObject<FlexmonsterReact.Pivot> = React.createRef<FlexmonsterReact.Pivot>();
     private flexmonster!: Flexmonster.Pivot;
@@ -48,7 +48,7 @@ class PivotTableAndHighcharts extends React.Component<any, {}> {
         return (
             <div className="App">
                 <h3 className="page-title">
-                    How to <a target="_blank" rel="noopener noreferrer" href="https://www.flexmonster.com/doc/integration-with-highcharts/">integrate with
+                    How to <a target="_blank" className="title-link" rel="noopener noreferrer" href="https://www.flexmonster.com/doc/integration-with-highcharts/">integrate with
                         Highcharts</a> example
                 </h3>
                 <FlexmonsterReact.Pivot 
@@ -60,10 +60,12 @@ class PivotTableAndHighcharts extends React.Component<any, {}> {
                     reportcomplete={this.reportComplete}
                     //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
                 />
-                <div id="highcharts-container"></div>
+                <div className="chart-container">
+                    <div id="highcharts-container"></div>
+                </div>
             </div>
         );
     }
 }
 
-export default PivotTableAndHighcharts;
+export default WithHighcharts;

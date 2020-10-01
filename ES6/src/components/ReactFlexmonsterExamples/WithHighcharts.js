@@ -50,7 +50,7 @@ class WithHighcharts extends Component {
                     reportcomplete={this.reportComplete}
                     //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
                 />
-                <div class="chart-container">
+                <div className="chart-container">
                     <div id="highcharts-container"></div>
                 </div>
             </div>

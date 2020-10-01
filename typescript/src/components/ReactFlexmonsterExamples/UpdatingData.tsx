@@ -6,7 +6,7 @@ import 'flexmonster/flexmonster.css';
 //For example, to load the Green theme:
 //import 'flexmonster/theme/green/flexmonster.css';
 
-export default class PivotUpdateData extends React.Component {
+export default class UpdatingData extends React.Component {
 
     private pivotRef: React.RefObject<FlexmonsterReact.Pivot> = React.createRef<FlexmonsterReact.Pivot>();
     private flexmonster!: Flexmonster.Pivot;
@@ -80,7 +80,7 @@ export default class PivotUpdateData extends React.Component {
         return (
             <>
                 <h3 className="title-one page-title">
-                    How to <a target="_blank" rel="noopener noreferrer" href="https://www.flexmonster.com/api/updatedata/">update the data in Flexmonster</a>
+                    How to <a target="_blank" className="title-link" rel="noopener noreferrer" href="https://www.flexmonster.com/api/updatedata/">update the data in Flexmonster</a>
                     &nbsp;example
                 </h3>
 

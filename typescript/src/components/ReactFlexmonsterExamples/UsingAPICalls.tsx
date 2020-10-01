@@ -1,4 +1,5 @@
 import * as React from 'react';
+import ToggleSwitch from '../UIElements/ToggleSwitch';
 import * as FlexmonsterReact from 'react-flexmonster';
 import 'flexmonster';
 import 'flexmonster/flexmonster.css';
@@ -6,7 +7,7 @@ import 'flexmonster/flexmonster.css';
 //For example, to load the Green theme:
 //import 'flexmonster/theme/green/flexmonster.css';
 
-class PivotApiCalls extends React.Component<any, {}> {
+class UsingAPICalls extends React.Component<any, {}> {
 
     private pivotRef: React.RefObject<FlexmonsterReact.Pivot> = React.createRef<FlexmonsterReact.Pivot>();
     private flexmonster!: Flexmonster.Pivot;
@@ -23,6 +24,14 @@ class PivotApiCalls extends React.Component<any, {}> {
 
     componentDidMount() {
         this.flexmonster = this.pivotRef.current!.flexmonster;
+    }
+
+    controllGridCharts = (isGrid: boolean) => {
+        isGrid ? this.showGrid() : this.showChart();
+    }
+
+    controllInteractiveness = (isInteractive: boolean) => {
+        isInteractive ? this.interactive() : this.readOnly()
     }
 
     showChart = () => {
@@ -103,14 +112,12 @@ class PivotApiCalls extends React.Component<any, {}> {
         return (
             <>
                 <h3 className="page-title">
-                    How to access <a target="blank" href="https://www.flexmonster.com/api/methods/">Flexmonster API calls</a> example
+                    How to access <a target="blank" className="title-link" href="https://www.flexmonster.com/api/methods/">Flexmonster API calls</a> example
                 </h3>
 
-                <button className={`toggle-button-red ${(this.activeButton === "showChart") ? "button-red-active" : ""}`} onClick={this.showChart}>Show Pie Chart</button>
-                <button className={`toggle-button-red ${(this.activeButton === "showGrid") ? "button-red-active" : ""}`} onClick={this.showGrid}>Show Grid</button>
-                <button className={`toggle-button-red ${(this.activeButton === "readOnly") ? "button-red-active" : ""}`} onClick={this.readOnly}>Make read only</button>
-                <button className={`toggle-button-red ${(this.activeButton === "interactive") ? "button-red-active" : ""}`} onClick={this.interactive}>Make interactive</button>
-
+                <ToggleSwitch triggerFunction={this.controllGridCharts} labelChecked="Show grid" labelUnChecked="Show Pie chart"/>
+                <ToggleSwitch triggerFunction={this.controllInteractiveness} labelChecked="Make interactive" labelUnChecked="Make read-only"/>
+                
                 <FlexmonsterReact.Pivot toolbar={true}
                     ref={this.pivotRef}
                     componentFolder="https://cdn.flexmonster.com/"
@@ -124,4 +131,4 @@ class PivotApiCalls extends React.Component<any, {}> {
 
 }
 
-export default PivotApiCalls;
+export default UsingAPICalls;

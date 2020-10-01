@@ -6,7 +6,7 @@ import 'flexmonster/flexmonster.css';
 //For example, to load the Green theme:
 //import 'flexmonster/theme/green/flexmonster.css';
 
-class PivotTable extends React.Component {
+class PivotTableDemo extends React.Component {
     render() {
         return (
             <>
@@ -24,4 +24,4 @@ class PivotTable extends React.Component {
     }
 }
 
-export default PivotTable;
+export default PivotTableDemo;

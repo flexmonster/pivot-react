@@ -6,7 +6,7 @@ import 'flexmonster/flexmonster.css';
 //For example, to load the Green theme:
 //import 'flexmonster/theme/green/flexmonster.css';
 
-export default class PivotCustomizeToolbar extends React.Component<any, {}> {
+export default class CustomizingToolbar extends React.Component<any, {}> {
 
     private pivotRef: React.RefObject<FlexmonsterReact.Pivot> = React.createRef<FlexmonsterReact.Pivot>();
     private flexmonster!: Flexmonster.Pivot;
@@ -44,7 +44,7 @@ export default class PivotCustomizeToolbar extends React.Component<any, {}> {
         return (
             <>
                 <h3 className="page-title">
-                    How to <a target="_blank" rel="noopener noreferrer" href="https://www.flexmonster.com/doc/customizing-toolbar/">customize the Toolbar</a>
+                    How to <a target="_blank" className="title-link" rel="noopener noreferrer" href="https://www.flexmonster.com/doc/customizing-toolbar/">customize the Toolbar</a>
                     &nbsp;example
                 </h3>
 

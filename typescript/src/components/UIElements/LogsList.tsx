@@ -1,14 +1,16 @@
 import * as React from "react";
-import "./LogsList.css";
 
-type Props = {logsList: {
-    date: Date,
-    event: string
-}[]};
+type Props = {
+    logsList: {
+        date: Date,
+        event: string
+    }[],
+    title: string
+};
 
 const LogsList = (props: Props) => {
 
-        const {logsList} = props;
+        const {logsList, title} = props;
 
         const logsTemplate = logsList.map((logElement: {
             date: Date,
@@ -23,9 +25,14 @@ const LogsList = (props: Props) => {
             </div>
         })
         return (
-            <div id="logsContainer" className="logs-container">
-               {logsTemplate}     
-            </div>
+            <>                
+                <h3 className="event-logs-title">{title}</h3>
+                <div className="event-logs-wrapper fullwidth">
+                    <div className="content">
+                        {logsTemplate}
+                    </div> 
+                </div>
+            </>
         );
     
 }

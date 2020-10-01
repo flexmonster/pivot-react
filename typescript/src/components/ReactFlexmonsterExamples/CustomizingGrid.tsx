@@ -1,12 +1,13 @@
 import * as React from "react";
 import * as FlexmonsterReact from 'react-flexmonster';
+import ToggleButton from '../UIElements/ToggleButton';
 import 'flexmonster';
 import 'flexmonster/flexmonster.css';
 //You can use a different theme by specifying the corresponding path
 //For example, to load the Green theme:
 //import 'flexmonster/theme/green/flexmonster.css';
 
-export default class PivotCustomizeGrid extends React.Component<any, {}> {
+export default class CustomizingGrid extends React.Component<any, {}> {
 
     private pivotRef: React.RefObject<FlexmonsterReact.Pivot> = React.createRef<FlexmonsterReact.Pivot>();
     private flexmonster!: Flexmonster.Pivot;
@@ -67,6 +68,10 @@ export default class PivotCustomizeGrid extends React.Component<any, {}> {
         }
     }
 
+    controllCustomization = (isCustomized: boolean) => {
+        isCustomized ? this.applyCustomization() : this.removeCustomization()
+    }
+
     removeCustomization = () => {
         this.activeButton = "removeCustomization";
         this.setState({
@@ -88,12 +93,10 @@ export default class PivotCustomizeGrid extends React.Component<any, {}> {
         return (
             <>
                 <h3 className="page-title">
-                    How to <a target="_blank" rel="noopener noreferrer" href="https://www.flexmonster.com/api/customizecell/">customize the grid cells</a>&nbsp;example
+                    How to <a target="_blank" className="title-link" rel="noopener noreferrer" href="https://www.flexmonster.com/api/customizecell/">customize the grid cells</a>&nbsp;example
                 </h3>
 
-                <button className={`toggle-button-red ${(this.activeButton === "removeCustomization") ? "button-red-active" : ""}`} onClick={this.removeCustomization}>Remove Customization</button>
-                <button className={`toggle-button-red ${(this.activeButton === "applyCustomization") ? "button-red-active" : ""}`} onClick={this.applyCustomization}>Apply Customization</button>
-
+                <ToggleButton triggerFunction={this.controllCustomization} labelChecked="The grid cells are customized" labelUnChecked="The grid cells are not customized"/>
 
                 <FlexmonsterReact.Pivot toolbar={true}
                     ref={this.pivotRef}

@@ -1,6 +1,5 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
-import './SideMenu.css';
+import { NavLink } from "react-router-dom";
 
 export default class SideMenu extends React.Component {
 
@@ -9,37 +8,37 @@ export default class SideMenu extends React.Component {
                 <div className="side-menu">
                     <ol>
                         <li className="tab-button">
-                            <Link to="/">PIVOT TABLE DEMO</Link>
+                            <NavLink activeClassName="router-link-exact-active" to="/pivot-table-demo">PIVOT TABLE DEMO</NavLink>
                         </li>
                         <li className="tab-button">
-                            <Link to="/hooks">PIVOT TABLE DEMO (HOOKS)</Link>
+                            <NavLink activeClassName="router-link-exact-active" to="/hooks">PIVOT TABLE DEMO (HOOKS)</NavLink>
                         </li>
                     </ol>
                     <div className="sub-title">API and Events</div>
                     <ol>
                         <li className="tab-button">
-                            <Link to="/calling-events">CALLING EVENTS</Link>
+                            <NavLink activeClassName="router-link-exact-active" to="/calling-events">CALLING EVENTS</NavLink>
                         </li>
                         <li className="tab-button">
-                            <Link to="/api-calls">USING API CALLS</Link>
+                            <NavLink activeClassName="router-link-exact-active" to="/using-api-calls">USING API CALLS</NavLink>
                         </li>
                         <li className="tab-button">
-                            <Link to="/updating-data">UPDATING DATA</Link>
+                            <NavLink activeClassName="router-link-exact-active" to="/updating-data">UPDATING DATA</NavLink>
                         </li>
                     </ol>
                     <div className="sub-title">Customization</div>
                     <ol>
                         <li className="tab-button">
-                            <Link to="/customize-toolbar">CUSTOMIZING THE TOOLBAR</Link>
+                            <NavLink activeClassName="router-link-exact-active" to="/customize-toolbar">CUSTOMIZING THE TOOLBAR</NavLink>
                         </li>
                         <li className="tab-button">
-                            <Link to="/customize-grid">CUSTOMIZING THE GRID</Link>
+                            <NavLink activeClassName="router-link-exact-active" to="/customize-grid">CUSTOMIZING THE GRID</NavLink>
                         </li>
                     </ol>
                     <div className="sub-title">Integration</div>
                     <ol>
                         <li className="tab-button">
-                            <Link to="/highcharts">WITH HIGHCHARTS</Link>
+                            <NavLink activeClassName="router-link-exact-active" to="/with-highcharts">WITH HIGHCHARTS</NavLink>
                         </li>
                     </ol>
                 </div>

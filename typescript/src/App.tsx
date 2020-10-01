@@ -2,9 +2,9 @@ import * as React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 import './App.css';
-import TopMenu from './components/UIElements/topMenu/TopMenu';
-import SideMenu from './components/UIElements/sideMenu/SideMenu';
-import ExamplesContainer from './components/UIElements/examplesContainer/ExamplesContainer';
+import TopMenu from './components/UIElements/TopMenu';
+import SideMenu from './components/UIElements/SideMenu';
+import ExamplesContainer from './components/UIElements/ExamplesContainer';
 
 class App extends React.Component {
   render() {
@@ -12,7 +12,7 @@ class App extends React.Component {
       <div id="app">
         <Router>
           <TopMenu />
-          <div className="wrapper">
+          <div className="wrap">
             <SideMenu />
             <ExamplesContainer />
           </div>
