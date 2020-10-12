@@ -16,7 +16,7 @@ class UsingAPICalls extends Component {
         this.setState({
             activeButton: "showChart"
         });
-        this.refs.pivot.flexmonster.showCharts("pie");
+        this.refs.pivot.flexmonster.showCharts("column");
     }
     
     showGrid = () => {
@@ -46,6 +46,7 @@ class UsingAPICalls extends Component {
             },
             chart: {
                 showFilter: false,
+                showMeasures: false
             },
             configuratorButton: false,
             sorting: "off",
@@ -69,6 +70,7 @@ class UsingAPICalls extends Component {
             },
             chart: {
                 showFilter: true,
+                showMeasures: true
             },
             configuratorButton: true,
             sorting: "on",
@@ -97,14 +99,18 @@ class UsingAPICalls extends Component {
                     How to access <a target="blank" className="title-link" href="https://www.flexmonster.com/api/methods/">Flexmonster API calls</a> example
                 </h3>
 
-                <ToggleSwitch triggerFunction={this.controllGridCharts} labelChecked="Show grid" labelUnChecked="Show Pie chart"/>
+                <ToggleSwitch triggerFunction={this.controllGridCharts} labelChecked="Show grid" labelUnChecked="Show Column chart"/>
                 <ToggleSwitch triggerFunction={this.controllInteractiveness} labelChecked="Make interactive" labelUnChecked="Make read-only"/>
                 <FlexmonsterReact.Pivot 
                     toolbar={true}
                     ref="pivot"
                     componentFolder="https://cdn.flexmonster.com/"
                     width="100%"
-                    report="https://cdn.flexmonster.com/reports/report.json"
+                    report={{
+                        dataSource: {
+                            filename: 'https://cdn.flexmonster.com/data/data.json'
+                        }
+                    }}
                     //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
                 />
             </>

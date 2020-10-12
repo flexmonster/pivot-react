@@ -2,10 +2,6 @@ import * as React from 'react';
 import ToggleSwitch from '../UIElements/ToggleSwitch';
 import * as FlexmonsterReact from 'react-flexmonster';
 import 'flexmonster';
-import 'flexmonster/flexmonster.css';
-//You can use a different theme by specifying the corresponding path
-//For example, to load the Green theme:
-//import 'flexmonster/theme/green/flexmonster.css';
 
 class UsingAPICalls extends React.Component<any, {}> {
 
@@ -39,7 +35,7 @@ class UsingAPICalls extends React.Component<any, {}> {
         this.setState({
             activeButton: this.activeButton
         });
-        this.flexmonster.showCharts("pie");
+        this.flexmonster.showCharts("column");
     }
 
     showGrid = () => {
@@ -63,6 +59,7 @@ class UsingAPICalls extends React.Component<any, {}> {
             },
             chart: {
                 showFilter: false,
+                showMeasures: false
             },
             configuratorButton: false,
             sorting: "off",
@@ -87,6 +84,7 @@ class UsingAPICalls extends React.Component<any, {}> {
             },
             chart: {
                 showFilter: true,
+                showMeasures: true
             },
             configuratorButton: true,
             sorting: "on",
@@ -115,14 +113,18 @@ class UsingAPICalls extends React.Component<any, {}> {
                     How to access <a target="blank" className="title-link" href="https://www.flexmonster.com/api/methods/">Flexmonster API calls</a> example
                 </h3>
 
-                <ToggleSwitch triggerFunction={this.controllGridCharts} labelChecked="Show grid" labelUnChecked="Show Pie chart"/>
+                <ToggleSwitch triggerFunction={this.controllGridCharts} labelChecked="Show grid" labelUnChecked="Show Column chart"/>
                 <ToggleSwitch triggerFunction={this.controllInteractiveness} labelChecked="Make interactive" labelUnChecked="Make read-only"/>
                 
                 <FlexmonsterReact.Pivot toolbar={true}
                     ref={this.pivotRef}
                     componentFolder="https://cdn.flexmonster.com/"
                     width="100%"
-                    report="https://cdn.flexmonster.com/reports/report.json"
+                    report={{
+                        dataSource: {
+                            filename: 'https://cdn.flexmonster.com/data/data.json'
+                        }
+                    }}
                 //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
                 />
             </>

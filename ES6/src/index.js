@@ -1,4 +1,4 @@
-import 'flexmonster/theme/softdefault/flexmonster.css';
+import 'flexmonster/flexmonster.css';
 //You can use a different theme by specifying the corresponding path
 //For example, to load the Green theme:
 //import 'flexmonster/theme/green/flexmonster.css';

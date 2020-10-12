@@ -2,10 +2,6 @@ import * as React from "react";
 import * as FlexmonsterReact from 'react-flexmonster';
 import ToggleButton from '../UIElements/ToggleButton';
 import 'flexmonster';
-import 'flexmonster/flexmonster.css';
-//You can use a different theme by specifying the corresponding path
-//For example, to load the Green theme:
-//import 'flexmonster/theme/green/flexmonster.css';
 
 export default class CustomizingGrid extends React.Component<any, {}> {
 
