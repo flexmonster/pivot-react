@@ -1,35 +1,43 @@
-# Flexmonster Pivot Table & Charts integration with React framework
-[![Flexmonster Pivot Table & Charts](https://s3.amazonaws.com/flexmonster/github/fm-github-cover.png)](https://www.flexmonster.com/)
-Website: [flexmonster.com](https://www.flexmonster.com/)
+# Flexmonster Pivot Table & Charts integration with React + ES6
+[![Flexmonster Pivot Table & Charts](https://cdn.flexmonster.com/landing.png)](http://flexmonster.com)
+Website: www.flexmonster.com
 
-This repository holds [React](https://reactjs.org/) + ES6 application with Flexmonster Pivot. 
+## Flexmonster Pivot Table & Charts
 
-## Step 1: Create a new project based on this sample
+Flexmonster Pivot is a powerful JavaScript tool for interactive web reporting. It allows you to visualize and analyze data from JSON, CSV, SQL, NoSQL, Elasticsearch, and OLAP data sources quickly and conveniently. Flexmonster is designed to integrate seamlessly with any client-side framework and can be easily embedded into your application.
 
-Download `.zip` archive with the sample or clone this repo into new project folder (e.g., `my-proj`).
+This repository holds the source code for a simple [React](https://reactjs.org/) + ES6 application with Flexmonster Pivot:
+
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Usage](#usage)
+
+## Prerequisites
+
+To run a simple application with the React pivot table, you will need Node.js and npm. [Get it here](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) if it's not already installed on your machine.
+
+## Installation
+
+1. Download the `.zip` archive with the sample project or clone it from GitHub with the following command:
+
 ```bash
-git clone https://github.com/flexmonster/pivot-react  my-proj
-cd my-proj/ES6
+git clone https://github.com/flexmonster/pivot-react.git && cd pivot-react/ES6
 ```
 
-## Step 2: Install npm packages
-
-Install the npm packages described in the `package.json`:
+2. Install the npm packages described in `package.json`:
 
 ```bash
 npm install
 ```
 
-## Step 3: Start the project
-
-Run in the console:
+3. Run the sample React + ES6 project:
 
 ```bash
-npm start
+npm start 
 ```
 
-After that, the working sample will be available if you open `http://localhost:3000/` in your browser.
+To see the result, open `http://localhost:3000/` in your browser.
 
-## Create new React + ES6 application
+## Usage
 
-Please refer to [Flexmonster Integration with React](https://www.flexmonster.com/doc/integration-with-react/#!es6) tutorial.
+For details on usage, refer to the [Flexmonster integration with React](http://www.flexmonster.com/doc/integration-with-react/) tutorial.
