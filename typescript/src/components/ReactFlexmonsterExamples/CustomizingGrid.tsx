@@ -89,7 +89,7 @@ export default class CustomizingGrid extends React.Component<any, {}> {
         return (
             <>
                 <h3 className="page-title">
-                    How to <a target="_blank" className="title-link" rel="noopener noreferrer" href="https://www.flexmonster.com/api/customizecell/">customize the grid cells</a>&nbsp;example
+                    Customizing <a target="_blank" className="title-link" rel="noopener noreferrer" href="https://www.flexmonster.com/api/customizecell/">the grid cells</a>
                 </h3>
 
                 <ToggleButton triggerFunction={this.controllCustomization} labelChecked="The grid cells are customized" labelUnChecked="The grid cells are not customized"/>

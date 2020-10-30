@@ -40,8 +40,7 @@ export default class CustomizingToolbar extends React.Component<any, {}> {
         return (
             <>
                 <h3 className="page-title">
-                    How to <a target="_blank" className="title-link" rel="noopener noreferrer" href="https://www.flexmonster.com/doc/customizing-toolbar/">customize the Toolbar</a>
-                    &nbsp;example
+                    Customizing <a target="_blank" className="title-link" rel="noopener noreferrer" href="https://www.flexmonster.com/doc/customizing-toolbar/">the Toolbar</a>
                 </h3>
 
                 <FlexmonsterReact.Pivot toolbar={true}

@@ -16,7 +16,7 @@ const PivotTableHooks = (props: any) => {
     }
 
     return <>
-                <h3 className="page-title">Simple Usage Example (with hooks)</h3>
+                <h3 className="page-title">Pivot Table Demo (with hooks)</h3>
                 <div className="App">
                     <FlexmonsterReact.Pivot 
                         ref={pivotRef}
