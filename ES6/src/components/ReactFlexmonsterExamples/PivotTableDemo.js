@@ -5,7 +5,7 @@ class PivotTableDemo extends Component {
     render() {
         return (
             <>
-                <h3 className="page-title">Simple Usage Example</h3>
+                <h3 className="page-title">Pivot Table Demo</h3>
                 <div className="App">
                     <FlexmonsterReact.Pivot 
                         toolbar={true} 

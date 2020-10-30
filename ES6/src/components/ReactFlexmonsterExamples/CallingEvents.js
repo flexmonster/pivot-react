@@ -115,7 +115,7 @@ export default class CallingEvents extends React.Component {
         return (
             <>
                 <h3 className="title-one page-title">
-                    How to call <a target="blank" className="title-link" href="https://www.flexmonster.com/api/events/">Flexmonster events</a> example
+                    Calling <a target="blank" className="title-link" href="https://www.flexmonster.com/api/events/">Flexmonster events</a>
                 </h3>
 
                 <div className="description-blocks first-description-block">
