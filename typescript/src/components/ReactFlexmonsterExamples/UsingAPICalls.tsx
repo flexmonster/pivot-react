@@ -51,23 +51,10 @@ class UsingAPICalls extends React.Component<any, {}> {
         this.setState({
             activeButton: this.activeButton
         });
-        //hiding filters, sorting and fieldList buttons, disabling dragging, disabling drill-through
         this.flexmonster.setOptions({
-            grid: {
-                showFilter: false,
-                dragging: false,
-            },
-            chart: {
-                showFilter: false,
-                showMeasures: false
-            },
-            configuratorButton: false,
-            sorting: "off",
-            drillThrough: false,
+            readOnly: true
         });
-        //disabling context menu
-        this.hideContextMenu();
-        //we need to run refresh to apply new options changes
+        //refresh to apply new options changes
         this.flexmonster.refresh();
     }
 
@@ -76,23 +63,10 @@ class UsingAPICalls extends React.Component<any, {}> {
         this.setState({
             activeButton: this.activeButton
         });
-        //displaying filters, sorting and fieldList buttons, enabling dragging, enabling drill-through
         this.flexmonster.setOptions({
-            grid: {
-                showFilter: true,
-                dragging: true,
-            },
-            chart: {
-                showFilter: true,
-                showMeasures: true
-            },
-            configuratorButton: true,
-            sorting: "on",
-            drillThrough: true,
+            readOnly: false
         });
-        //enabling context menu
-        this.showContextMenu();
-        //we need to run refresh to apply new options changes
+        //refresh to apply new options changes
         this.flexmonster.refresh();
     }
 
@@ -113,9 +87,9 @@ class UsingAPICalls extends React.Component<any, {}> {
                     Using <a target="blank" className="title-link" href="https://www.flexmonster.com/api/methods/">Flexmonster API calls</a>
                 </h3>
 
-                <ToggleSwitch triggerFunction={this.controllGridCharts} labelChecked="Show grid" labelUnChecked="Show Column chart"/>
-                <ToggleSwitch triggerFunction={this.controllInteractiveness} labelChecked="Make interactive" labelUnChecked="Make read-only"/>
-                
+                <ToggleSwitch triggerFunction={this.controllGridCharts} labelChecked="Show grid" labelUnChecked="Show Column chart" />
+                <ToggleSwitch triggerFunction={this.controllInteractiveness} labelChecked="Make interactive" labelUnChecked="Make read-only" />
+
                 <FlexmonsterReact.Pivot toolbar={true}
                     ref={this.pivotRef}
                     componentFolder="https://cdn.flexmonster.com/"

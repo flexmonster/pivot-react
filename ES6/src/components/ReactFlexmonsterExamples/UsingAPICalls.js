@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import ToggleSwitch from '../UIElements/ToggleSwitch';
 import * as FlexmonsterReact from 'react-flexmonster';
 
@@ -18,7 +18,7 @@ class UsingAPICalls extends Component {
         });
         this.refs.pivot.flexmonster.showCharts("column");
     }
-    
+
     showGrid = () => {
         this.setState({
             activeButton: "showGrid"
@@ -38,23 +38,10 @@ class UsingAPICalls extends Component {
         this.setState({
             activeButton: "readOnly"
         });
-        //hiding filters, sorting and fieldList buttons, disabling dragging, disabling drill-through
         this.refs.pivot.flexmonster.setOptions({
-            grid: {
-                showFilter: false,
-                dragging: false,
-            },
-            chart: {
-                showFilter: false,
-                showMeasures: false
-            },
-            configuratorButton: false,
-            sorting: "off",
-            drillThrough: false,
-        });
-        //disabling context menu
-        this.hideContextMenu();
-        //we need to run refresh to apply new options changes
+            readOnly: true
+        })
+        //refresh to apply new options changes
         this.refs.pivot.flexmonster.refresh();
     }
 
@@ -62,23 +49,10 @@ class UsingAPICalls extends Component {
         this.setState({
             activeButton: "interactive"
         });
-        //displaying filters, sorting and fieldList buttons, enabling dragging, enabling drill-through
         this.refs.pivot.flexmonster.setOptions({
-            grid: {
-                showFilter: true,
-                dragging: true,
-            },
-            chart: {
-                showFilter: true,
-                showMeasures: true
-            },
-            configuratorButton: true,
-            sorting: "on",
-            drillThrough: true,
-        });
-        //enabling context menu
-        this.showContextMenu();
-        //we need to run refresh to apply new options changes
+            readOnly: false
+        })
+        //refresh to apply new options changes
         this.refs.pivot.flexmonster.refresh();
     }
 
@@ -92,16 +66,16 @@ class UsingAPICalls extends Component {
         this.refs.pivot.flexmonster.customizeContextMenu(null);
     }
 
-    render(){
+    render() {
         return (
             <>
                 <h3 className="page-title">
                     Using <a target="blank" className="title-link" href="https://www.flexmonster.com/api/methods/">Flexmonster API calls</a>
                 </h3>
 
-                <ToggleSwitch triggerFunction={this.controllGridCharts} labelChecked="Show grid" labelUnChecked="Show Column chart"/>
-                <ToggleSwitch triggerFunction={this.controllInteractiveness} labelChecked="Make interactive" labelUnChecked="Make read-only"/>
-                <FlexmonsterReact.Pivot 
+                <ToggleSwitch triggerFunction={this.controllGridCharts} labelChecked="Show grid" labelUnChecked="Show Column chart" />
+                <ToggleSwitch triggerFunction={this.controllInteractiveness} labelChecked="Make interactive" labelUnChecked="Make read-only" />
+                <FlexmonsterReact.Pivot
                     toolbar={true}
                     ref="pivot"
                     componentFolder="https://cdn.flexmonster.com/"
@@ -111,7 +85,7 @@ class UsingAPICalls extends Component {
                             filename: 'https://cdn.flexmonster.com/data/data.json'
                         }
                     }}
-                    //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
+                //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
                 />
             </>
         );
