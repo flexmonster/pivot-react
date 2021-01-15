@@ -10,9 +10,6 @@ export default class SideMenu extends React.Component {
                         <li className="tab-button">
                             <NavLink activeClassName="router-link-exact-active" to="/pivot-table-demo">PIVOT TABLE DEMO</NavLink>
                         </li>
-                        <li className="tab-button">
-                            <NavLink activeClassName="router-link-exact-active" to="/hooks">PIVOT TABLE DEMO (HOOKS)</NavLink>
-                        </li>
                     </ol>
                     <div className="sub-title">API and Events</div>
                     <ol>
