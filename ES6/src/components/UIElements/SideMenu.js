@@ -37,6 +37,9 @@ export default class SideMenu extends React.Component {
                         <li className="tab-button">
                             <NavLink activeClassName="router-link-exact-active" to="/with-highcharts">WITH HIGHCHARTS</NavLink>
                         </li>
+                        <li className="tab-button">
+                            <NavLink activeClassName="router-link-exact-active" to="/with-amcharts">WITH AMCHARTS</NavLink>
+                        </li>
                     </ol>
                 </div>
         );

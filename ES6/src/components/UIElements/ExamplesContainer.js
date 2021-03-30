@@ -3,6 +3,7 @@ import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 
 import PivotTableDemo from '../ReactFlexmonsterExamples/PivotTableDemo';
 import WithHighcharts from '../ReactFlexmonsterExamples/WithHighcharts';
+import WithAmcharts from '../ReactFlexmonsterExamples/WithAmcharts';
 import UsingAPICalls from '../ReactFlexmonsterExamples/UsingAPICalls';
 import CallingEvents from '../ReactFlexmonsterExamples/CallingEvents';
 import UpdatingData from '../ReactFlexmonsterExamples/UpdatingData';
@@ -16,6 +17,7 @@ function ExamplesContainer({location}) {
             <Switch location={location}>
                 <Route path="/pivot-table-demo" component={PivotTableDemo}/>
                 <Route path="/with-highcharts" component={WithHighcharts}/>
+                <Route path="/with-amcharts" component={WithAmcharts}/>
                 <Route path="/using-api-calls" component={UsingAPICalls}/>
                 <Route path="/calling-events" component={CallingEvents}/>
                 <Route path="/updating-data" component={UpdatingData}/>
