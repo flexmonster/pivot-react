@@ -1,5 +1,5 @@
 # Flexmonster Pivot Table & Charts integration with React + ES6
-[![Flexmonster Pivot Table & Charts](https://cdn.flexmonster.com/landing.png)](http://flexmonster.com)
+[![Flexmonster Pivot Table & Charts](https://cdn.flexmonster.com/landing.png)](http://flexmonster.com/?r=rm_react)
 Website: www.flexmonster.com
 
 ## Flexmonster Pivot Table & Charts
@@ -40,4 +40,4 @@ To see the result, open `http://localhost:3000/` in your browser.
 
 ## Usage
 
-For details on usage, refer to the [Flexmonster integration with React](http://www.flexmonster.com/doc/integration-with-react/) tutorial.
+For details on usage, refer to the [Flexmonster integration with React](http://www.flexmonster.com/doc/integration-with-react/?r=rm_react) tutorial.
