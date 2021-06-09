@@ -115,13 +115,13 @@ export default class CallingEvents extends React.Component {
         return (
             <>
                 <h3 className="title-one page-title">
-                    Calling <a target="blank" className="title-link" href="https://www.flexmonster.com/api/events/">Flexmonster events</a>
+                    Calling <a target="blank" className="title-link" href="https://www.flexmonster.com/api/events/?r=rm_react">Flexmonster events</a>
                 </h3>
 
                 <div className="description-blocks first-description-block">
                     <p>
                         Perform an action (for example, click on a grid cell) to trigger a <a className="title-link" target="blank" 
-                        href="https://www.flexmonster.com/api/events/">Flexmonster event</a>
+                        href="https://www.flexmonster.com/api/events/?r=rm_react">Flexmonster event</a>
                         . Scroll down to the log output to see which events get triggered.
                     </p>
                 </div>

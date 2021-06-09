@@ -44,7 +44,7 @@ class WithHighcharts extends React.Component<any, {}> {
         return (
             <div className="App">
                 <h3 className="page-title">
-                    Integrating <a target="_blank" className="title-link" rel="noopener noreferrer" href="https://www.flexmonster.com/doc/integration-with-highcharts/">with
+                    Integrating <a target="_blank" className="title-link" rel="noopener noreferrer" href="https://www.flexmonster.com/doc/integration-with-highcharts/?r=rm_react">with
                         Highcharts</a>
                 </h3>
                 <FlexmonsterReact.Pivot 

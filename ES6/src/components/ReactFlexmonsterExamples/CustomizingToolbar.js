@@ -7,7 +7,7 @@ export default class CustomizingToolbar extends React.Component {
         this.refs.pivot.flexmonster.alert({
             title: "Customizing Flexmonster",
             message:
-                "How to customize the Toolbar: <a style='text-decoration:underline; color:#00A45A' target='blank' href='https://www.flexmonster.com/doc/customizing-toolbar/'>https://www.flexmonster.com/doc/customizing-toolbar/</a> <br>",
+                "How to customize the Toolbar: <a style='text-decoration:underline; color:#00A45A' target='blank' href='https://www.flexmonster.com/doc/customizing-toolbar/?r=rm_react'>https://www.flexmonster.com/doc/customizing-toolbar/</a> <br>",
             type: "info",
             blocking: false,
         });
@@ -32,7 +32,7 @@ export default class CustomizingToolbar extends React.Component {
         return (
             <>
                 <h3 className="page-title">
-                    Customizing <a target="_blank" className="title-link" rel="noopener noreferrer" href="https://www.flexmonster.com/doc/customizing-toolbar/">the Toolbar</a>
+                    Customizing <a target="_blank" className="title-link" rel="noopener noreferrer" href="https://www.flexmonster.com/doc/customizing-toolbar/?r=rm_react">the Toolbar</a>
                 </h3>
 
                 <FlexmonsterReact.Pivot 

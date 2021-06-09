@@ -76,7 +76,7 @@ export default class UpdatingData extends React.Component {
         return (
             <>
                 <h3 className="title-one page-title">
-                    <a target="_blank" className="title-link" rel="noopener noreferrer" href="https://www.flexmonster.com/api/updatedata/">Updating the data</a> in Flexmonster
+                    <a target="_blank" className="title-link" rel="noopener noreferrer" href="https://www.flexmonster.com/api/updatedata/?r=rm_react">Updating the data</a> in Flexmonster
                 </h3>
 
                 <button className="button-red" onClick={this.updateTheData}>Update the data</button>

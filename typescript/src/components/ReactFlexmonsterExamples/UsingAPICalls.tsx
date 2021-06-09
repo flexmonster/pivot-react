@@ -84,7 +84,7 @@ class UsingAPICalls extends React.Component<any, {}> {
         return (
             <>
                 <h3 className="page-title">
-                    Using <a target="blank" className="title-link" href="https://www.flexmonster.com/api/methods/">Flexmonster API calls</a>
+                    Using <a target="blank" className="title-link" href="https://www.flexmonster.com/api/methods/?r=rm_react">Flexmonster API calls</a>
                 </h3>
 
                 <ToggleSwitch triggerFunction={this.controllGridCharts} labelChecked="Show grid" labelUnChecked="Show Column chart" />

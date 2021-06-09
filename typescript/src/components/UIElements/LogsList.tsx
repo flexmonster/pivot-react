@@ -16,7 +16,7 @@ const LogsList = (props: Props) => {
             date: Date,
             event: string
         }, index: number) => {
-            const docRef = `https://www.flexmonster.com/api/${logElement.event}`;
+            const docRef = `https://www.flexmonster.com/api/${logElement.event}/?r=rm_react`;
             return <div key = {index} className="log">
                 <span className="log-label">[ Event ] { logElement.date.toLocaleTimeString()}: </span>
                 {logElement.event + " "}

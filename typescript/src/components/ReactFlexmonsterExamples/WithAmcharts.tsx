@@ -85,7 +85,7 @@ class WithAmcharts extends Component {
         return (
             <div className="App">
                 <h3 className="page-title">
-                    Integrating <a target="_blank" className="title-link" rel="noopener noreferrer" href="https://www.flexmonster.com/doc/integration-with-amcharts/">with
+                    Integrating <a target="_blank" className="title-link" rel="noopener noreferrer" href="https://www.flexmonster.com/doc/integration-with-amcharts/?r=rm_react">with
                         amCharts</a>
                 </h3>
                 <FlexmonsterReact.Pivot 
