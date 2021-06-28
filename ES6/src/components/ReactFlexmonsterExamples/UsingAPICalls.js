@@ -77,6 +77,12 @@ class UsingAPICalls extends Component {
                 <ToggleSwitch triggerFunction={this.controllInteractiveness} labelChecked="Make interactive" labelUnChecked="Make read-only" />
                 <FlexmonsterReact.Pivot
                     toolbar={true}
+                    beforetoolbarcreated={toolbar => {
+                        toolbar.showShareReportTab = true;
+                    }}
+                    shareReportConnection={{
+                        url: "https://olap.flexmonster.com:9500"
+                    }}
                     ref="pivot"
                     componentFolder="https://cdn.flexmonster.com/"
                     width="100%"

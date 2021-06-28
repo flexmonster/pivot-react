@@ -8,8 +8,14 @@ class PivotTableDemo extends React.Component {
             <>
                 <h3 className="page-title">Pivot Table Demo</h3>
                 <div className="App">
-                    <FlexmonsterReact.Pivot 
-                        toolbar={true} 
+                    <FlexmonsterReact.Pivot
+                        toolbar={true}
+                        beforetoolbarcreated={toolbar => {
+                            toolbar.showShareReportTab = true;
+                        }}
+                        shareReportConnection={{
+                            url: "https://olap.flexmonster.com:9500"
+                        }}
                         width="100%"
                         report="https://cdn.flexmonster.com/reports/report.json"
                         //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"

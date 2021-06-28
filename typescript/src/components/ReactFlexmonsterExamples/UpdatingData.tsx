@@ -80,8 +80,14 @@ export default class UpdatingData extends React.Component {
                 </h3>
 
                 <button className="button-red" onClick={this.updateTheData}>Update the data</button>
-                <FlexmonsterReact.Pivot 
+                <FlexmonsterReact.Pivot
                     toolbar={true}
+                    beforetoolbarcreated={toolbar => {
+                        toolbar.showShareReportTab = true;
+                    }}
+                    shareReportConnection={{
+                        url: "https://olap.flexmonster.com:9500"
+                    }}
                     ref={this.pivotRef}
                     ready={this.onReady}
                     //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"

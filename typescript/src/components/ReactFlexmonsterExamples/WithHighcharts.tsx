@@ -18,7 +18,7 @@ class WithHighcharts extends React.Component<any, {}> {
     reportComplete = () => {
         this.flexmonster.off("reportComplete", this.reportComplete);
         //creating charts after Flexmonster instance is launched
-        this.createChart();  
+        this.createChart();
     }
 
     createChart = () => {
@@ -38,7 +38,7 @@ class WithHighcharts extends React.Component<any, {}> {
         }
     }
 
-    
+
 
     render() {
         return (
@@ -47,11 +47,17 @@ class WithHighcharts extends React.Component<any, {}> {
                     Integrating <a target="_blank" className="title-link" rel="noopener noreferrer" href="https://www.flexmonster.com/doc/integration-with-highcharts/?r=rm_react">with
                         Highcharts</a>
                 </h3>
-                <FlexmonsterReact.Pivot 
-                    ref={this.pivotRef} 
-                    toolbar={true} 
-                    width="100%" 
-                    report="https://cdn.flexmonster.com/reports/report.json" 
+                <FlexmonsterReact.Pivot
+                    ref={this.pivotRef}
+                    toolbar={true}
+                    beforetoolbarcreated={toolbar => {
+                        toolbar.showShareReportTab = true;
+                    }}
+                    shareReportConnection={{
+                        url: "https://olap.flexmonster.com:9500"
+                    }}
+                    width="100%"
+                    report="https://cdn.flexmonster.com/reports/report.json"
                     licenseFilePath="https://cdn.flexmonster.com/jsfiddle.charts.key"
                     reportcomplete={this.reportComplete}
                     //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"

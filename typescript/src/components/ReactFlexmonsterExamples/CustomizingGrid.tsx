@@ -92,13 +92,20 @@ export default class CustomizingGrid extends React.Component<any, {}> {
                     Customizing <a target="_blank" className="title-link" rel="noopener noreferrer" href="https://www.flexmonster.com/api/customizecell/?r=rm_react">the grid cells</a>
                 </h3>
 
-                <ToggleButton triggerFunction={this.controllCustomization} labelChecked="The grid cells are customized" labelUnChecked="The grid cells are not customized"/>
+                <ToggleButton triggerFunction={this.controllCustomization} labelChecked="The grid cells are customized" labelUnChecked="The grid cells are not customized" />
 
-                <FlexmonsterReact.Pivot toolbar={true}
+                <FlexmonsterReact.Pivot
+                    toolbar={true}
+                    beforetoolbarcreated={toolbar => {
+                        toolbar.showShareReportTab = true;
+                    }}
+                    shareReportConnection={{
+                        url: "https://olap.flexmonster.com:9500"
+                    }}
                     ref={this.pivotRef}
                     report="https://cdn.flexmonster.com/reports/report.json"
                     customizeCell={this.customizeCellFunction}
-                //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
+                    //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
                 />
             </>
         );

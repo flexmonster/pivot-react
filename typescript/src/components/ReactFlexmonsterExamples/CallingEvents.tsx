@@ -11,7 +11,7 @@ export default class CallingEvents extends React.Component<any, {}> {
         event: string
     }[] = [];
 
-    private activeButton : String = "signOnAllEvents";
+    private activeButton: String = "signOnAllEvents";
 
     private pivotRef: React.RefObject<FlexmonsterReact.Pivot> = React.createRef<FlexmonsterReact.Pivot>();
     private flexmonster!: Flexmonster.Pivot;
@@ -21,7 +21,7 @@ export default class CallingEvents extends React.Component<any, {}> {
 
         this.state = {
             logs: [],
-            activeButton: "signOnAllEvents" 
+            activeButton: "signOnAllEvents"
         }
     }
 
@@ -127,23 +127,29 @@ export default class CallingEvents extends React.Component<any, {}> {
 
         return (
             <>
-                 <h3 className="title-one page-title">
+                <h3 className="title-one page-title">
                     Calling <a target="blank" className="title-link" href="https://www.flexmonster.com/api/events/?r=rm_react">Flexmonster events</a>
                 </h3>
 
                 <div className="description-blocks first-description-block">
                     <p>
-                        Perform an action (for example, click on a grid cell) to trigger a <a className="title-link" target="blank" 
-                        href="https://www.flexmonster.com/api/events/?r=rm_react">Flexmonster event</a>
+                        Perform an action (for example, click on a grid cell) to trigger a <a className="title-link" target="blank"
+                            href="https://www.flexmonster.com/api/events/?r=rm_react">Flexmonster event</a>
                         . Scroll down to the log output to see which events get triggered.
                     </p>
                 </div>
 
-               <ToggleButton triggerFunction={this.eventsSignerController} labelChecked="Events are tracked" labelUnChecked="Events are not tracked"/>
+                <ToggleButton triggerFunction={this.eventsSignerController} labelChecked="Events are tracked" labelUnChecked="Events are not tracked" />
 
                 <div>
-                    <FlexmonsterReact.Pivot 
+                    <FlexmonsterReact.Pivot
                         toolbar={true}
+                        beforetoolbarcreated={toolbar => {
+                            toolbar.showShareReportTab = true;
+                        }}
+                        shareReportConnection={{
+                            url: "https://olap.flexmonster.com:9500"
+                        }}
                         ref={this.pivotRef}
                         width="100%"
                         ready={this.signOnAllEvents}
@@ -153,7 +159,7 @@ export default class CallingEvents extends React.Component<any, {}> {
                 </div>
 
                 <div className="section">
-                    <LogsList title="Log output" logsList={this.logs}/>
+                    <LogsList title="Log output" logsList={this.logs} />
                     <button className="button-red" onClick={this.clearLogs}>Clear Log Output</button>
                 </div>
             </>

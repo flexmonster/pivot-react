@@ -82,6 +82,12 @@ export default class CustomizingGrid extends React.Component {
 
                 <FlexmonsterReact.Pivot 
                     toolbar={true}
+                    beforetoolbarcreated={toolbar => {
+                        toolbar.showShareReportTab = true;
+                    }}
+                    shareReportConnection={{
+                        url: "https://olap.flexmonster.com:9500"
+                    }}
                     ref="pivot"
                     report="https://cdn.flexmonster.com/reports/report.json"
                     customizeCell={this.customizeCellFunction}

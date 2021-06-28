@@ -131,6 +131,12 @@ export default class CallingEvents extends React.Component {
                 <div>
                     <FlexmonsterReact.Pivot 
                         toolbar={true}
+                        beforetoolbarcreated={toolbar => {
+                            toolbar.showShareReportTab = true;
+                        }}
+                        shareReportConnection={{
+                            url: "https://olap.flexmonster.com:9500"
+                        }}
                         ref="pivot"
                         width="100%"
                         ready={this.signOnAllEvents}

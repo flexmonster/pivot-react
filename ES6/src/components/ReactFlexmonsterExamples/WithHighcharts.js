@@ -9,12 +9,12 @@ class WithHighcharts extends Component {
     constructor(props) {
         super(props);
         this.myRef = React.createRef();
-     }
+    }
 
     reportComplete = () => {
         this.myRef.current.flexmonster.off(this.reportComplete);
         //creating charts after Flexmonster instance is launched
-        this.createChart();  
+        this.createChart();
     }
 
     createChart = () => {
@@ -22,17 +22,17 @@ class WithHighcharts extends Component {
         this.myRef.current.flexmonster.highcharts.getData(
             {
                 type: "area"
-              },
-              function(data) {
-                 Highcharts.chart('highcharts-container', data);
-              },
-              function(data) {
-                 Highcharts.chart('highcharts-container', data);
-              }
+            },
+            function (data) {
+                Highcharts.chart('highcharts-container', data);
+            },
+            function (data) {
+                Highcharts.chart('highcharts-container', data);
+            }
         );
     }
 
-    
+
 
     render() {
         return (
@@ -41,11 +41,17 @@ class WithHighcharts extends Component {
                     Integrating <a target="_blank" className="title-link" rel="noopener noreferrer" href="https://www.flexmonster.com/doc/integration-with-highcharts/?r=rm_react">with
                         Highcharts</a>
                 </h3>
-                <FlexmonsterReact.Pivot 
-                    ref={this.myRef} 
-                    toolbar={true} 
-                    width="100%" 
-                    report="https://cdn.flexmonster.com/reports/report.json" 
+                <FlexmonsterReact.Pivot
+                    ref={this.myRef}
+                    toolbar={true}
+                    beforetoolbarcreated={toolbar => {
+                        toolbar.showShareReportTab = true;
+                    }}
+                    shareReportConnection={{
+                        url: "https://olap.flexmonster.com:9500"
+                    }}
+                    width="100%"
+                    report="https://cdn.flexmonster.com/reports/report.json"
                     licenseFilePath="https://cdn.flexmonster.com/jsfiddle.charts.key"
                     reportcomplete={this.reportComplete}
                     //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
