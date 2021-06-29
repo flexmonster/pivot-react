@@ -43,9 +43,12 @@ export default class CustomizingToolbar extends React.Component<any, {}> {
                     Customizing <a target="_blank" className="title-link" rel="noopener noreferrer" href="https://www.flexmonster.com/doc/customizing-toolbar/?r=rm_react">the Toolbar</a>
                 </h3>
 
-                <FlexmonsterReact.Pivot toolbar={true}
+                <FlexmonsterReact.Pivot
                     ref={this.pivotRef}
-                    report="https://cdn.flexmonster.com/reports/report.json"
+                    toolbar={true}
+                    width="100%"
+                    height={600}
+                    report="https://cdn.flexmonster.com/github/demo-report.json"
                     beforetoolbarcreated={this.customizeToolbar}
                     //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
                 />

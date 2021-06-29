@@ -51,7 +51,8 @@ class WithHighcharts extends Component {
                         url: "https://olap.flexmonster.com:9500"
                     }}
                     width="100%"
-                    report="https://cdn.flexmonster.com/reports/report.json"
+                    height={600}
+                    report="https://cdn.flexmonster.com/github/demo-report.json"
                     licenseFilePath="https://cdn.flexmonster.com/jsfiddle.charts.key"
                     reportcomplete={this.reportComplete}
                     //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"

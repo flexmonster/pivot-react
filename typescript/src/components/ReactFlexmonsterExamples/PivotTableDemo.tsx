@@ -17,7 +17,8 @@ class PivotTableDemo extends React.Component {
                             url: "https://olap.flexmonster.com:9500"
                         }}
                         width="100%"
-                        report="https://cdn.flexmonster.com/reports/report.json"
+                        height={600}
+                        report="https://cdn.flexmonster.com/github/demo-report.json"
                         //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
                     />
                 </div>

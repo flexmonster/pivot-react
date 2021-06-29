@@ -95,6 +95,7 @@ export default class CustomizingGrid extends React.Component<any, {}> {
                 <ToggleButton triggerFunction={this.controllCustomization} labelChecked="The grid cells are customized" labelUnChecked="The grid cells are not customized" />
 
                 <FlexmonsterReact.Pivot
+                    ref={this.pivotRef}
                     toolbar={true}
                     beforetoolbarcreated={toolbar => {
                         toolbar.showShareReportTab = true;
@@ -102,8 +103,9 @@ export default class CustomizingGrid extends React.Component<any, {}> {
                     shareReportConnection={{
                         url: "https://olap.flexmonster.com:9500"
                     }}
-                    ref={this.pivotRef}
-                    report="https://cdn.flexmonster.com/reports/report.json"
+                    width="100%"
+                    height={600}
+                    report="https://cdn.flexmonster.com/github/demo-report.json"
                     customizeCell={this.customizeCellFunction}
                     //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
                 />

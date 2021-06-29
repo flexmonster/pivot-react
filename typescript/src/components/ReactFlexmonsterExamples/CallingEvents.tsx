@@ -143,6 +143,7 @@ export default class CallingEvents extends React.Component<any, {}> {
 
                 <div>
                     <FlexmonsterReact.Pivot
+                        ref={this.pivotRef}
                         toolbar={true}
                         beforetoolbarcreated={toolbar => {
                             toolbar.showShareReportTab = true;
@@ -150,10 +151,10 @@ export default class CallingEvents extends React.Component<any, {}> {
                         shareReportConnection={{
                             url: "https://olap.flexmonster.com:9500"
                         }}
-                        ref={this.pivotRef}
                         width="100%"
+                        height={600}
                         ready={this.signOnAllEvents}
-                        report="https://cdn.flexmonster.com/reports/report.json"
+                        report="https://cdn.flexmonster.com/github/demo-report.json"
                         //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
                     />
                 </div>

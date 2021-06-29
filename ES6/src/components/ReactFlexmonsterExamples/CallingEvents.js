@@ -14,7 +14,7 @@ export default class CallingEvents extends React.Component {
         this.logsContainer = React.createRef();
         this.state = {
             logs: [],
-            activeButton: "signOnAllEvents"        
+            activeButton: "signOnAllEvents"
         }
     }
 
@@ -120,16 +120,17 @@ export default class CallingEvents extends React.Component {
 
                 <div className="description-blocks first-description-block">
                     <p>
-                        Perform an action (for example, click on a grid cell) to trigger a <a className="title-link" target="blank" 
-                        href="https://www.flexmonster.com/api/events/?r=rm_react">Flexmonster event</a>
+                        Perform an action (for example, click on a grid cell) to trigger a <a className="title-link" target="blank"
+                            href="https://www.flexmonster.com/api/events/?r=rm_react">Flexmonster event</a>
                         . Scroll down to the log output to see which events get triggered.
                     </p>
                 </div>
 
-               <ToggleButton triggerFunction={this.eventsSignerController} labelChecked="Events are tracked" labelUnChecked="Events are not tracked"/>
+                <ToggleButton triggerFunction={this.eventsSignerController} labelChecked="Events are tracked" labelUnChecked="Events are not tracked" />
 
                 <div>
-                    <FlexmonsterReact.Pivot 
+                    <FlexmonsterReact.Pivot
+                        ref="pivot"
                         toolbar={true}
                         beforetoolbarcreated={toolbar => {
                             toolbar.showShareReportTab = true;
@@ -137,16 +138,16 @@ export default class CallingEvents extends React.Component {
                         shareReportConnection={{
                             url: "https://olap.flexmonster.com:9500"
                         }}
-                        ref="pivot"
                         width="100%"
+                        height={600}
                         ready={this.signOnAllEvents}
-                        report="https://cdn.flexmonster.com/reports/report.json"
+                        report="https://cdn.flexmonster.com/github/demo-report.json"
                         //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
                     />
                 </div>
 
                 <div className="section">
-                    <LogsList title="Log output" ref={this.logsContainer} logsList={this.logs}/>
+                    <LogsList title="Log output" ref={this.logsContainer} logsList={this.logs} />
                     <button className="button-red" onClick={this.clearLogs}>Clear Log Output</button>
                 </div>
             </>

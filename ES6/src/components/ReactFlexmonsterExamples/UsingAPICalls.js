@@ -73,9 +73,10 @@ class UsingAPICalls extends Component {
                     Using <a target="blank" className="title-link" href="https://www.flexmonster.com/api/methods/?r=rm_react">Flexmonster API calls</a>
                 </h3>
 
-                <ToggleSwitch triggerFunction={this.controllGridCharts} labelChecked="Show grid" labelUnChecked="Show Column chart" />
-                <ToggleSwitch triggerFunction={this.controllInteractiveness} labelChecked="Make interactive" labelUnChecked="Make read-only" />
+                <ToggleSwitch triggerFunction={this.controllGridCharts} labelChecked="Grid" labelUnChecked="Column chart" />
+                <ToggleSwitch triggerFunction={this.controllInteractiveness} labelChecked="Interactive" labelUnChecked="Read-only" />
                 <FlexmonsterReact.Pivot
+                    ref="pivot"
                     toolbar={true}
                     beforetoolbarcreated={toolbar => {
                         toolbar.showShareReportTab = true;
@@ -83,15 +84,11 @@ class UsingAPICalls extends Component {
                     shareReportConnection={{
                         url: "https://olap.flexmonster.com:9500"
                     }}
-                    ref="pivot"
                     componentFolder="https://cdn.flexmonster.com/"
                     width="100%"
-                    report={{
-                        dataSource: {
-                            filename: 'https://cdn.flexmonster.com/data/data.json'
-                        }
-                    }}
-                //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
+                    height={600}
+                    report="https://cdn.flexmonster.com/github/demo-report.json"
+                    //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
                 />
             </>
         );
