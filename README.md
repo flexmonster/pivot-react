@@ -54,4 +54,4 @@ To see the result, open `http://localhost:3000/` in your browser.
 
 ## Usage
 
-For details on usage, refer to the [Flexmonster integration with React](http://www.flexmonster.com/doc/integration-with-react/?r=rm_react) tutorial.
+For details on usage, refer to the [Flexmonster integration with React](https://www.flexmonster.com/doc/integration-with-react/?r=rm_react) tutorial.
