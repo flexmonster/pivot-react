@@ -26,18 +26,15 @@ class WithAmcharts extends Component {
     }
 
     drawChart = () => {
-        if (this.flexmonster && this.flexmonster.amcharts) {
-            //Running Flexmonster's getData method for amCharts
-            this.flexmonster.amcharts.getData(
-                {},
-                this.createChart.bind(this),
-                this.updateChart.bind(this)
-            );
-        }
-
+        //Running Flexmonster's getData method for amCharts
+        this.flexmonster.amcharts?.getData(
+            {},
+            this.createChart.bind(this),
+            this.updateChart.bind(this)
+        );
     }
 
-    createChart = (chartData: any, rawData: any) => {
+    createChart = (chartData: Flexmonster.GetDataValueObject, rawData: Flexmonster.GetDataValueObject) => {
 
         if (this.flexmonster && this.flexmonster.amcharts) {
             /* Apply amCharts theme */
@@ -70,7 +67,7 @@ class WithAmcharts extends Component {
 
     }
 
-    updateChart = (chartData: any, rawData: any) => {
+    updateChart = (chartData: Flexmonster.GetDataValueObject, rawData: Flexmonster.GetDataValueObject) => {
         this.chart.dispose();
         this.createChart(chartData, rawData)
     }

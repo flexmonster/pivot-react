@@ -8,16 +8,6 @@ class UsingAPICalls extends React.Component<any, {}> {
     private pivotRef: React.RefObject<FlexmonsterReact.Pivot> = React.createRef<FlexmonsterReact.Pivot>();
     private flexmonster!: Flexmonster.Pivot;
 
-    private activeButton: String = "";
-
-    constructor(props: any) {
-        super(props);
-
-        this.state = {
-            activeButton: ""
-        }
-    }
-
     componentDidMount() {
         this.flexmonster = this.pivotRef.current!.flexmonster;
     }
@@ -31,26 +21,14 @@ class UsingAPICalls extends React.Component<any, {}> {
     }
 
     showChart = () => {
-        this.activeButton = "showChart";
-        this.setState({
-            activeButton: this.activeButton
-        });
         this.flexmonster.showCharts("column");
     }
 
     showGrid = () => {
-        this.activeButton = "showGrid";
-        this.setState({
-            activeButton: this.activeButton
-        });
         this.flexmonster.showGrid();
     }
 
     readOnly = () => {
-        this.activeButton = "readOnly";
-        this.setState({
-            activeButton: this.activeButton
-        });
         this.flexmonster.setOptions({
             readOnly: true
         });
@@ -59,10 +37,6 @@ class UsingAPICalls extends React.Component<any, {}> {
     }
 
     interactive = () => {
-        this.activeButton = "interactive";
-        this.setState({
-            activeButton: this.activeButton
-        });
         this.flexmonster.setOptions({
             readOnly: false
         });

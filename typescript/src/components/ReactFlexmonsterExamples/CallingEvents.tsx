@@ -11,8 +11,6 @@ export default class CallingEvents extends React.Component<any, {}> {
         event: string
     }[] = [];
 
-    private activeButton: String = "signOnAllEvents";
-
     private pivotRef: React.RefObject<FlexmonsterReact.Pivot> = React.createRef<FlexmonsterReact.Pivot>();
     private flexmonster!: Flexmonster.Pivot;
 
@@ -20,8 +18,7 @@ export default class CallingEvents extends React.Component<any, {}> {
         super(props);
 
         this.state = {
-            logs: [],
-            activeButton: "signOnAllEvents"
+            logs: []
         }
     }
 
@@ -93,10 +90,6 @@ export default class CallingEvents extends React.Component<any, {}> {
     }
 
     signOffAllEvents = () => {
-        this.activeButton = "signOffAllEvents";
-        this.setState({
-            activeButton: this.activeButton
-        });
         for (const eventName of this.eventList) {
             // remove all handlers for specified event
             this.flexmonster.off(eventName);
@@ -104,10 +97,6 @@ export default class CallingEvents extends React.Component<any, {}> {
     }
 
     signOnAllEvents = () => {
-        this.activeButton = "signOnAllEvents";
-        this.setState({
-            activeButton: this.activeButton
-        });
         for (const eventName of this.eventList) {
             // add handler for specified event
             this.flexmonster.on(eventName, () => {

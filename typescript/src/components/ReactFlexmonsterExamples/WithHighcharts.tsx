@@ -23,19 +23,17 @@ class WithHighcharts extends React.Component<any, {}> {
 
     createChart = () => {
         //Running Flexmonster's getData method for Highcharts
-        if (this.flexmonster && this.flexmonster.highcharts) {
-            this.flexmonster.highcharts.getData(
-                {
-                    type: "area"
-                },
-                (data: any) => {
-                    Highcharts.chart('highcharts-container', data);
-                },
-                (data: any) => {
-                    Highcharts.chart('highcharts-container', data);
-                }
-            );
-        }
+        this.flexmonster.highcharts?.getData(
+            {
+                type: "area"
+            },
+            (data: any) => {
+                Highcharts.chart('highcharts-container', data);
+            },
+            (data: any) => {
+                Highcharts.chart('highcharts-container', data);
+            }
+        );
     }
 
 

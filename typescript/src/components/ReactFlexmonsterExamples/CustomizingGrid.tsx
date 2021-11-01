@@ -8,16 +8,6 @@ export default class CustomizingGrid extends React.Component<any, {}> {
     private pivotRef: React.RefObject<FlexmonsterReact.Pivot> = React.createRef<FlexmonsterReact.Pivot>();
     private flexmonster!: Flexmonster.Pivot;
 
-    private activeButton: String = "applyCustomization";
-
-    constructor(props: any) {
-        super(props);
-
-        this.state = {
-            activeButton: "applyCustomization"
-        }
-    }
-
     componentDidMount() {
         this.flexmonster = this.pivotRef.current!.flexmonster;
     }
@@ -27,24 +17,33 @@ export default class CustomizingGrid extends React.Component<any, {}> {
             filename: 'https://cdn.flexmonster.com/data/data.csv'
         },
         slice: {
-            rows: [{
-                uniqueName: 'Category'
-            }, {
-                uniqueName: '[Measures]'
-            }],
-            columns: [{
-                uniqueName: 'Color'
-            }],
-            measures: [{
-                uniqueName: 'Price',
-                aggregation: 'sum'
-            }, {
-                uniqueName: 'Discount',
-                aggregation: 'sum'
-            }, {
-                uniqueName: 'Quantity',
-                aggregation: 'sum'
-            }]
+            rows: [
+                {
+                    uniqueName: "Category",
+                },
+                {
+                    uniqueName: "[Measures]",
+                },
+            ],
+            columns: [
+                {
+                    uniqueName: "Color",
+                },
+            ],
+            measures: [
+                {
+                    uniqueName: "Price",
+                    aggregation: "sum",
+                },
+                {
+                    uniqueName: "Discount",
+                    aggregation: "sum",
+                },
+                {
+                    uniqueName: "Quantity",
+                    aggregation: "sum",
+                },
+            ]
         }
     };
 
@@ -53,14 +52,15 @@ export default class CustomizingGrid extends React.Component<any, {}> {
             let backgroundColor = "#00A45A";
             let textShadowColor = "#095231";
             let borderColor = "#009552";
-            const style: any = cell.style || {};
-            style["background-color"] = backgroundColor;
-            style["color"] = "white";
-            style["font-weight"] = "bold";
-            style["text-shadow"] = `0px 2px 3px ${textShadowColor}`;
-            style["border-bottom"] = `1px solid ${borderColor}`;
-            style["border-right"] = `1px solid ${borderColor}`;
-            cell.style = style;
+            cell.style = {
+                ...cell.style,
+                "background-color": backgroundColor,
+                "color": "white",
+                "font-weight": "bold",
+                "text-shadow": `0px 2px 3px ${textShadowColor}`,
+                "border-bottom": `1px solid ${borderColor}`,
+                "border-right": `1px solid ${borderColor}`,
+            };
         }
     }
 
@@ -69,18 +69,10 @@ export default class CustomizingGrid extends React.Component<any, {}> {
     }
 
     removeCustomization = () => {
-        this.activeButton = "removeCustomization";
-        this.setState({
-            activeButton: this.activeButton
-        });
-        this.flexmonster.customizeCell(null as any);
+        this.flexmonster.customizeCell((null as any));
     }
 
     applyCustomization = () => {
-        this.activeButton = "applyCustomization";
-        this.setState({
-            activeButton: this.activeButton
-        });
         //running grid customization using "customizeCellFunction"
         this.flexmonster.customizeCell(this.customizeCellFunction);
     }
@@ -105,9 +97,9 @@ export default class CustomizingGrid extends React.Component<any, {}> {
                     }}
                     width="100%"
                     height={600}
-                    report="https://cdn.flexmonster.com/github/demo-report.json"
+                    report={this.report}
                     customizeCell={this.customizeCellFunction}
-                    //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
+                //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
                 />
             </>
         );
