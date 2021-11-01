@@ -13,8 +13,7 @@ export default class CallingEvents extends React.Component {
         this.logs = [];
         this.logsContainer = React.createRef();
         this.state = {
-            logs: [],
-            activeButton: "signOnAllEvents"
+            logs: []
         }
     }
 
@@ -82,9 +81,6 @@ export default class CallingEvents extends React.Component {
     }
 
     signOffAllEvents = () => {
-        this.setState({
-            activeButton: "signOffAllEvents"
-        });
         for (const eventName of this.eventList) {
             // remove all handlers for specified event
             this.refs.pivot.flexmonster.off(eventName);
@@ -92,9 +88,6 @@ export default class CallingEvents extends React.Component {
     }
 
     signOnAllEvents = () => {
-        this.setState({
-            activeButton: "signOnAllEvents"
-        });
         for (const eventName of this.eventList) {
             // add handler for specified event
             this.refs.pivot.flexmonster.on(eventName, () => {

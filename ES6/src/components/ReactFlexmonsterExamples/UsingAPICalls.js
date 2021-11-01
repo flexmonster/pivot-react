@@ -4,25 +4,11 @@ import * as FlexmonsterReact from 'react-flexmonster';
 
 class UsingAPICalls extends Component {
 
-    constructor(props) {
-        super(props);
-        this.props = props;
-        this.state = {
-            activeButton: ""
-        }
-    }
-
     showChart = () => {
-        this.setState({
-            activeButton: "showChart"
-        });
         this.refs.pivot.flexmonster.showCharts("column");
     }
 
     showGrid = () => {
-        this.setState({
-            activeButton: "showGrid"
-        });
         this.refs.pivot.flexmonster.showGrid();
     }
 
@@ -35,9 +21,6 @@ class UsingAPICalls extends Component {
     }
 
     readOnly = () => {
-        this.setState({
-            activeButton: "readOnly"
-        });
         this.refs.pivot.flexmonster.setOptions({
             readOnly: true
         })
@@ -46,9 +29,6 @@ class UsingAPICalls extends Component {
     }
 
     interactive = () => {
-        this.setState({
-            activeButton: "interactive"
-        });
         this.refs.pivot.flexmonster.setOptions({
             readOnly: false
         })

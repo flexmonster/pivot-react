@@ -4,14 +4,6 @@ import ToggleButton from '../UIElements/ToggleButton';
 
 export default class CustomizingGrid extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.props = props;
-        this.state = {
-            activeButton: "applyCustomization"
-        }
-    }
-
     report = {
         dataSource: {
             filename: 'https://cdn.flexmonster.com/data/data.csv'
@@ -57,16 +49,10 @@ export default class CustomizingGrid extends React.Component {
     }
 
     removeCustomization = () => {
-        this.setState({
-            activeButton: "removeCustomization"
-        });
         this.refs.pivot.flexmonster.customizeCell(null);
     }
 
     applyCustomization = () => {
-        this.setState({
-            activeButton: "applyCustomization"
-        });
         //running grid customization using "customizeCellFunction"
         this.refs.pivot.flexmonster.customizeCell(this.customizeCellFunction);
     }
@@ -91,7 +77,7 @@ export default class CustomizingGrid extends React.Component {
                     }}
                     width="100%"
                     height={600}
-                    report="https://cdn.flexmonster.com/github/demo-report.json"
+                    report={this.report}
                     customizeCell={this.customizeCellFunction}
                     //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
                 />

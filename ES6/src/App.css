@@ -186,7 +186,7 @@ input[type="checkbox"i] {
   z-index: 0;
   left: 76px;
   opacity: 1;
-  min-width: 300px;
+  min-width: max-content;
   line-height: 32px;
   font-weight: 600;
   font-size: 16px;
