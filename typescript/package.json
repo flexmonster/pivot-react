@@ -9,7 +9,7 @@
     "@types/react-dom": "^16.9.0",
     "@types/react-router": "^5.1.8",
     "@types/react-router-dom": "^5.1.5",
-    "highcharts": "^8.2.0",
+    "highcharts": "^9.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-flexmonster": "latest",
