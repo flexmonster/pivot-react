@@ -14,7 +14,7 @@ export default class SideMenu extends React.Component {
                     <div className="sub-title">API and Events</div>
                     <ol>
                         <li className="tab-button">
-                            <NavLink activeClassName="router-link-exact-active" to="/calling-events">CALLING EVENTS</NavLink>
+                            <NavLink activeClassName="router-link-exact-active" to="/handling-events">HANDLING EVENTS</NavLink>
                         </li>
                         <li className="tab-button">
                             <NavLink activeClassName="router-link-exact-active" to="/using-api-calls">USING API CALLS</NavLink>

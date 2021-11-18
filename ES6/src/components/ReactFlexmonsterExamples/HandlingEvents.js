@@ -3,7 +3,7 @@ import LogsList from "../UIElements/LogsList";
 import ToggleButton from "../UIElements/ToggleButton";
 import * as FlexmonsterReact from 'react-flexmonster';
 
-export default class CallingEvents extends React.Component {
+export default class HandlingEvents extends React.Component {
 
     constructor(props) {
         super(props);
@@ -108,7 +108,7 @@ export default class CallingEvents extends React.Component {
         return (
             <>
                 <h3 className="title-one page-title">
-                    Calling <a target="blank" className="title-link" href="https://www.flexmonster.com/api/events/?r=rm_react">Flexmonster events</a>
+                    Handling <a target="blank" className="title-link" href="https://www.flexmonster.com/api/events/?r=rm_react">Flexmonster events</a>
                 </h3>
 
                 <div className="description-blocks first-description-block">
