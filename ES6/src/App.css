@@ -40,6 +40,7 @@ body {
 
 .description-blocks {
   margin: 30px 0 30px 0;
+  max-width: 800px;
 }
 
 .section {
@@ -115,7 +116,7 @@ body {
   left: -5000px;
 }
 
-input[type="checkbox"i] {
+input[type="checkbox" i] {
   background-color: initial;
   cursor: default;
   appearance: checkbox;
@@ -172,11 +173,11 @@ input[type="checkbox"i] {
 }
 
 .toggle-button .button-checkbox:checked + .button-checkbox-label .on {
-  color: #00a45a;
+  color: #454545;
 }
 
 .toggle-switch .button-checkbox:checked + .button-checkbox-label .on {
-  color: #df3800;
+  color: #454545;
 }
 
 .toggle-button .button-checkbox-label .on,
@@ -190,22 +191,22 @@ input[type="checkbox"i] {
   line-height: 32px;
   font-weight: 600;
   font-size: 16px;
-  color: #454545;
+  color: #b1b1b1;
   -webkit-transition: all 0.3s;
   -o-transition: all 0.3s;
   transition: all 0.3s;
 }
 
 .toggle-switch .button-checkbox-label .on {
-  color: #00a45a;
+  color: #454545;
 }
 
 /* Text */
 .page-title {
   margin-top: 0;
   margin-bottom: 18px;
-  font-size: 28px;
-  font-weight: normal;
+  font-size: 42px;
+  font-weight: 300;
   line-height: 1.35714;
   color: #555555;
 }
@@ -291,7 +292,6 @@ p {
 
 /* Top menu */
 .mainheader {
-  padding: 7px 60px;
   position: absolute;
   font-size: 0;
   width: 100%;
@@ -326,20 +326,23 @@ p {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: justify;
-  justify-content: flex-start;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   width: 100%;
+  max-width: 1920px;
+  min-width: 770px;
   margin: 0 auto;
+  position: relative;
+  height: 70px;
 }
 
 .mainheader .logo {
-  width: 225px;
+  margin-left: 32px;
   display: block;
-}
-
-.mainheader .logo {
+  position: absolute;
+  left: 0;
   -webkit-transition: all 0.3s;
   -o-transition: all 0.3s;
   transition: all 0.3s;
@@ -374,24 +377,35 @@ ul {
   list-style: none;
 }
 
-.mainnav li {
-  margin-right: 20px;
+.mainnav {
+  margin-left: 10px;
 }
 
 .mainnav li {
   display: inline-block;
   vertical-align: middle;
-  margin-right: 24px;
+  margin-right: 32px;
 }
 
-@media screen and (max-width: 730px) {
+@media screen and (max-width: 1200px) {
+  .mainnav li {
+      margin-right: 20px;
+  }
+}
+
+@media screen and (max-width: 1050px) {
   .mainnav li {
     display: block;
+    margin-bottom: 3px;
+  }
+
+  .mainheader .container-xl {
+      height: 120px;
   }
 }
 
 .mainnav li a {
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.35714;
   text-transform: uppercase;
   color: #454545;

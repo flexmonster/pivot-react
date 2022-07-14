@@ -75,11 +75,20 @@ export default class UpdatingData extends React.Component {
     render() {
         return (
             <>
-                <h3 className="title-one page-title">
-                    <a target="_blank" className="title-link" rel="noopener noreferrer" href="https://www.flexmonster.com/api/updatedata/?r=rm_react">Updating the data</a> in Flexmonster
-                </h3>
+                <h1 className="title-one page-title">Updating the data in Flexmonster</h1>
 
-                <button className="button-red" onClick={this.updateTheData}>Update the data</button>
+                <div className="description-blocks first-description-block">
+                    <p>
+                        This demo shows how to refresh the data at runtime and keep the slice, options, and formatting the same.
+                    </p>
+                    <p>Try it yourself: configure the component as you wish and click the <strong>UPDATE DATA</strong> button.</p>
+                    <p>Learn more about updating the data
+                        in <a href="https://www.flexmonster.com/api/updatedata/?r=rm_react" target="_blank" className="title-link">our documentation</a>.
+                    </p>
+                </div>
+
+                <button className="button-red" onClick={this.updateTheData}>Update data</button>
+
                 <FlexmonsterReact.Pivot
                     ref={this.pivotRef}
                     toolbar={true}
@@ -90,7 +99,7 @@ export default class UpdatingData extends React.Component {
                         url: "https://olap.flexmonster.com:9500"
                     }}
                     width="100%"
-                    height={600}
+                    height={400}
                     ready={this.onReady}
                     //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
                 />

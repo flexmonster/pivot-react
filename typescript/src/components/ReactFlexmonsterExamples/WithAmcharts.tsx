@@ -81,10 +81,14 @@ class WithAmcharts extends Component {
     render() {
         return (
             <div className="App">
-                <h3 className="page-title">
-                    Integrating <a target="_blank" className="title-link" rel="noopener noreferrer" href="https://www.flexmonster.com/doc/integration-with-amcharts/?r=rm_react">with
-                        amCharts</a>
-                </h3>
+                <h1 className="page-title">Integrating with amCharts</h1>
+
+                <div className="description-blocks first-description-block">
+                    <p>Extend Flexmonster’s visualization functionality by integrating with the amCharts 
+                        library: <a href="https://www.flexmonster.com/doc/integration-with-amcharts/?r=rm_react" target="_blank" className="title-link">Integration with amCharts</a>.
+                    </p>
+                </div>
+
                 <FlexmonsterReact.Pivot
                     ref={this.pivotRef}
                     toolbar={true}

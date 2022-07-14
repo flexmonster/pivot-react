@@ -116,9 +116,7 @@ export default class HandlingEvents extends React.Component<any, {}> {
 
         return (
             <>
-                <h3 className="title-one page-title">
-                    Handling <a target="blank" className="title-link" href="https://www.flexmonster.com/api/events/?r=rm_react">Flexmonster events</a>
-                </h3>
+                <h3 className="title-one page-title">Handling Flexmonster events</h3>
 
                 <div className="description-blocks first-description-block">
                     <p>

@@ -57,9 +57,15 @@ class UsingAPICalls extends React.Component<any, {}> {
     render() {
         return (
             <>
-                <h3 className="page-title">
-                    Using <a target="blank" className="title-link" href="https://www.flexmonster.com/api/methods/?r=rm_react">Flexmonster API calls</a>
-                </h3>
+                <h1 className="page-title">Using Flexmonster API calls</h1>
+
+                <div className="description-blocks first-description-block">
+                    <p>
+                        Flexmonster provides <a href="https://www.flexmonster.com/api/methods/?r=rm_react" target="_blank" className="title-link">API calls</a> for
+                        interacting with the component.
+                        As an example, we've added the toggle buttons below. Use them to switch between the views or make Flexmonster read-only.
+                    </p>
+                </div>
 
                 <ToggleSwitch triggerFunction={this.controllGridCharts} labelChecked="Grid" labelUnChecked="Column chart" />
                 <ToggleSwitch triggerFunction={this.controllInteractiveness} labelChecked="Interactive" labelUnChecked="Read-only" />
@@ -77,7 +83,7 @@ class UsingAPICalls extends React.Component<any, {}> {
                     height={600}
                     componentFolder="https://cdn.flexmonster.com/"
                     report="https://cdn.flexmonster.com/github/demo-report.json"
-                //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
+                    //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
                 />
             </>
         );

@@ -25,7 +25,7 @@ class WithHighcharts extends React.Component<any, {}> {
         //Running Flexmonster's getData method for Highcharts
         this.flexmonster.highcharts?.getData(
             {
-                type: "area"
+                type: "spline"
             },
             (data: any) => {
                 Highcharts.chart('highcharts-container', data);
@@ -41,10 +41,14 @@ class WithHighcharts extends React.Component<any, {}> {
     render() {
         return (
             <div className="App">
-                <h3 className="page-title">
-                    Integrating <a target="_blank" className="title-link" rel="noopener noreferrer" href="https://www.flexmonster.com/doc/integration-with-highcharts/?r=rm_react">with
-                        Highcharts</a>
-                </h3>
+                <h1 className="page-title">Integrating with Highcharts</h1>
+
+                <div className="description-blocks first-description-block">
+                    <p>Integrate Flexmonster with Highcharts and see your data from a new 
+                        perspective: <a href="https://www.flexmonster.com/doc/integration-with-highcharts/?r=rm_react" target="_blank" className="title-link">Integration with Highcharts</a>.
+                    </p>
+                </div>
+
                 <FlexmonsterReact.Pivot
                     ref={this.pivotRef}
                     toolbar={true}
@@ -56,7 +60,7 @@ class WithHighcharts extends React.Component<any, {}> {
                     }}
                     width="100%"
                     height={600}
-                    report="https://cdn.flexmonster.com/github/demo-report.json"
+                    report="https://cdn.flexmonster.com/github/highcharts-report.json"
                     licenseFilePath="https://cdn.flexmonster.com/jsfiddle.charts.key"
                     reportcomplete={this.reportComplete}
                     //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"

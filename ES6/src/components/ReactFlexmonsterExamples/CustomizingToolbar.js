@@ -31,9 +31,15 @@ export default class CustomizingToolbar extends React.Component {
     render() {
         return (
             <>
-                <h3 className="page-title">
-                    Customizing <a target="_blank" className="title-link" rel="noopener noreferrer" href="https://www.flexmonster.com/doc/customizing-toolbar/?r=rm_react">the Toolbar</a>
-                </h3>
+                <h1 className="page-title">Customizing the Toolbar</h1>
+
+                <div className="description-blocks first-description-block">
+                    <p>You can add, remove, and update the Toolbar tabs.</p>
+                    <p>In this demo, we’ve removed all the tabs and added a custom <strong>New Tab</strong>.
+                        See our docs to learn more about the Toolbar and its 
+                        customization: <a href="https://www.flexmonster.com/doc/customizing-toolbar/?r=rm_react" target="_blank" className="title-link">Customizing the Toolbar</a>.
+                    </p>
+                </div>
 
                 <FlexmonsterReact.Pivot
                     ref="pivot"
