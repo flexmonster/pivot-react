@@ -54,7 +54,9 @@ export default class CustomizingGrid extends React.Component<any, {}> {
                     <p>In this demo, the <strong>Price</strong> measure is customized.</p>
                 </div>
 
-                <ToggleButton triggerFunction={this.controllCustomization} labelChecked="The grid cells are customized" labelUnChecked="The grid cells are not customized" />
+                <div className="description-blocks">
+                    <ToggleButton triggerFunction={this.controllCustomization} labelChecked="The grid cells are customized" labelUnChecked="The grid cells are not customized" />
+                </div>
 
                 <FlexmonsterReact.Pivot
                     ref={this.pivotRef}

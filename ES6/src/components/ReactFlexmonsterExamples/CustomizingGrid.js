@@ -37,13 +37,15 @@ export default class CustomizingGrid extends React.Component {
                 <h1 className="page-title">Customizing the grid</h1>
 
                 <div className="description-blocks first-description-block">
-                    <p>Style the grid by adding links, applying custom CSS, or formatting the cells. 
+                    <p>Style the grid by adding links, applying custom CSS, or formatting the cells.
                         Check our docs for details: <a href="https://www.flexmonster.com/doc/customizing-grid/?r=rm_react" target="_blank" className="title-link">Customizing the grid</a>.
                     </p>
                     <p>In this demo, the <strong>Price</strong> measure is customized.</p>
                 </div>
 
-                <ToggleButton triggerFunction={this.controllCustomization} labelChecked="The grid cells are customized" labelUnChecked="The grid cells are not customized" />
+                <div className="description-blocks">
+                    <ToggleButton triggerFunction={this.controllCustomization} labelChecked="The grid cells are customized" labelUnChecked="The grid cells are not customized" />
+                </div>
 
                 <FlexmonsterReact.Pivot
                     ref="pivot"
@@ -58,7 +60,7 @@ export default class CustomizingGrid extends React.Component {
                     height={600}
                     report="https://cdn.flexmonster.com/github/customizing-grid-report.json"
                     customizeCell={this.customizeCellFunction}
-                    //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
+                //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
                 />
             </>
         );

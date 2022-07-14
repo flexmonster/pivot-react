@@ -17,7 +17,7 @@ export default class LogsList extends React.Component {
 
         return (
             <>                
-                <h3 className="event-logs-title">{title}</h3>
+                <h3 className="title-4">{title}</h3>
                 <div className="event-logs-wrapper fullwidth">
                     <div className="content">
                         {logsTemplate}

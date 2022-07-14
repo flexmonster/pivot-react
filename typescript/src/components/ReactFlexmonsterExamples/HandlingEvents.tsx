@@ -126,7 +126,9 @@ export default class HandlingEvents extends React.Component<any, {}> {
                     </p>
                 </div>
 
-                <ToggleButton triggerFunction={this.eventsSignerController} labelChecked="Events are tracked" labelUnChecked="Events are not tracked" />
+                <div className="description-blocks">
+                    <ToggleButton triggerFunction={this.eventsSignerController} labelChecked="Events are tracked" labelUnChecked="Events are not tracked" />
+                </div>
 
                 <div>
                     <FlexmonsterReact.Pivot
@@ -147,7 +149,7 @@ export default class HandlingEvents extends React.Component<any, {}> {
                 </div>
 
                 <div className="section">
-                    <LogsList title="Log output" logsList={this.logs} />
+                    <LogsList title="Log Output" logsList={this.logs} />
                     <button className="button-red" onClick={this.clearLogs}>Clear Log Output</button>
                 </div>
             </>

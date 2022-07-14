@@ -59,8 +59,11 @@ class UsingAPICalls extends Component {
                     </p>
                 </div>
 
-                <ToggleSwitch triggerFunction={this.controllGridCharts} labelChecked="Grid" labelUnChecked="Column chart" />
-                <ToggleSwitch triggerFunction={this.controllInteractiveness} labelChecked="Interactive" labelUnChecked="Read-only" />
+                <div className="description-blocks">
+                    <ToggleSwitch triggerFunction={this.controllGridCharts} labelChecked="Grid" labelUnChecked="Column chart" />
+                    <ToggleSwitch triggerFunction={this.controllInteractiveness} labelChecked="Interactive" labelUnChecked="Read-only" />
+                </div>
+
                 <FlexmonsterReact.Pivot
                     ref="pivot"
                     toolbar={true}
