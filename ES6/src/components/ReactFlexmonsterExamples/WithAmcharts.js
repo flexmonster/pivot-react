@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import * as FlexmonsterReact from 'react-flexmonster';
 
-// Importing Flexmonster's connector for amcharts
+// Importing Flexmonster Connector for amCharts
 import "flexmonster/lib/flexmonster.amcharts.js";
 
 // amCharts imports
