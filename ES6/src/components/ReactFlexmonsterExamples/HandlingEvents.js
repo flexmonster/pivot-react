@@ -111,7 +111,7 @@ export default class HandlingEvents extends React.Component {
 
                 <div className="description-blocks first-description-block">
                     <p>
-                        Perform an action (for example, click on a grid cell) to trigger a <a className="title-link" target="blank"
+                        Perform an action (for example, click on a grid cell) to trigger a <a className="title-link" target="blank" rel="noopener noreferrer"
                             href="https://www.flexmonster.com/api/events/?r=rm_react">Flexmonster event</a>
                         . Scroll down to the log output to see which events get triggered.
                     </p>

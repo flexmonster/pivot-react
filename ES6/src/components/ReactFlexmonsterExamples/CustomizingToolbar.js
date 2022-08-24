@@ -7,7 +7,7 @@ export default class CustomizingToolbar extends React.Component {
         this.refs.pivot.flexmonster.alert({
             title: "Customizing Flexmonster",
             message:
-                "How to customize the Toolbar: <a style='text-decoration:underline; color:#00A45A' target='blank' href='https://www.flexmonster.com/doc/customizing-toolbar/?r=rm_react'>https://www.flexmonster.com/doc/customizing-toolbar/</a> <br>",
+                "How to customize the Toolbar: <a style='text-decoration:underline; color:#00A45A' target='blank' rel='noopener noreferrer' href='https://www.flexmonster.com/doc/customizing-toolbar/?r=rm_react'>https://www.flexmonster.com/doc/customizing-toolbar/</a> <br>",
             type: "info",
             blocking: false,
         });
@@ -37,7 +37,7 @@ export default class CustomizingToolbar extends React.Component {
                     <p>You can add, remove, and update the Toolbar tabs.</p>
                     <p>In this demo, we’ve removed all the tabs and added a custom <strong>New Tab</strong>.
                         See our docs to learn more about the Toolbar and its 
-                        customization: <a href="https://www.flexmonster.com/doc/customizing-toolbar/?r=rm_react" target="_blank" className="title-link">Customizing the Toolbar</a>.
+                        customization: <a href="https://www.flexmonster.com/doc/customizing-toolbar/?r=rm_react" target="_blank" rel="noopener noreferrer" className="title-link">Customizing the Toolbar</a>.
                     </p>
                 </div>
 

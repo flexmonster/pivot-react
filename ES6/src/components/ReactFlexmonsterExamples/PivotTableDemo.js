@@ -33,7 +33,7 @@ class PivotTableDemo extends Component {
                         databases.
                         Our component is easy to customize and configure, so it can be seamlessly integrated into any project.
                     </p>
-                    <p>Visit <a href="https://www.flexmonster.com/doc/?r=rm_react" target="_blank" className="title-link">our documentation</a> for step-by-step guidance on
+                    <p>Visit <a href="https://www.flexmonster.com/doc/?r=rm_react" target="_blank" rel="noopener noreferrer" className="title-link">our documentation</a> for step-by-step guidance on
                         Flexmonster.</p>
                 </div>
             </>
