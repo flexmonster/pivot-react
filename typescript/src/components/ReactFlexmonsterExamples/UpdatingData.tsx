@@ -83,7 +83,7 @@ export default class UpdatingData extends React.Component {
                     </p>
                     <p>Try it yourself: configure the component as you wish and click the <strong>UPDATE DATA</strong> button.</p>
                     <p>Learn more about updating the data
-                        in <a href="https://www.flexmonster.com/api/updatedata/?r=rm_react" target="_blank" className="title-link">our documentation</a>.
+                        in <a href="https://www.flexmonster.com/api/updatedata/?r=rm_react" target="_blank" rel="noopener noreferrer" className="title-link">our documentation</a>.
                     </p>
                 </div>
 

@@ -45,7 +45,7 @@ class WithHighcharts extends React.Component<any, {}> {
 
                 <div className="description-blocks first-description-block">
                     <p>Integrate Flexmonster with Highcharts and see your data from a new 
-                        perspective: <a href="https://www.flexmonster.com/doc/integration-with-highcharts/?r=rm_react" target="_blank" className="title-link">Integration with Highcharts</a>.
+                        perspective: <a href="https://www.flexmonster.com/doc/integration-with-highcharts/?r=rm_react" target="_blank" rel="noopener noreferrer" className="title-link">Integration with Highcharts</a>.
                     </p>
                 </div>
 

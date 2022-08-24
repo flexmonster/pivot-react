@@ -85,7 +85,7 @@ class WithAmcharts extends Component {
 
                 <div className="description-blocks first-description-block">
                     <p>Extend Flexmonster’s visualization functionality by integrating with the amCharts 
-                        library: <a href="https://www.flexmonster.com/doc/integration-with-amcharts/?r=rm_react" target="_blank" className="title-link">Integration with amCharts</a>.
+                        library: <a href="https://www.flexmonster.com/doc/integration-with-amcharts/?r=rm_react" target="_blank" rel="noopener noreferrer" className="title-link">Integration with amCharts</a>.
                     </p>
                 </div>
 
