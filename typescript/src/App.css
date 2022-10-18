@@ -139,7 +139,7 @@ input[type="checkbox" i] {
 }
 
 .toggle-switch .button-checkbox-label {
-  background: #00a45a;
+  background: #df3800;
 }
 
 .toggle-button .button-checkbox:checked + .button-checkbox-label {
@@ -147,7 +147,7 @@ input[type="checkbox" i] {
 }
 
 .toggle-switch .button-checkbox:checked + .button-checkbox-label {
-  background-color: #df3800;
+  background-color: #00a45a;
 }
 
 .toggle-button .button-checkbox:checked + .button-checkbox-label:before,
