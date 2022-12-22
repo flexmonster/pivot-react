@@ -9,12 +9,12 @@
     "@types/react-dom": "^18.0.0",
     "@types/react-router": "^5.1.8",
     "@types/react-router-dom": "^5.1.5",
-    "highcharts": "^8.2.0",
+    "highcharts": "^10.3.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-flexmonster": "latest",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3",
+    "react-scripts": "^5.0.1",
     "typescript": "~3.7.2"
   },
   "scripts": {
