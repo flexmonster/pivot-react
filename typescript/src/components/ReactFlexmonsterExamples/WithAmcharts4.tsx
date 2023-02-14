@@ -9,59 +9,65 @@ import * as am4core from '@amcharts/amcharts4/core';
 import * as am4charts from '@amcharts/amcharts4/charts';
 import am4themes_animated from '@amcharts/amcharts4/themes/animated';
 
-class WithAmcharts extends Component {
+class WithAmcharts4 extends Component {
 
-    constructor(props) {
-        super(props);
-        this.myRef = React.createRef();
+    private pivotRef: React.RefObject<FlexmonsterReact.Pivot> = React.createRef<FlexmonsterReact.Pivot>();
+    private flexmonster!: Flexmonster.Pivot;
+    private chart!: am4charts.PieChart;
+
+    componentDidMount() {
+        this.flexmonster = this.pivotRef.current!.flexmonster;
     }
 
     reportComplete = () => {
-        this.myRef.current.flexmonster.off(this.reportComplete);
+        this.flexmonster.off("reportComplete", this.reportComplete);
         //creating charts after Flexmonster instance is launched
         this.drawChart();
     }
 
-    drawChart() {
+    drawChart = () => {
         //Running Flexmonster's getData method for amCharts
-        this.myRef.current.flexmonster.amcharts.getData(
+        this.flexmonster.amcharts?.getData(
             {},
             this.createChart.bind(this),
             this.updateChart.bind(this)
         );
     }
 
-    createChart(chartData, rawData) {
+    createChart = (chartData: Flexmonster.GetDataValueObject, rawData: Flexmonster.GetDataValueObject) => {
 
-        /* Apply amCharts theme */
-        am4core.useTheme(am4themes_animated);
+        if (this.flexmonster && this.flexmonster.amcharts) {
+            /* Apply amCharts theme */
+            am4core.useTheme(am4themes_animated);
 
-        /* Create chart instance */
-        let chart = am4core.create("chartContainer", am4charts.PieChart);
+            /* Create chart instance */
+            let chart = am4core.create("chartContainer", am4charts.PieChart);
 
-        /* Add data processed by Flexmonster to the chart */
-        chart.data = chartData.data;
+            /* Add data processed by Flexmonster to the chart */
+            chart.data = chartData.data;
 
-        /* Set an inner radius to transform a pie chart into a donut chart */
-        chart.innerRadius = am4core.percent(50);
+            /* Set an inner radius to transform a pie chart into a donut chart */
+            chart.innerRadius = am4core.percent(50);
 
-        /* Create and configure series for a pie chart */
-        var pieSeries = chart.series.push(new am4charts.PieSeries());
-        pieSeries.dataFields.category = this.myRef.current.flexmonster.amcharts.getCategoryName(rawData);
-        pieSeries.dataFields.value = this.myRef.current.flexmonster.amcharts.getMeasureNameByIndex(rawData, 0);
-        pieSeries.slices.template.stroke = am4core.color("#fff");
-        pieSeries.slices.template.strokeWidth = 2;
-        pieSeries.slices.template.strokeOpacity = 1;
+            /* Create and configure series for a pie chart */
+            var pieSeries = chart.series.push(new am4charts.PieSeries());
+            pieSeries.dataFields.category = this.flexmonster.amcharts.getCategoryName(rawData);
+            pieSeries.dataFields.value = this.flexmonster.amcharts.getMeasureNameByIndex(rawData, 0);
+            pieSeries.slices.template.stroke = am4core.color("#fff");
+            pieSeries.slices.template.strokeWidth = 2;
+            pieSeries.slices.template.strokeOpacity = 1;
 
-        /* Create initial animation */
-        pieSeries.hiddenState.properties.opacity = 1;
-        pieSeries.hiddenState.properties.endAngle = -90;
-        pieSeries.hiddenState.properties.startAngle = -90;
+            /* Create initial animation */
+            pieSeries.hiddenState.properties.opacity = 1;
+            pieSeries.hiddenState.properties.endAngle = -90;
+            pieSeries.hiddenState.properties.startAngle = -90;
 
-        this.chart = chart;
+            this.chart = chart;
+        }
+
     }
 
-    updateChart(chartData, rawData) {
+    updateChart = (chartData: Flexmonster.GetDataValueObject, rawData: Flexmonster.GetDataValueObject) => {
         this.chart.dispose();
         this.createChart(chartData, rawData)
     }
@@ -84,7 +90,7 @@ class WithAmcharts extends Component {
                 </div>
 
                 <FlexmonsterReact.Pivot
-                    ref={this.myRef}
+                    ref={this.pivotRef}
                     toolbar={true}
                     beforetoolbarcreated={toolbar => {
                         toolbar.showShareReportTab = true;
@@ -107,4 +113,4 @@ class WithAmcharts extends Component {
     }
 }
 
-export default WithAmcharts;
+export default WithAmcharts4;
