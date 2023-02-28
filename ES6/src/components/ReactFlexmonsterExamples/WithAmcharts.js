@@ -9,34 +9,29 @@ import * as am5 from "@amcharts/amcharts5";
 import * as am5xy from "@amcharts/amcharts5/xy";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 
-import Flexmonster from 'flexmonster';
+class WithAmcharts extends Component {
 
-class WithAmcharts5 extends Component {
-
-    private pivotRef: React.RefObject<FlexmonsterReact.Pivot> = React.createRef<FlexmonsterReact.Pivot>();
-    private flexmonster!: Flexmonster.Pivot;
-    private root!: am5.Root;
-
-    componentDidMount() {
-        this.flexmonster = this.pivotRef.current!.flexmonster;
+    constructor(props) {
+        super(props);
+        this.myRef = React.createRef();
     }
 
     reportComplete = () => {
-        this.flexmonster.off("reportComplete", this.reportComplete);
+        this.myRef.current.flexmonster.off(this.reportComplete);
         //creating charts after Flexmonster instance is launched
         this.drawChart();
     }
 
-    drawChart = () => {
+    drawChart() {
         //Running Flexmonster's getData method for amCharts
-        this.flexmonster.amcharts?.getData(
+        this.myRef.current.flexmonster.amcharts.getData(
             {},
             this.createChart.bind(this),
             this.updateChart.bind(this)
         );
     }
 
-    createChart = (chartData: Flexmonster.GetDataValueObject, rawData: Flexmonster.GetDataValueObject) => {
+    createChart(chartData, rawData) {
 
         /* Create root element and chart instance */
         this.root = am5.Root.new("chartContainer");
@@ -49,14 +44,14 @@ class WithAmcharts5 extends Component {
         ]);
 
         /* Apply number format from Flexmonster */
-        this.root.numberFormatter.set("numberFormat", this.flexmonster.amcharts?.getNumberFormatPattern((rawData.meta as any).formats[0]));
+        this.root.numberFormatter.set("numberFormat", this.myRef.current.flexmonster.amcharts.getNumberFormatPattern(rawData.meta.formats[0]));
 
         /* Create and configure Y axis */
         let yAxis = chart.yAxes.push(am5xy.CategoryAxis.new(this.root, {
-            categoryField: this.flexmonster.amcharts?.getCategoryName(rawData)!,
+            categoryField: this.myRef.current.flexmonster.amcharts.getCategoryName(rawData),
             renderer: am5xy.AxisRendererY.new(this.root, {
                 cellStartLocation: 0.1,
-                cellEndLocation: 0.9
+                cellEndLocation: 0.9,
             })
         }));
 
@@ -71,22 +66,23 @@ class WithAmcharts5 extends Component {
 
         /* Create and configure series for a bar chart */
         let series = chart.series.push(am5xy.ColumnSeries.new(this.root, {
-            name: this.flexmonster.amcharts?.getMeasureNameByIndex(rawData, 0),
+            name: this.myRef.current.flexmonster.amcharts.getMeasureNameByIndex(rawData, 0),
             xAxis: xAxis,
-            yAxis: yAxis as any,
+            yAxis: yAxis,
             sequencedInterpolation: true,
-            valueXField: this.flexmonster.amcharts?.getMeasureNameByIndex(rawData, 0),
-            categoryYField: this.flexmonster.amcharts?.getCategoryName(rawData),
+            valueXField: this.myRef.current.flexmonster.amcharts.getMeasureNameByIndex(rawData, 0),
+            categoryYField: this.myRef.current.flexmonster.amcharts.getCategoryName(rawData),
             tooltip: am5.Tooltip.new(this.root, {
                 labelText: '{name}: [bold]{valueX}[/]'
             })
         }));
 
+        /* Create XY cursor */
         chart.set("cursor", am5xy.XYCursor.new(this.root, {
             behavior: "none",
             xAxis: xAxis,
             yAxis: yAxis
-          }));
+        }));
 
         /* Add data processed by Flexmonster to the chart */
         yAxis.data.setAll(chartData.data);
@@ -97,7 +93,7 @@ class WithAmcharts5 extends Component {
         chart.appear(1000, 100);
     }
 
-    updateChart = (chartData: Flexmonster.GetDataValueObject, rawData: Flexmonster.GetDataValueObject) => {
+    updateChart(chartData, rawData) {
         this.root.dispose();
         this.createChart(chartData, rawData)
     }
@@ -120,7 +116,7 @@ class WithAmcharts5 extends Component {
                 </div>
 
                 <FlexmonsterReact.Pivot
-                    ref={this.pivotRef}
+                    ref={this.myRef}
                     toolbar={true}
                     beforetoolbarcreated={toolbar => {
                         toolbar.showShareReportTab = true;
@@ -143,4 +139,4 @@ class WithAmcharts5 extends Component {
     }
 }
 
-export default WithAmcharts5;
+export default WithAmcharts;
