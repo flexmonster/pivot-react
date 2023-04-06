@@ -37,7 +37,7 @@ class WithAmcharts4 extends Component {
         am4core.useTheme(am4themes_animated);
 
         /* Create chart instance */
-        let chart = am4core.create("chartContainer", am4charts.PieChart);
+        let chart = am4core.create("amcharts-container", am4charts.PieChart);
 
         /* Add data processed by Flexmonster to the chart */
         chart.data = chartData.data;
@@ -100,7 +100,7 @@ class WithAmcharts4 extends Component {
                     //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
                 />
                 <div className="chart-container">
-                    <div id="chartContainer" style={{ width: "100%", height: "500px" }}></div>
+                    <div id="amcharts-container" style={{ width: "100%", height: "500px" }}></div>
                 </div>
             </div>
         );

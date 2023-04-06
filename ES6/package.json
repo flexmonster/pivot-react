@@ -11,7 +11,7 @@
     "react-dom": "^18.2.0",
     "react-flexmonster": "latest",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^5.0.1"
+    "react-scripts": "^3.4.3"
   },
   "overrides": {
     "css-select": "^5.1.0"

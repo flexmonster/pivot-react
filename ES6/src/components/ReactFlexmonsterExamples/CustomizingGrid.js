@@ -44,7 +44,7 @@ export default class CustomizingGrid extends React.Component {
                 </div>
 
                 <div className="description-blocks">
-                    <ToggleButton triggerFunction={this.controllCustomization} labelChecked="The grid cells are customized" labelUnChecked="The grid cells are not customized" />
+                    <ToggleButton triggerFunction={this.controllCustomization} id="customizationToggle" labelChecked="The grid cells are customized" labelUnChecked="The grid cells are not customized" />
                 </div>
 
                 <FlexmonsterReact.Pivot

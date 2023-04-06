@@ -118,7 +118,7 @@ export default class HandlingEvents extends React.Component {
                 </div>
 
                 <div className="description-blocks">
-                    <ToggleButton triggerFunction={this.eventsSignerController} labelChecked="Events are tracked" labelUnChecked="Events are not tracked" />
+                    <ToggleButton id="eventsToggle" triggerFunction={this.eventsSignerController} labelChecked="Events are tracked" labelUnChecked="Events are not tracked" />
                 </div>
 
                 <div>
@@ -141,7 +141,9 @@ export default class HandlingEvents extends React.Component {
 
                 <div className="section">
                     <LogsList title="Log Output" ref={this.logsContainer} logsList={this.logs} />
-                    <button className="button-red" onClick={this.clearLogs}>Clear Log Output</button>
+                    <div class="section--button">
+                        <button className="button-red" onClick={this.clearLogs}>Clear Log Output</button>
+                    </div>
                 </div>
             </>
         );

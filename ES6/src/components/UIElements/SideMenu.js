@@ -26,10 +26,10 @@ export default class SideMenu extends React.Component {
                     <div className="sub-title">Customization</div>
                     <ol>
                         <li className="tab-button">
-                            <NavLink activeClassName="router-link-exact-active" to="/customize-toolbar">CUSTOMIZING THE TOOLBAR</NavLink>
+                            <NavLink activeClassName="router-link-exact-active" to="/customizing-toolbar">CUSTOMIZING THE TOOLBAR</NavLink>
                         </li>
                         <li className="tab-button">
-                            <NavLink activeClassName="router-link-exact-active" to="/customize-grid">CUSTOMIZING THE GRID</NavLink>
+                            <NavLink activeClassName="router-link-exact-active" to="/customizing-grid">CUSTOMIZING THE GRID</NavLink>
                         </li>
                     </ol>
                     <div className="sub-title">Integration</div>
@@ -38,7 +38,7 @@ export default class SideMenu extends React.Component {
                             <NavLink activeClassName="router-link-exact-active" to="/with-highcharts">WITH HIGHCHARTS</NavLink>
                         </li>
                         <li className="tab-button">
-                            <NavLink activeClassName="router-link-exact-active" to="/with-amcharts">WITH AMCHARTS</NavLink>
+                            <NavLink activeClassName="router-link-exact-active" to="/with-amcharts4">WITH AMCHARTS</NavLink>
                         </li>
                     </ol>
                 </div>

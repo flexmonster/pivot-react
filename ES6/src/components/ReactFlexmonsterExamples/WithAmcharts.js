@@ -34,7 +34,7 @@ class WithAmcharts extends Component {
     createChart(chartData, rawData) {
 
         /* Create root element and chart instance */
-        this.root = am5.Root.new("chartContainer");
+        this.root = am5.Root.new("amcharts-container");
         let chart = this.root.container.children.push(am5xy.XYChart.new(this.root, {
         }));
 
@@ -132,7 +132,7 @@ class WithAmcharts extends Component {
                 //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
                 />
                 <div className="chart-container">
-                    <div id="chartContainer" style={{ width: "100%", height: "500px" }}></div>
+                    <div id="amcharts-container" style={{ width: "100%", height: "500px" }}></div>
                 </div>
             </div>
         );

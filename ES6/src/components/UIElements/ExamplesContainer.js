@@ -23,8 +23,8 @@ function ExamplesContainer({location}) {
                 <Route path="/using-api-calls" component={UsingAPICalls}/>
                 <Route path="/handling-events" component={HandlingEvents}/>
                 <Route path="/updating-data" component={UpdatingData}/>
-                <Route path="/customize-toolbar" component={CustomizingToolbar}/>
-                <Route path="/customize-grid" component={CustomizingGrid}/>
+                <Route path="/customizing-toolbar" component={CustomizingToolbar}/>
+                <Route path="/customizing-grid" component={CustomizingGrid}/>
                 <Route exact path="/**">
                     <Redirect to="/pivot-table-demo" />
                 </Route>
