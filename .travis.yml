@@ -1,0 +1,30 @@
+os:
+- linux
+language: node_js
+node_js:
+- '18'
+cache:
+  npm: false
+services:
+- xvfb
+dist: jammy
+addons:
+  chrome: stable
+before_install:
+- google-chrome-stable --port=9515 --headless --disable-gpu --remote-debugging-port=9222
+  http://localhost &
+beforescript:
+- git clone https://github.com/flexmonster/vue-integration-testing.git
+- chmod +x ./vue-integration-testing/launchScripts/reactES6.sh
+- chmod +x ./vue-integration-testing/launchScripts/reactTestLaunch.sh
+- chmod +x ./vue-integration-testing/launchScripts/reactKillPorts.sh
+script:
+- bash ./vue-integration-testing/launchScripts/reactES6.sh
+- bash ./vue-integration-testing/launchScripts/reactTestLaunch.sh
+- bash ./vue-integration-testing/launchScripts/reactKillPorts.sh
+notifications:
+  slack:
+    rooms:
+      if: branch = master
+      secure: kmlQLF6ekKB0fjgfs8J5uOiY9VTv1YxFjSAne/WoOmaUOc6HGb0AVwo2TbljfhCLggoF4WoHkmO4TPyXujIucvqvrVlNYPZZJo+ZSrPf5h4mWN/+wPhztpidru0hUxRSCajLGHPdgXUNgX/vPwTxjzNcRkxzzwP1s8MAjKropalt9ve5kgvBeP+hSPN6zj0GIV/56vRZyk/UfqngCALlYnuMzBFdUjb3522KKrPSXAJvBp+bntH7Ebtep16x9JSblyg8aZipd41SnQUezq3v5ITMzgpF+e62xWj3/98p0vmpnk2VC2XfTQKeYuQmr+ZwhrwG4tP5BQHpm/G4ppvAdlWILBbWv2zSTEx6PAiE97ZTYQFsoFtRp0gp1mLGnyLB4SegQpQDUF95E739Jf9vNkdC1XpEZytaCWg/rDNKvQN6eQAc1x7ZqCub0+lTVSKat/W/OLp35uw9w1400YUCeAk9gPlzvvlqHDwF8Rjx2uRzb5gpEbVcZVva/0ipg56ZbfE0ofF+Cb92Tc8rWHgFxHEqSLpXlWAK7q9zICorhtfSq1lsHKj9k7R2SYwpQdyiMxonU/xz0R3bhw+pbaJdRYNBg34RLi6Kg3Ti+CJgB3yBLZcKoICLPBEjv7Svb8e57StfvE+k/qVBZvZ6DjoOV/ihiiDaz0kok4nL53FTUNM=
+      
