@@ -18,8 +18,8 @@ function ExamplesContainer({location}) {
             <Switch location={location}>
                 <Route path="/pivot-table-demo" component={PivotTableDemo}/>
                 <Route path="/with-highcharts" component={WithHighcharts}/>
-                <Route path="/with-amcharts4" component={WithAmcharts4}/>
-                <Route path="/with-amcharts" component={WithAmcharts}/>
+                <Route path="/with-amcharts" component={WithAmcharts4}/>
+                <Route path="/with-amcharts5" component={WithAmcharts}/>
                 <Route path="/using-api-calls" component={UsingAPICalls}/>
                 <Route path="/handling-events" component={HandlingEvents}/>
                 <Route path="/updating-data" component={UpdatingData}/>
