@@ -19,7 +19,6 @@ class PivotTableDemo extends Component {
 
                 <div className="App">
                     <FlexmonsterReact.Pivot
-                        ref="pivot"
                         toolbar={true}
                         beforetoolbarcreated={toolbar => {
                             toolbar.showShareReportTab = true;
