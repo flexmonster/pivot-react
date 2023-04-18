@@ -23,16 +23,14 @@ class UsingAPICalls extends Component {
     readOnly = () => {
         this.refs.pivot.flexmonster.setOptions({
             readOnly: true
-        })
-        //refresh to apply new options changes
+        });
         this.refs.pivot.flexmonster.refresh();
     }
 
     interactive = () => {
         this.refs.pivot.flexmonster.setOptions({
             readOnly: false
-        })
-        //refresh to apply new options changes
+        });
         this.refs.pivot.flexmonster.refresh();
     }
 
