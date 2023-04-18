@@ -32,7 +32,6 @@ class UsingAPICalls extends React.Component<any, {}> {
         this.flexmonster.setOptions({
             readOnly: true
         });
-        //refresh to apply new options changes
         this.flexmonster.refresh();
     }
 
@@ -40,7 +39,6 @@ class UsingAPICalls extends React.Component<any, {}> {
         this.flexmonster.setOptions({
             readOnly: false
         });
-        //refresh to apply new options changes
         this.flexmonster.refresh();
     }
 
