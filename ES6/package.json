@@ -5,6 +5,7 @@
   "dependencies": {
     "@amcharts/amcharts4": "^4.10.17",
     "@amcharts/amcharts5": "^5.3.3",
+    "dotenv": "^16.0.3",
     "highcharts": "^10.3.2",
     "prop-types": "^15.7.2",
     "react": "^18.2.0",
@@ -17,7 +18,8 @@
     "css-select": "^5.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "PORT=3000 && react-scripts start",
+    "start-win": "set PORT=3000 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
