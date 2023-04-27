@@ -18,11 +18,11 @@
     "css-select": "^5.1.0"
   },
   "scripts": {
-    "start": "HOST=127.0.0.1 PORT=3000 react-scripts start",
-    "start-win": "react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "start-local-linux": "HOST=127.0.0.1 PORT=3000 react-scripts start"
   },
   "eslintConfig": {
     "extends": "react-app"
