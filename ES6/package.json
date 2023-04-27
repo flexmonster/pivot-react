@@ -22,7 +22,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "start-local-linux": "HOST=127.0.0.1 PORT=3000 react-scripts start"
+    "start-local-linux": "HOST=localhost PORT=3000 react-scripts start"
   },
   "eslintConfig": {
     "extends": "react-app"
