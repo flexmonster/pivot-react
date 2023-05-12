@@ -3,9 +3,9 @@ import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import * as H from "history";
 
 import PivotTableDemo from '../ReactFlexmonsterExamples/PivotTableDemo';
-import WithHighcharts from '../ReactFlexmonsterExamples/WithHighcharts';
-import WithAmcharts4 from '../ReactFlexmonsterExamples/WithAmcharts4';
-import WithAmcharts from '../ReactFlexmonsterExamples/WithAmcharts';
+//import WithHighcharts from '../ReactFlexmonsterExamples/WithHighcharts';
+//import WithAmcharts4 from '../ReactFlexmonsterExamples/WithAmcharts4';
+//import WithAmcharts from '../ReactFlexmonsterExamples/WithAmcharts';
 import UsingAPICalls from '../ReactFlexmonsterExamples/UsingAPICalls';
 import HandlingEvents from '../ReactFlexmonsterExamples/HandlingEvents';
 import UpdatingData from '../ReactFlexmonsterExamples/UpdatingData';
@@ -21,9 +21,6 @@ const ExamplesContainer = (props: Props) => {
         <div className="pivot-example-container">
             <Switch location={location}>
                 <Route path="/pivot-table-demo" component={PivotTableDemo} exact />
-                <Route path="/with-highcharts" component={WithHighcharts} />
-                <Route path="/with-amcharts4" component={WithAmcharts4}/>
-                <Route path="/with-amcharts" component={WithAmcharts}/>
                 <Route path="/using-api-calls" component={UsingAPICalls} />
                 <Route path="/handling-events" component={HandlingEvents} />
                 <Route path="/updating-data" component={UpdatingData} />
@@ -34,6 +31,11 @@ const ExamplesContainer = (props: Props) => {
                 </Route>
             </Switch>
         </div>
+        /*
+                <Route path="/with-highcharts" component={WithHighcharts} />
+                <Route path="/with-amcharts4" component={WithAmcharts4}/>
+                <Route path="/with-amcharts" component={WithAmcharts}/>
+         */
     );
 
 }

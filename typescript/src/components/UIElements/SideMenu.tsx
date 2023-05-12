@@ -32,7 +32,12 @@ export default class SideMenu extends React.Component {
                             <NavLink activeClassName="router-link-exact-active" to="/customize-grid">CUSTOMIZING THE GRID</NavLink>
                         </li>
                     </ol>
-                    <div className="sub-title">Integration</div>
+                    
+                    
+                </div>
+        );
+        /*
+        <div className="sub-title">Integration</div>
                     <ol>
                         <li className="tab-button">
                             <NavLink activeClassName="router-link-exact-active" to="/with-highcharts">WITH HIGHCHARTS</NavLink>
@@ -41,7 +46,6 @@ export default class SideMenu extends React.Component {
                             <NavLink activeClassName="router-link-exact-active" to="/with-amcharts">WITH AMCHARTS</NavLink>
                         </li>
                     </ol>
-                </div>
-        );
+        */
     }
 }
