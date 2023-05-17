@@ -310,7 +310,6 @@ p {
 
 .mainheader.fixed-head {
   background-color: #fff;
-  position: fixed;
   border-bottom: 1px solid #cdcdcf;
   -webkit-box-shadow: 0px 2px 10px rgba(226, 230, 232, 0.6);
   box-shadow: 0px 2px 10px rgba(226, 230, 232, 0.6);
