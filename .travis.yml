@@ -15,13 +15,13 @@ before_install:
   http://localhost &
 beforescript:
 - git clone https://github.com/flexmonster/framework-integration-testing.git
-- chmod +x ./framework-integration-testing/launchScripts/reactES6.sh
-- chmod +x ./framework-integration-testing/launchScripts/reactTestLaunch.sh
-- chmod +x ./framework-integration-testing/launchScripts/reactKillPorts.sh
+- chmod +x ./framework-integration-testing/launchScripts/react/reactES6.sh
+- chmod +x ./framework-integration-testing/launchScripts/react/reactTestLaunch.sh
+- chmod +x ./framework-integration-testing/launchScripts/react/reactKillPorts.sh
 script:
-- bash ./framework-integration-testing/launchScripts/reactES6.sh
-- bash ./framework-integration-testing/launchScripts/reactTestLaunch.sh
-- bash ./framework-integration-testing/launchScripts/reactKillPorts.sh
+- bash ./framework-integration-testing/launchScripts/react/reactES6.sh
+- bash ./framework-integration-testing/launchScripts/react/reactTestLaunch.sh
+- bash ./framework-integration-testing/launchScripts/react/reactKillPorts.sh
 notifications:
   slack:
     rooms:
