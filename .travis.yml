@@ -14,14 +14,14 @@ before_install:
 - google-chrome-stable --port=9515 --headless --disable-gpu --remote-debugging-port=9222
   http://localhost &
 beforescript:
-- git clone https://github.com/flexmonster/vue-integration-testing.git
-- chmod +x ./vue-integration-testing/launchScripts/reactES6.sh
-- chmod +x ./vue-integration-testing/launchScripts/reactTestLaunch.sh
-- chmod +x ./vue-integration-testing/launchScripts/reactKillPorts.sh
+- git clone https://github.com/flexmonster/framework-integration-testing.git
+- chmod +x ./framework-integration-testing/launchScripts/reactES6.sh
+- chmod +x ./framework-integration-testing/launchScripts/reactTestLaunch.sh
+- chmod +x ./framework-integration-testing/launchScripts/reactKillPorts.sh
 script:
-- bash ./vue-integration-testing/launchScripts/reactES6.sh
-- bash ./vue-integration-testing/launchScripts/reactTestLaunch.sh
-- bash ./vue-integration-testing/launchScripts/reactKillPorts.sh
+- bash ./framework-integration-testing/launchScripts/reactES6.sh
+- bash ./framework-integration-testing/launchScripts/reactTestLaunch.sh
+- bash ./framework-integration-testing/launchScripts/reactKillPorts.sh
 notifications:
   slack:
     rooms:
