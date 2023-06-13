@@ -1,5 +1,7 @@
 /typescript/node_modules/
 /typescript/dist/
+/typescript-nextjs/node_modules/
+/typescript-nextjs/dist/
 ES6/node_modules/
 ES6/flexmonster/
 package-lock.json
