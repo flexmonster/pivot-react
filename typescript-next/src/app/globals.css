@@ -489,8 +489,8 @@ ul {
 }
 
 .side-menu li a:hover,
-.side-menu li a.router-link-exact-active:active,
-.side-menu li.active a.router-link-exact-active:active {
+.side-menu li a.router-link-exact-active,
+.side-menu li.active a.router-link-exact-active {
     color: #df3800;
 }
 

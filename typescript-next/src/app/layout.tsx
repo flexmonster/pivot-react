@@ -20,7 +20,7 @@ export default function RootLayout({
         <div id="app">
           <TopMenu />
           <div className="wrap">
-            <SideMenu /> 
+            <SideMenu/> 
             <div className="pivot-example-container">
               {children}
             </div>
