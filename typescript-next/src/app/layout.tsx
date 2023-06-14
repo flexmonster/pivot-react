@@ -1,15 +1,12 @@
-"use client"
 import './globals.css'
 import TopMenu from '@/UIElements/TopMenu'
 import SideMenu from '@/UIElements/SideMenu'
 import { Inter } from 'next/font/google'
-import { BrowserRouter as Router } from 'react-router-dom';
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Flexmonster Next App',
-
 }
 
 export default function RootLayout({
