@@ -12,7 +12,7 @@ Table of contents:
 
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
-- [Usage](#usage)
+- [Related Flexmonster docs](#related-flexmonster-docs)
 
 ## Prerequisites
 
@@ -40,6 +40,7 @@ npm start
 
 To see the result, open `http://localhost:3000/` in your browser.
 
-## Usage
+## Related Flexmonster docs
 
-For details on usage, refer to the [Integration with React](http://www.flexmonster.com/doc/integration-with-react/?r=rm_react) guide.
+- Learn how to integrate Flexmonster with a React project in the [Integration with React](https://www.flexmonster.com/doc/integration-with-react/?r=rm_react) guide.
+- For details on Flexmonster usage, refer to the [Usage examples in React](https://www.flexmonster.com/doc/flexmonster-in-react/?r=rm_react) guide.
