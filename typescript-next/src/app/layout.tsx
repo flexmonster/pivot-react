@@ -1,4 +1,3 @@
-"use client"
 import './globals.css'
 import TopMenu from '@/UIElements/TopMenu'
 import SideMenu from '@/UIElements/SideMenu'
