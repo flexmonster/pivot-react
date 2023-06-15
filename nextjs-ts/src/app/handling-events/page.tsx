@@ -1,9 +1,8 @@
 "use client"
 import * as React from "react";
 import LogsList from "@/UIElements/LogsList";
-import * as FlexmonsterReact from 'react-flexmonster';
 import ToggleButton from "@/UIElements/ToggleButton";
-import 'flexmonster';
+import * as FlexmonsterReact from "react-flexmonster";
 
 export default class HandlingEvents extends React.Component<any, {}> {
 
@@ -11,6 +10,8 @@ export default class HandlingEvents extends React.Component<any, {}> {
         date: Date,
         event: string
     }[] = [];
+
+    private isSSR = () => typeof window === 'undefined'; 
 
     private pivotRef: React.RefObject<FlexmonsterReact.Pivot> = React.createRef<FlexmonsterReact.Pivot>();
     private flexmonster!: Flexmonster.Pivot;
@@ -132,7 +133,7 @@ export default class HandlingEvents extends React.Component<any, {}> {
                 </div>
 
                 <div>
-                    <FlexmonsterReact.Pivot
+                    {!this.isSSR() && <FlexmonsterReact.Pivot
                         ref={this.pivotRef}
                         toolbar={true}
                         beforetoolbarcreated={toolbar => {
@@ -145,8 +146,8 @@ export default class HandlingEvents extends React.Component<any, {}> {
                         height={600}
                         ready={this.signOnAllEvents}
                         report="https://cdn.flexmonster.com/github/demo-report.json"
-                        //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
-                    />
+                    //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
+                    />}
                 </div>
 
                 <div className="section">

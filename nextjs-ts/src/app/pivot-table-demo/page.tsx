@@ -1,9 +1,13 @@
 "use client"
 import * as React from 'react';
-import * as FlexmonsterReact from 'react-flexmonster';
-import 'flexmonster';
+import dynamic from 'next/dynamic';
+import * as FlexmonsterReact from "react-flexmonster";
+
 
 class PivotTableDemo extends React.Component {
+
+    private isSSR = () => typeof window === 'undefined'; 
+
     render() {
         return (
             <>
@@ -20,7 +24,7 @@ class PivotTableDemo extends React.Component {
                 </div>
 
                 <div className="App">
-                    <FlexmonsterReact.Pivot
+                    {!this.isSSR() && <FlexmonsterReact.Pivot
                         toolbar={true}
                         beforetoolbarcreated={toolbar => {
                             toolbar.showShareReportTab = true;
@@ -32,7 +36,7 @@ class PivotTableDemo extends React.Component {
                         height={600}
                         report="https://cdn.flexmonster.com/github/demo-report.json"
                         //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
-                    />
+                    />}
                 </div>
             </>
         );

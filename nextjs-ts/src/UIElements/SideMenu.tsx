@@ -4,6 +4,7 @@ import React from "react";
 export default class SideMenu extends React.Component {
 
     activeClassName(pathname: string) : string {
+        if(typeof window === 'undefined') return "";
         return window.location.pathname == pathname ? "router-link-exact-active" : "";
     }
     render() {
