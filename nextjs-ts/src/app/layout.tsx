@@ -3,6 +3,8 @@ import TopMenu from '@/UIElements/TopMenu'
 import SideMenu from '@/UIElements/SideMenu'
 import { Inter } from 'next/font/google'
 import NoSsrWrapper from '@/UIElements/NoSsrWrapper'
+import { useRouter } from 'next/navigation'
+import { withRouter } from 'react-router-dom'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,17 +20,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <NoSsrWrapper>
-          <div id="app">
-            <TopMenu />
-            <div className="wrap">
-              <SideMenu />
-              <div className="pivot-example-container">
+        <div id="app">
+          <TopMenu />
+          <div className="wrap">
+            <SideMenu />
+            <div className="pivot-example-container">
+              <NoSsrWrapper>
                 {children}
-              </div>
+              </NoSsrWrapper>
             </div>
           </div>
-        </NoSsrWrapper>
+        </div>
       </body>
     </html>
   )

@@ -1,51 +1,47 @@
 "use client"
 import React from "react";
+import Link from "./Link";
 
-export default class SideMenu extends React.Component {
+export default function SideMenu() {
 
-    activeClassName(pathname: string) : string {
-        if(typeof window === 'undefined') return "";
-        return window.location.pathname == pathname ? "router-link-exact-active" : "";
-    }
-    render() {
-        return (
-            <div className="side-menu">
-                <ol>
-                    <li className="tab-button">
-                        <a className={this.activeClassName("/pivot-table-demo")} href="/pivot-table-demo">PIVOT TABLE DEMO</a>
-                    </li>
-                </ol>
-                <div className="sub-title">API and Events</div>
-                <ol>
-                    <li className="tab-button">
-                        <a className={this.activeClassName("/handling-events")} href="/handling-events">HANDLING EVENTS</a>
-                    </li>
-                    <li className="tab-button">
-                        <a className={this.activeClassName("/using-api-calls")} href="/using-api-calls">USING API CALLS</a>
-                    </li>
-                    <li className="tab-button">
-                        <a className={this.activeClassName("/updating-data")} href="/updating-data">UPDATING DATA</a>
-                    </li>
-                </ol>
-                <div className="sub-title">Customization</div>
-                <ol>
-                    <li className="tab-button">
-                        <a className={this.activeClassName("/customizing-toolbar")} href="/customizing-toolbar">CUSTOMIZING THE TOOLBAR</a>
-                    </li>
-                    <li className="tab-button">
-                        <a className={this.activeClassName("/customizing-grid")} href="/customizing-grid">CUSTOMIZING THE GRID</a>
-                    </li>
-                </ol>
-                <div className="sub-title">Integration</div>
-                <ol>
-                    <li className="tab-button">
-                        <a className={this.activeClassName("/with-highcharts")} href="/with-highcharts">WITH HIGHCHARTS</a>
-                    </li>
-                    <li className="tab-button">
-                        <a className={this.activeClassName("/with-amcharts")} href="/with-amcharts">WITH AMCHARTS</a>
-                    </li>
-                </ol>
-            </div>
-        );
-    }
+    return (
+        <div className="side-menu">
+            <ol>
+                <li className="tab-button">
+                    <Link url="/pivot-table-demo" caption="PIVOT TABLE DEMO"/>
+                </li>
+            </ol>
+            <div className="sub-title">API and Events</div>
+            <ol>
+                <li className="tab-button">
+                    <Link url="/handling-events" caption="HANDLING EVENTS"/>
+                </li>
+                <li className="tab-button">
+                    <Link url="/using-api-calls" caption="USING API CALLS"/>
+                </li>
+                <li className="tab-button">
+                    <Link url="/updating-data" caption="UPDATING DATA"/>
+                </li>
+            </ol>
+            <div className="sub-title">Customization</div>
+            <ol>
+                <li className="tab-button">
+                    <Link url="/customizing-toolbar" caption="CUSTOMIZING THE TOOLBAR"/>
+                </li>
+                <li className="tab-button">
+                    <Link url="/customizing-grid" caption="CUSTOMIZING THE GRID"/>
+                </li>
+            </ol>
+            <div className="sub-title">Integration</div>
+            <ol>
+                <li className="tab-button">
+                    <Link url="/with-highcharts" caption="WITH HIGHCHARTS"/>
+                </li>
+                <li className="tab-button">
+                    <Link url="/with-amcharts" caption="WITH AMCHARTS"/>
+                </li>
+            </ol>
+        </div>
+    );
+
 }
