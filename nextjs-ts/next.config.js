@@ -1,9 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    compiler: {
-        // Enables the styled-components SWC transform
-        styledComponents: true
-    }
+    async redirects() {
+        return [
+            {
+                source: '/',
+                destination: '/pivot-table-demo',
+                permanent: true,
+            }
+        ]
+    },
 }
 
 module.exports = nextConfig
