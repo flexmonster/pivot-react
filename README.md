@@ -56,5 +56,5 @@ To see the result, open `http://localhost:3000/` in your browser.
 
 ## Related Flexmonster docs
 
-- Learn how to integrate Flexmonster with a React project in the [Integration with React](https://www.flexmonster.com/doc/integration-with-react/?r=gh_react) guide.
-- For details on Flexmonster usage, refer to the [Usage examples in React](https://www.flexmonster.com/doc/flexmonster-in-react/?r=gh_react) guide.
+- [Integration with React](https://www.flexmonster.com/doc/integration-with-react/?r=gh_react) — learn how to integrate Flexmonster into a React project.
+- [Usage examples in React](https://www.flexmonster.com/doc/flexmonster-in-react/?r=gh_react) — see details on Flexmonster usage.
