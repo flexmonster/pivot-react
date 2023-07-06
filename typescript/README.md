@@ -16,7 +16,7 @@ Table of contents:
 
 ## Prerequisites
 
-- [Node.js 16.0 or earlier](https://nodejs.org/en/)
+- [Node.js 8 through 16](https://nodejs.org/en/)
 
 ## Installation
 
