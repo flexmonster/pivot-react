@@ -6,8 +6,6 @@ import * as FlexmonsterReact from "react-flexmonster";
 
 class PivotTableDemo extends React.Component {
 
-    private isSSR = () => typeof window === 'undefined'; 
-
     render() {
         return (
             <>
@@ -24,7 +22,7 @@ class PivotTableDemo extends React.Component {
                 </div>
 
                 <div className="App">
-                    {!this.isSSR() && <FlexmonsterReact.Pivot
+                    <FlexmonsterReact.Pivot
                         toolbar={true}
                         beforetoolbarcreated={toolbar => {
                             toolbar.showShareReportTab = true;
@@ -36,7 +34,7 @@ class PivotTableDemo extends React.Component {
                         height={600}
                         report="https://cdn.flexmonster.com/github/demo-report.json"
                         //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
-                    />}
+                    />
                 </div>
             </>
         );

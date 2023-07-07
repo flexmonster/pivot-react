@@ -11,8 +11,6 @@ export default class HandlingEvents extends React.Component<any, {}> {
         event: string
     }[] = [];
 
-    private isSSR = () => typeof window === 'undefined'; 
-
     private pivotRef: React.RefObject<FlexmonsterReact.Pivot> = React.createRef<FlexmonsterReact.Pivot>();
     private flexmonster!: Flexmonster.Pivot;
 
@@ -133,7 +131,7 @@ export default class HandlingEvents extends React.Component<any, {}> {
                 </div>
 
                 <div>
-                    {!this.isSSR() && <FlexmonsterReact.Pivot
+                    <FlexmonsterReact.Pivot
                         ref={this.pivotRef}
                         toolbar={true}
                         beforetoolbarcreated={toolbar => {
@@ -147,7 +145,7 @@ export default class HandlingEvents extends React.Component<any, {}> {
                         ready={this.signOnAllEvents}
                         report="https://cdn.flexmonster.com/github/demo-report.json"
                     //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
-                    />}
+                    />
                 </div>
 
                 <div className="section">
