@@ -1,35 +1,44 @@
+// Must be a client component because we pass function in the beforetoolbarcreated param
 "use client"
 import * as React from "react";
 import LogsList from "@/UIElements/LogsList";
 import ToggleButton from "@/UIElements/ToggleButton";
-import * as FlexmonsterReact from "react-flexmonster";
+// Types are static, so we can safely import it for use in references
+import type {Pivot} from "react-flexmonster";
+import dynamic from "next/dynamic";
 
-export default class HandlingEvents extends React.Component<any, {}> {
+// Wrapper must be imported dynamically, since it contains Flexmonster pivot
+const PivotWrap = dynamic(() => import('@/UIElements/PivotWrapper'), {
+    ssr: false,
+    loading: () => <h1>Loading Flexmonster...</h1>
+  });
 
-    private logs: {
+// Forward ref because PivotWrap is imported dynamically and we need to pass a ref to it
+const ForwardRefPivot = React.forwardRef<Pivot, Flexmonster.Params>((props, ref?: React.ForwardedRef<Pivot>) => 
+  <PivotWrap {...props} pivotRef={ref}/>
+)
+
+export default function HandlingEvents() {
+    // Managing state for functional components
+    const [logs, setLogs] = React.useState<{
         date: Date,
         event: string
-    }[] = [];
+    }[]>([]);
 
-    private isSSR = () => typeof window === 'undefined'; 
+    const pivotRef: React.RefObject<Pivot> = React.useRef<Pivot>(null);
 
-    private pivotRef: React.RefObject<FlexmonsterReact.Pivot> = React.createRef<FlexmonsterReact.Pivot>();
-    private flexmonster!: Flexmonster.Pivot;
-
-    constructor(props: any) {
-        super(props);
-
-        this.state = {
-            logs: []
+    // Hook that fires every re-render on the client
+    React.useEffect(() => {
+        const logsContainer = document.querySelector(".event-logs-wrapper .content");
+        if (logsContainer) {
+            console.log(logsContainer);
+            logsContainer.scrollTop = logsContainer.scrollHeight;
         }
-    }
-
-    componentDidMount() {
-        this.flexmonster = this.pivotRef.current!.flexmonster;
-    }
+    // logs is passed here so we can subscribe to its changes
+    }, [logs])
 
     //the list of all supported events
-    eventList = [
+    const eventList = [
         "afterchartdraw",
         "aftergriddraw",
         "beforegriddraw",
@@ -71,91 +80,80 @@ export default class HandlingEvents extends React.Component<any, {}> {
         "update",
     ];
 
-    printLog = (event: string) => {
-        this.logs.push({
-            date: new Date(),
+    const printLog = (event: string) => {
+        logs.push({
+            date: new Date(), 
             event: event
         });
-        this.setState({
-            logs: this.logs
-        })
-        requestAnimationFrame(() => {
-            const logsContainer: HTMLElement | null = document.getElementById("logsContainer");
-            if (logsContainer) {
-                logsContainer.scrollTop = logsContainer.scrollHeight;
-            }
-        });
+        // This will fire a state change
+        setLogs([...logs]);
     }
 
-    eventsSignerController = (isSigned: boolean) => {
-        isSigned ? this.signOnAllEvents() : this.signOffAllEvents();
+    const eventsSignerController = (isSigned: boolean) => {
+        isSigned ? signOnAllEvents() : signOffAllEvents();
     }
 
-    signOffAllEvents = () => {
-        for (const eventName of this.eventList) {
+    const signOffAllEvents = () => {
+        for (const eventName of eventList) {
             // remove all handlers for specified event
-            this.flexmonster.off(eventName);
+            pivotRef.current?.flexmonster.off(eventName);
         }
     }
 
-    signOnAllEvents = () => {
-        for (const eventName of this.eventList) {
+    const signOnAllEvents = () => {
+        for (const eventName of eventList) {
             // add handler for specified event
-            this.flexmonster.on(eventName, () => {
-                this.printLog(eventName);
+            pivotRef.current?.flexmonster.on(eventName, () => {
+                printLog(eventName);
             });
         }
     }
 
-    clearLogs = () => {
-        this.logs.length = 0;
-        this.setState({
-            logs: []
-        })
+    const clearLogs = () => {
+        // This will fire a state change
+        setLogs((_) => [])
     }
 
-    render() {
+    return (
+        <>
+            <h3 className="title-one page-title">Handling Flexmonster events</h3>
 
-        return (
-            <>
-                <h3 className="title-one page-title">Handling Flexmonster events</h3>
+            <div className="description-blocks first-description-block">
+                <p>
+                    Perform an action (for example, click on a grid cell) to trigger a <a className="title-link" target="blank" rel="noopener noreferrer"
+                        href="https://www.flexmonster.com/api/events/?r=rm_react">Flexmonster event</a>
+                    . Scroll down to the log output to see which events get triggered.
+                </p>
+            </div>
 
-                <div className="description-blocks first-description-block">
-                    <p>
-                        Perform an action (for example, click on a grid cell) to trigger a <a className="title-link" target="blank" rel="noopener noreferrer"
-                            href="https://www.flexmonster.com/api/events/?r=rm_react">Flexmonster event</a>
-                        . Scroll down to the log output to see which events get triggered.
-                    </p>
-                </div>
+            <div className="description-blocks">
+                <ToggleButton triggerFunction={eventsSignerController} labelChecked="Events are tracked" labelUnChecked="Events are not tracked" />
+            </div>
 
-                <div className="description-blocks">
-                    <ToggleButton triggerFunction={this.eventsSignerController} labelChecked="Events are tracked" labelUnChecked="Events are not tracked" />
-                </div>
-
-                <div>
-                    {!this.isSSR() && <FlexmonsterReact.Pivot
-                        ref={this.pivotRef}
-                        toolbar={true}
-                        beforetoolbarcreated={toolbar => {
-                            toolbar.showShareReportTab = true;
-                        }}
-                        shareReportConnection={{
-                            url: "https://olap.flexmonster.com:9500"
-                        }}
-                        width="100%"
-                        height={600}
-                        ready={this.signOnAllEvents}
-                        report="https://cdn.flexmonster.com/github/demo-report.json"
+            <div>
+                <ForwardRefPivot
+                    ref={pivotRef}
+                    toolbar={true}
+                    // Can't be serialized, so this must be a client component
+                    beforetoolbarcreated={toolbar => {
+                        toolbar.showShareReportTab = true;
+                    }}
+                    shareReportConnection={{
+                        url: "https://olap.flexmonster.com:9500"
+                    }}
+                    width="100%"
+                    height={600}
+                    ready={signOnAllEvents}
+                    report="https://cdn.flexmonster.com/github/demo-report.json"
                     //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
-                    />}
-                </div>
+                />
+            </div>
 
-                <div className="section">
-                    <LogsList title="Log Output" logsList={this.logs} />
-                    <button className="button-red" onClick={this.clearLogs}>Clear Log Output</button>
-                </div>
-            </>
-        );
-    }
+            <div className="section">
+                <LogsList title="Log Output" logsList={logs} />
+                <button className="button-red" onClick={clearLogs}>Clear Log Output</button>
+            </div>
+        </>
+    );
 
 }
