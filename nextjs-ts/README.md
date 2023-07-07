@@ -1,4 +1,4 @@
-# Flexmonster Pivot Table & Charts integration with React + Next.js + TypeScript
+# Flexmonster Pivot Table & Charts integration with Next.js + TypeScript
 [![Flexmonster Pivot Table & Charts](https://cdn.flexmonster.com/landing.png)](http://flexmonster.com/?r=rm_react)
 Website: [www.flexmonster.com](https://www.flexmonster.com/?r=rm_react)
 
