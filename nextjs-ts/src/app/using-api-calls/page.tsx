@@ -1,59 +1,66 @@
+// Must be a client component because we pass function in the beforetoolbarcreated param
 "use client"
-import * as React from 'react';
+import * as React from "react";
 import ToggleSwitch from '@/UIElements/ToggleSwitch';
-import * as FlexmonsterReact from 'react-flexmonster';
-import 'flexmonster';
+// Types are static, so we can safely import it for use in references
+import type { Pivot } from "react-flexmonster";
+import dynamic from "next/dynamic";
 
-class UsingAPICalls extends React.Component<any, {}> {
+// Wrapper must be imported dynamically, since it contains Flexmonster pivot
+const PivotWrap = dynamic(() => import('@/UIElements/PivotWrapper'), {
+    ssr: false,
+    loading: () => <h1>Loading Flexmonster...</h1>
+});
 
-    private pivotRef: React.RefObject<FlexmonsterReact.Pivot> = React.createRef<FlexmonsterReact.Pivot>();
-    private flexmonster!: Flexmonster.Pivot;
+// Forward ref because PivotWrap is imported dynamically and we need to pass a ref to it
+const ForwardRefPivot = React.forwardRef<Pivot, Flexmonster.Params>((props, ref?: React.ForwardedRef<Pivot>) =>
+    <PivotWrap {...props} pivotRef={ref} />
+)
 
-    componentDidMount() {
-        this.flexmonster = this.pivotRef.current!.flexmonster;
+export default function UsingAPICalls() {
+
+    const pivotRef: React.RefObject<Pivot> = React.useRef<Pivot>(null);
+
+    const controllGridCharts = (isGrid: boolean) => {
+        isGrid ? showGrid() : showChart();
     }
 
-    controllGridCharts = (isGrid: boolean) => {
-        isGrid ? this.showGrid() : this.showChart();
+    const controllInteractiveness = (isInteractive: boolean) => {
+        isInteractive ? interactive() : readOnly()
     }
 
-    controllInteractiveness = (isInteractive: boolean) => {
-        isInteractive ? this.interactive() : this.readOnly()
+    const showChart = () => {
+        pivotRef.current?.flexmonster.showCharts("column");
     }
 
-    showChart = () => {
-        this.flexmonster.showCharts("column");
+    const showGrid = () => {
+        pivotRef.current?.flexmonster.showGrid();
     }
 
-    showGrid = () => {
-        this.flexmonster.showGrid();
-    }
-
-    readOnly = () => {
-        this.flexmonster.setOptions({
+    const readOnly = () => {
+        pivotRef.current?.flexmonster.setOptions({
             readOnly: true
         });
-        this.flexmonster.refresh();
+        pivotRef.current?.flexmonster.refresh();
     }
 
-    interactive = () => {
-        this.flexmonster.setOptions({
+    const interactive = () => {
+        pivotRef.current?.flexmonster.setOptions({
             readOnly: false
         });
-        this.flexmonster.refresh();
+        pivotRef.current?.flexmonster.refresh();
     }
 
-    hideContextMenu = () => {
-        this.flexmonster.customizeContextMenu(() => {
+    const hideContextMenu = () => {
+        pivotRef.current?.flexmonster.customizeContextMenu(() => {
             return [];
         });
     }
 
-    showContextMenu = () => {
-        this.flexmonster.customizeContextMenu(null as any);
+    const showContextMenu = () => {
+        pivotRef.current?.flexmonster.customizeContextMenu(null as any);
     }
 
-    render() {
         return (
             <>
                 <h1 className="page-title">Using Flexmonster API calls</h1>
@@ -67,12 +74,12 @@ class UsingAPICalls extends React.Component<any, {}> {
                 </div>
 
                 <div className="description-blocks">
-                    <ToggleSwitch triggerFunction={this.controllGridCharts} labelChecked="Grid" labelUnChecked="Column chart" />
-                    <ToggleSwitch triggerFunction={this.controllInteractiveness} labelChecked="Interactive" labelUnChecked="Read-only" />
+                    <ToggleSwitch triggerFunction={controllGridCharts} labelChecked="Grid" labelUnChecked="Column chart" />
+                    <ToggleSwitch triggerFunction={controllInteractiveness} labelChecked="Interactive" labelUnChecked="Read-only" />
                 </div>
 
-                <FlexmonsterReact.Pivot
-                    ref={this.pivotRef}
+                <ForwardRefPivot
+                    ref={pivotRef}
                     toolbar={true}
                     beforetoolbarcreated={toolbar => {
                         toolbar.showShareReportTab = true;
@@ -88,8 +95,6 @@ class UsingAPICalls extends React.Component<any, {}> {
                 />
             </>
         );
-    }
+    
 
 }
-
-export default UsingAPICalls;

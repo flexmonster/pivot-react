@@ -1,19 +1,27 @@
+// Must be a client component because we pass function in the beforetoolbarcreated param
 "use client"
 import * as React from "react";
-import * as FlexmonsterReact from 'react-flexmonster';
-import ToggleButton from '@/UIElements/ToggleButton';
-import 'flexmonster';
+import ToggleButton from "@/UIElements/ToggleButton";
+// Types are static, so we can safely import it for use in references
+import type {Pivot} from "react-flexmonster";
+import dynamic from "next/dynamic";
 
-export default class CustomizingGrid extends React.Component<any, {}> {
+// Wrapper must be imported dynamically, since it contains Flexmonster pivot
+const PivotWrap = dynamic(() => import('@/UIElements/PivotWrapper'), {
+    ssr: false,
+    loading: () => <h1>Loading Flexmonster...</h1>
+  });
 
-    private pivotRef: React.RefObject<FlexmonsterReact.Pivot> = React.createRef<FlexmonsterReact.Pivot>();
-    private flexmonster!: Flexmonster.Pivot;
+// Forward ref because PivotWrap is imported dynamically and we need to pass a ref to it
+const ForwardRefPivot = React.forwardRef<Pivot, Flexmonster.Params>((props, ref?: React.ForwardedRef<Pivot>) => 
+  <PivotWrap {...props} pivotRef={ref}/>
+)
 
-    componentDidMount() {
-        this.flexmonster = this.pivotRef.current!.flexmonster;
-    }
+export default function CustomizingGrid() {
 
-    customizeCellFunction = (cell: Flexmonster.CellBuilder, data: Flexmonster.CellData) => {
+    const pivotRef: React.RefObject<Pivot> = React.useRef<Pivot>(null);
+
+    const customizeCellFunction = (cell: Flexmonster.CellBuilder, data: Flexmonster.CellData) => {
         if (data.measure && data.measure.uniqueName === "Price") {
             let backgroundColor = "#00A45A";
             let textShadowColor = "#095231";
@@ -30,20 +38,19 @@ export default class CustomizingGrid extends React.Component<any, {}> {
         }
     }
 
-    controllCustomization = (isCustomized: boolean) => {
-        isCustomized ? this.applyCustomization() : this.removeCustomization()
+    const controllCustomization = (isCustomized: boolean) => {
+        isCustomized ? applyCustomization() : removeCustomization()
     }
 
-    removeCustomization = () => {
-        this.flexmonster.customizeCell((null as any));
+    const removeCustomization = () => {
+        pivotRef.current?.flexmonster.customizeCell((null as any));
     }
 
-    applyCustomization = () => {
+    const applyCustomization = () => {
         //running grid customization using "customizeCellFunction"
-        this.flexmonster.customizeCell(this.customizeCellFunction);
+        pivotRef.current?.flexmonster.customizeCell(customizeCellFunction);
     }
 
-    render() {
         return (
             <>
                 <h1 className="page-title">Customizing the grid</h1>
@@ -56,11 +63,11 @@ export default class CustomizingGrid extends React.Component<any, {}> {
                 </div>
 
                 <div className="description-blocks">
-                    <ToggleButton triggerFunction={this.controllCustomization} labelChecked="The grid cells are customized" labelUnChecked="The grid cells are not customized" />
+                    <ToggleButton triggerFunction={controllCustomization} labelChecked="The grid cells are customized" labelUnChecked="The grid cells are not customized" />
                 </div>
 
-                <FlexmonsterReact.Pivot
-                    ref={this.pivotRef}
+                <ForwardRefPivot
+                    ref={pivotRef}
                     toolbar={true}
                     beforetoolbarcreated={toolbar => {
                         toolbar.showShareReportTab = true;
@@ -71,10 +78,10 @@ export default class CustomizingGrid extends React.Component<any, {}> {
                     width="100%"
                     height={600}
                     report="https://cdn.flexmonster.com/github/customizing-grid-report.json"
-                    customizeCell={this.customizeCellFunction}
+                    customizeCell={customizeCellFunction}
                     //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
                 />
             </>
         );
-    }
+    
 }
