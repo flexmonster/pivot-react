@@ -1,43 +1,51 @@
+// Must be a client component because we pass function in the beforetoolbarcreated param
 "use client"
-import React, { Component } from 'react';
-import * as FlexmonsterReact from 'react-flexmonster';
+import * as React from "react";
+// Types are static, so we can safely import it for use in references
+import type { Pivot } from "react-flexmonster";
+import dynamic from "next/dynamic";
 
-// Importing Flexmonster Connector for amCharts
-import "flexmonster/lib/flexmonster.amcharts.js";
+// Wrapper must be imported dynamically, since it contains Flexmonster pivot
+const PivotWrap = dynamic(() => import('@/UIElements/PivotWrapper'), {
+    ssr: false,
+    loading: () => <h1>Loading Flexmonster...</h1>
+});
+
+// Forward ref because PivotWrap is imported dynamically and we need to pass a ref to it
+const ForwardRefPivot = React.forwardRef<Pivot, Flexmonster.Params>((props, ref?: React.ForwardedRef<Pivot>) =>
+    <PivotWrap {...props} pivotRef={ref} />
+)
 
 // amCharts imports
 import * as am4core from '@amcharts/amcharts4/core';
 import * as am4charts from '@amcharts/amcharts4/charts';
 import am4themes_animated from '@amcharts/amcharts4/themes/animated';
 
-class WithAmcharts4 extends Component {
 
-    private pivotRef: React.RefObject<FlexmonsterReact.Pivot> = React.createRef<FlexmonsterReact.Pivot>();
-    private flexmonster!: Flexmonster.Pivot;
-    private chart!: am4charts.PieChart;
+export default function WithAmcharts4() {
 
-    componentDidMount() {
-        this.flexmonster = this.pivotRef.current!.flexmonster;
-    }
+    const pivotRef: React.RefObject<Pivot> = React.useRef<Pivot>(null);
+    let chart!: am4charts.PieChart;
 
-    reportComplete = () => {
-        this.flexmonster.off("reportComplete", this.reportComplete);
+
+    const reportComplete = () => {
+        pivotRef.current!.flexmonster.off("reportComplete", reportComplete);
         //creating charts after Flexmonster instance is launched
-        this.drawChart();
+        drawChart();
     }
 
-    drawChart = () => {
+    const drawChart = () => {
         //Running Flexmonster's getData method for amCharts
-        this.flexmonster.amcharts?.getData(
+        pivotRef.current!.flexmonster.amcharts?.getData(
             {},
-            this.createChart.bind(this),
-            this.updateChart.bind(this)
+            createChart,
+            updateChart
         );
     }
 
-    createChart = (chartData: Flexmonster.GetDataValueObject, rawData: Flexmonster.GetDataValueObject) => {
+    const createChart = (chartData: Flexmonster.GetDataValueObject, rawData: Flexmonster.GetDataValueObject) => {
 
-        if (this.flexmonster && this.flexmonster.amcharts) {
+        if (pivotRef.current!.flexmonster && pivotRef.current!.flexmonster.amcharts) {
             /* Apply amCharts theme */
             am4core.useTheme(am4themes_animated);
 
@@ -52,8 +60,8 @@ class WithAmcharts4 extends Component {
 
             /* Create and configure series for a pie chart */
             var pieSeries = chart.series.push(new am4charts.PieSeries());
-            pieSeries.dataFields.category = this.flexmonster.amcharts.getCategoryName(rawData);
-            pieSeries.dataFields.value = this.flexmonster.amcharts.getMeasureNameByIndex(rawData, 0);
+            pieSeries.dataFields.category = pivotRef.current!.flexmonster.amcharts.getCategoryName(rawData);
+            pieSeries.dataFields.value = pivotRef.current!.flexmonster.amcharts.getMeasureNameByIndex(rawData, 0);
             pieSeries.slices.template.stroke = am4core.color("#fff");
             pieSeries.slices.template.strokeWidth = 2;
             pieSeries.slices.template.strokeOpacity = 1;
@@ -63,55 +71,45 @@ class WithAmcharts4 extends Component {
             pieSeries.hiddenState.properties.endAngle = -90;
             pieSeries.hiddenState.properties.startAngle = -90;
 
-            this.chart = chart;
+            chart = chart;
         }
 
     }
 
-    updateChart = (chartData: Flexmonster.GetDataValueObject, rawData: Flexmonster.GetDataValueObject) => {
-        this.chart.dispose();
-        this.createChart(chartData, rawData)
+    const updateChart = (chartData: Flexmonster.GetDataValueObject, rawData: Flexmonster.GetDataValueObject) => {
+        chart.dispose();
+        createChart(chartData, rawData)
     }
 
-    componentWillUnmount() {
-        if (this.chart) {
-            this.chart.dispose();
-        }
-    }
+    return (
+        <div className="App">
+            <h1 className="page-title">Integrating with amCharts</h1>
 
-    render() {
-        return (
-            <div className="App">
-                <h1 className="page-title">Integrating with amCharts</h1>
-
-                <div className="description-blocks first-description-block">
-                    <p>Extend Flexmonster’s visualization functionality by integrating with the amCharts 
-                        library: <a href="https://www.flexmonster.com/doc/integration-with-amcharts/?r=rm_react" target="_blank" rel="noopener noreferrer" className="title-link">Integration with amCharts</a>.
-                    </p>
-                </div>
-
-                <FlexmonsterReact.Pivot
-                    ref={this.pivotRef}
-                    toolbar={true}
-                    beforetoolbarcreated={toolbar => {
-                        toolbar.showShareReportTab = true;
-                    }}
-                    shareReportConnection={{
-                        url: "https://olap.flexmonster.com:9500"
-                    }}
-                    width="100%"
-                    height={600}
-                    report="https://cdn.flexmonster.com/github/demo-report.json"
-                    licenseFilePath="https://cdn.flexmonster.com/jsfiddle.charts.key"
-                    reportcomplete={this.reportComplete}
-                    //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
-                />
-                <div className="chart-container">
-                    <div id="chartContainer" style={{ width: "100%", height: "500px" }}></div>
-                </div>
+            <div className="description-blocks first-description-block">
+                <p>Extend Flexmonster’s visualization functionality by integrating with the amCharts
+                    library: <a href="https://www.flexmonster.com/doc/integration-with-amcharts/?r=rm_react" target="_blank" rel="noopener noreferrer" className="title-link">Integration with amCharts</a>.
+                </p>
             </div>
-        );
-    }
-}
 
-export default WithAmcharts4;
+            <ForwardRefPivot
+                ref={pivotRef}
+                toolbar={true}
+                beforetoolbarcreated={toolbar => {
+                    toolbar.showShareReportTab = true;
+                }}
+                shareReportConnection={{
+                    url: "https://olap.flexmonster.com:9500"
+                }}
+                width="100%"
+                height={600}
+                report="https://cdn.flexmonster.com/github/demo-report.json"
+                licenseFilePath="https://cdn.flexmonster.com/jsfiddle.charts.key"
+                reportcomplete={reportComplete}
+            //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
+            />
+            <div className="chart-container">
+                <div id="chartContainer" style={{ width: "100%", height: "500px" }}></div>
+            </div>
+        </div>
+    );
+}

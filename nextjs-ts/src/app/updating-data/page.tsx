@@ -1,18 +1,26 @@
+// Must be a client component because we pass function in the beforetoolbarcreated param
 "use client"
-import * as React from 'react';
-import * as FlexmonsterReact from 'react-flexmonster';
-import 'flexmonster';
+import * as React from "react";
+// Types are static, so we can safely import it for use in references
+import type { Pivot } from "react-flexmonster";
+import dynamic from "next/dynamic";
 
-export default class UpdatingData extends React.Component {
+// Wrapper must be imported dynamically, since it contains Flexmonster pivot
+const PivotWrap = dynamic(() => import('@/UIElements/PivotWrapper'), {
+    ssr: false,
+    loading: () => <h1>Loading Flexmonster...</h1>
+});
 
-    private pivotRef: React.RefObject<FlexmonsterReact.Pivot> = React.createRef<FlexmonsterReact.Pivot>();
-    private flexmonster!: Flexmonster.Pivot;
+// Forward ref because PivotWrap is imported dynamically and we need to pass a ref to it
+const ForwardRefPivot = React.forwardRef<Pivot, Flexmonster.Params>((props, ref?: React.ForwardedRef<Pivot>) =>
+    <PivotWrap {...props} pivotRef={ref} />
+)
 
-    componentDidMount() {
-        this.flexmonster = this.pivotRef.current!.flexmonster;
-    }
+export default function UpdatingData() {
 
-    data = [
+    const pivotRef: React.RefObject<Pivot> = React.useRef<Pivot>(null);
+
+    let data = [
         {
             Category: "Accessories",
             Size: "262 oz",
@@ -37,14 +45,14 @@ export default class UpdatingData extends React.Component {
         },
     ];
 
-    onReady = () => {
+    const onReady = () => {
         // Connect Flexmonster to the data
-        this.flexmonster.connectTo({ data: this.data });
+        pivotRef.current?.flexmonster.connectTo({ data: data });
     }
 
-    updateTheData = () => {
+    const updateTheData = () => {
         // If the data in React got updated, for example:
-        this.data = [
+        data = [
             {
                 Category: "Accessories",
                 Size: "262 oz",
@@ -70,41 +78,40 @@ export default class UpdatingData extends React.Component {
         ];
         // then the data needs to be updated in Flexmonster as well
         // this can be done via Flexmonster's updateData() API call:
-        this.flexmonster.updateData({ data: this.data });
+        pivotRef.current?.flexmonster.updateData({ data: data });
     }
 
-    render() {
-        return (
-            <>
-                <h1 className="title-one page-title">Updating the data in Flexmonster</h1>
+    return (
+        <>
+            <h1 className="title-one page-title">Updating the data in Flexmonster</h1>
 
-                <div className="description-blocks first-description-block">
-                    <p>
-                        This demo shows how to refresh the data at runtime and keep the slice, options, and formatting the same.
-                    </p>
-                    <p>Try it yourself: configure the component as you wish and click the <strong>UPDATE DATA</strong> button.</p>
-                    <p>Learn more about updating the data
-                        in <a href="https://www.flexmonster.com/api/updatedata/?r=rm_react" target="_blank" rel="noopener noreferrer" className="title-link">our documentation</a>.
-                    </p>
-                </div>
+            <div className="description-blocks first-description-block">
+                <p>
+                    This demo shows how to refresh the data at runtime and keep the slice, options, and formatting the same.
+                </p>
+                <p>Try it yourself: configure the component as you wish and click the <strong>UPDATE DATA</strong> button.</p>
+                <p>Learn more about updating the data
+                    in <a href="https://www.flexmonster.com/api/updatedata/?r=rm_react" target="_blank" rel="noopener noreferrer" className="title-link">our documentation</a>.
+                </p>
+            </div>
 
-                <button className="button-red" onClick={this.updateTheData}>Update data</button>
+            <button className="button-red" onClick={updateTheData}>Update data</button>
 
-                <FlexmonsterReact.Pivot
-                    ref={this.pivotRef}
-                    toolbar={true}
-                    beforetoolbarcreated={toolbar => {
-                        toolbar.showShareReportTab = true;
-                    }}
-                    shareReportConnection={{
-                        url: "https://olap.flexmonster.com:9500"
-                    }}
-                    width="100%"
-                    height={400}
-                    ready={this.onReady}
-                    //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
-                />
-            </>
-        );
-    }
+            <ForwardRefPivot
+                ref={pivotRef}
+                toolbar={true}
+                beforetoolbarcreated={toolbar => {
+                    toolbar.showShareReportTab = true;
+                }}
+                shareReportConnection={{
+                    url: "https://olap.flexmonster.com:9500"
+                }}
+                width="100%"
+                height={400}
+                ready={onReady}
+            //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
+            />
+        </>
+    );
+
 }

@@ -31,7 +31,6 @@ export default function HandlingEvents() {
     React.useEffect(() => {
         const logsContainer = document.querySelector(".event-logs-wrapper .content");
         if (logsContainer) {
-            console.log(logsContainer);
             logsContainer.scrollTop = logsContainer.scrollHeight;
         }
     // logs is passed here so we can subscribe to its changes

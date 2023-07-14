@@ -1,30 +1,35 @@
+// Must be a client component because we pass function in the beforetoolbarcreated param
 "use client"
-import * as React from 'react';
-import * as FlexmonsterReact from 'react-flexmonster';
-import 'flexmonster';
+import * as React from "react";
+// Types are static, so we can safely import it for use in references
+import type { Pivot } from "react-flexmonster";
+import dynamic from "next/dynamic";
 
-import 'flexmonster/lib/flexmonster.highcharts.js';
+// Wrapper must be imported dynamically, since it contains Flexmonster pivot
+const PivotWrap = dynamic(() => import('@/UIElements/PivotWrapper'), {
+    ssr: false,
+    loading: () => <h1>Loading Flexmonster...</h1>
+});
+
+// Forward ref because PivotWrap is imported dynamically and we need to pass a ref to it
+const ForwardRefPivot = React.forwardRef<Pivot, Flexmonster.Params>((props, ref?: React.ForwardedRef<Pivot>) =>
+    <PivotWrap {...props} pivotRef={ref} />
+)
 import * as Highcharts from 'highcharts';
 
+export default function WithHighcharts() {
 
-class WithHighcharts extends React.Component<any, {}> {
+    const pivotRef: React.RefObject<Pivot> = React.useRef<Pivot>(null);
 
-    private pivotRef: React.RefObject<FlexmonsterReact.Pivot> = React.createRef<FlexmonsterReact.Pivot>();
-    private flexmonster!: Flexmonster.Pivot;
-
-    componentDidMount() {
-        this.flexmonster = this.pivotRef.current!.flexmonster;
-    }
-
-    reportComplete = () => {
-        this.flexmonster.off("reportComplete", this.reportComplete);
+    const reportComplete = () => {
+        pivotRef.current!.flexmonster.off("reportComplete", reportComplete);
         //creating charts after Flexmonster instance is launched
-        this.createChart();
+        createChart();
     }
 
-    createChart = () => {
+    const createChart = () => {
         //Running Flexmonster's getData method for Highcharts
-        this.flexmonster.highcharts?.getData(
+        pivotRef.current!.flexmonster.highcharts?.getData(
             {
                 type: "spline"
             },
@@ -37,41 +42,35 @@ class WithHighcharts extends React.Component<any, {}> {
         );
     }
 
+    return (
+        <div className="App">
+            <h1 className="page-title">Integrating with Highcharts</h1>
 
-
-    render() {
-        return (
-            <div className="App">
-                <h1 className="page-title">Integrating with Highcharts</h1>
-
-                <div className="description-blocks first-description-block">
-                    <p>Integrate Flexmonster with Highcharts and see your data from a new 
-                        perspective: <a href="https://www.flexmonster.com/doc/integration-with-highcharts/?r=rm_react" target="_blank" rel="noopener noreferrer" className="title-link">Integration with Highcharts</a>.
-                    </p>
-                </div>
-
-                <FlexmonsterReact.Pivot
-                    ref={this.pivotRef}
-                    toolbar={true}
-                    beforetoolbarcreated={toolbar => {
-                        toolbar.showShareReportTab = true;
-                    }}
-                    shareReportConnection={{
-                        url: "https://olap.flexmonster.com:9500"
-                    }}
-                    width="100%"
-                    height={600}
-                    report="https://cdn.flexmonster.com/github/highcharts-report.json"
-                    licenseFilePath="https://cdn.flexmonster.com/jsfiddle.charts.key"
-                    reportcomplete={this.reportComplete}
-                    //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
-                />
-                <div className="chart-container">
-                    <div id="highcharts-container"></div>
-                </div>
+            <div className="description-blocks first-description-block">
+                <p>Integrate Flexmonster with Highcharts and see your data from a new
+                    perspective: <a href="https://www.flexmonster.com/doc/integration-with-highcharts/?r=rm_react" target="_blank" rel="noopener noreferrer" className="title-link">Integration with Highcharts</a>.
+                </p>
             </div>
-        );
-    }
-}
 
-export default WithHighcharts;
+            <ForwardRefPivot
+                ref={pivotRef}
+                toolbar={true}
+                beforetoolbarcreated={toolbar => {
+                    toolbar.showShareReportTab = true;
+                }}
+                shareReportConnection={{
+                    url: "https://olap.flexmonster.com:9500"
+                }}
+                width="100%"
+                height={600}
+                report="https://cdn.flexmonster.com/github/highcharts-report.json"
+                licenseFilePath="https://cdn.flexmonster.com/jsfiddle.charts.key"
+                reportcomplete={reportComplete}
+            //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
+            />
+            <div className="chart-container">
+                <div id="highcharts-container"></div>
+            </div>
+        </div>
+    );
+}
