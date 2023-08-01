@@ -34,6 +34,12 @@ git clone https://github.com/flexmonster/pivot-react.git && cd pivot-react
     cd ES6
     ```
 
+    - To see how the **React+TypeScript** project works, run the following command:
+
+    ```bash
+    cd typescript
+    ```
+
 3. Install the npm dependencies described in `package.json`:
 
 ```bash
