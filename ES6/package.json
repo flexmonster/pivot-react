@@ -1,38 +1,32 @@
 {
-  "name": "react-test",
-  "version": "1.0.0",
+  "name": "pivot-react",
   "private": true,
+  "version": "0.0.0",
+  "type": "commonjs",
+  "scripts": {
+    "start": "vite --open",
+    "build": "vite build",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
+  },
   "dependencies": {
-    "@amcharts/amcharts4": "^4.10.17",
-    "@amcharts/amcharts5": "^5.3.3",
-    "dotenv": "^16.0.3",
-    "express": "^4.18.2",
-    "highcharts": "^10.3.2",
-    "livereload": "^0.9.3",
-    "path": "^0.12.7",
-    "prop-types": "^15.7.2",
+    "@amcharts/amcharts4": "^4.10.36",
+    "@amcharts/amcharts5": "^5.4.1",
+    "highcharts": "^11.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-flexmonster": "latest",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "^3.4.3"
+    "react-flexmonster": "^2.9.56",
+    "react-router-dom": "^6.14.2"
   },
-  "overrides": {
-    "css-select": "^5.1.0"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "NODE_OPTIONS=--openssl-legacy-provider react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  "devDependencies": {
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "@vitejs/plugin-react": "^4.0.3",
+    "eslint": "^8.45.0",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.3",
+    "express": "^4.18.2",
+    "vite": "^4.4.5"
+  }
 }
