@@ -6,6 +6,7 @@
     "start": "npm run open-browser & next dev",
     "open-browser": "open-cli http://localhost:3000",
     "build": "next build",
+    "dev": "next dev",
     "prod": "next start",
     "lint": "next lint"
   },
