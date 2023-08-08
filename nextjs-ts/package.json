@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "npm run open-browser && next dev",
+    "start": "npm run open-browser & next dev",
     "open-browser": "open-cli http://localhost:3000",
     "build": "next build",
     "prod": "next start",
