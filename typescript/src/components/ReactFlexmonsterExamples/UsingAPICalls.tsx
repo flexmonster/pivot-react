@@ -43,15 +43,15 @@ const UsingAPICalls = () => {
     flexmonster?.refresh();
   };
 
-  const hideContextMenu = () => {
-    flexmonster?.customizeContextMenu?.(() => []);
-  };
+  // const hideContextMenu = () => {
+  //   flexmonster?.customizeContextMenu?.(() => []);
+  // };
 
-  const showContextMenu = () => {
-    flexmonster?.customizeContextMenu?.((items) => {
-      return items;
-    });
-  };
+  // const showContextMenu = () => {
+  //   flexmonster?.customizeContextMenu?.((items) => {
+  //     return items;
+  //   });
+  // };
 
   return (
     <>
