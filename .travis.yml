@@ -21,6 +21,8 @@ beforescript:
 - chmod +x ./framework-integration-testing/launchScripts/react/reactKillPorts.sh
 script:
 - bash ./framework-integration-testing/launchScripts/react/reactES6.sh
+- bash ./framework-integration-testing/launchScripts/react/reactTestLaunch.sh
+- bash ./framework-integration-testing/launchScripts/react/reactKillPorts.sh
 - bash ./framework-integration-testing/launchScripts/react/reactTypescript.sh
 - bash ./framework-integration-testing/launchScripts/react/reactTestLaunch.sh
 - bash ./framework-integration-testing/launchScripts/react/reactKillPorts.sh
