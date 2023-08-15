@@ -43,4 +43,4 @@ To see the result, open `http://localhost:3000/` in your browser.
 ## Related Flexmonster docs
 
 - [Integration with React](https://www.flexmonster.com/doc/integration-with-react/?r=gh_react) — learn how to integrate Flexmonster into a React project.
-- [Usage examples in React](https://www.flexmonster.com/doc/flexmonster-in-react/?r=gh_react) — see details on Flexmonster usage.
+- [Usage examples in React](https://www.flexmonster.com/doc/usage-examples-react/?r=gh_react) — see details on Flexmonster usage.
