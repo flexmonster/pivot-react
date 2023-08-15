@@ -18,8 +18,8 @@ function ExamplesContainer() {
             <Routes>
                 <Route path="/pivot-table-demo" element={<PivotTableDemo/>}/>
                 <Route path="/with-highcharts" element={<WithHighcharts/>}/>
-                <Route path="/with-amcharts" element={<WithAmcharts4/>}/> 
-                <Route path="/with-amcharts5" element={<WithAmcharts/>}/> 
+                <Route path="/with-amcharts4" element={<WithAmcharts4/>}/> 
+                <Route path="/with-amcharts" element={<WithAmcharts/>}/> 
                 <Route path="/using-api-calls" element={<UsingAPICalls/>}/>
                 <Route path="/handling-events" element={<HandlingEvents/>}/>
                 <Route path="/updating-data" element={<UpdatingData/>}/>
