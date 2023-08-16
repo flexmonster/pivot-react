@@ -109,34 +109,45 @@ export default function WithAmcharts() {
 
     return (
         <div className="App">
-            <h1 className="page-title">Integrating with amCharts</h1>
+        <h1 className="page-title">Integrating with amCharts</h1>
 
-            <div className="description-blocks first-description-block">
-                <p>Extend Flexmonster’s visualization functionality by integrating with the amCharts
-                    library: <a href="https://www.flexmonster.com/doc/integration-with-amcharts/?r=rm_react" target="_blank" rel="noopener noreferrer" className="title-link">Integration with amCharts</a>.
-                </p>
-            </div>
-
-            <ForwardRefPivot
-                ref={pivotRef}
-                toolbar={true}
-                beforetoolbarcreated={toolbar => {
-                    toolbar.showShareReportTab = true;
-                }}
-                shareReportConnection={{
-                    url: "https://olap.flexmonster.com:9500"
-                }}
-                width="100%"
-                height={600}
-                report="https://cdn.flexmonster.com/github/demo-report.json"
-                licenseFilePath="https://cdn.flexmonster.com/jsfiddle.charts.key"
-                reportcomplete={reportComplete}
-            //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
-            />
-            <div className="chart-container">
-                <div id="chartContainer" style={{ width: "100%", height: "500px" }}></div>
-            </div>
+        <div className="description-blocks first-description-block">
+            <p>
+                Extend Flexmonster’s visualization functionality by integrating
+                with the amCharts library:{' '}
+                <a
+                    href="https://www.flexmonster.com/doc/integration-with-amcharts/?r=rm_react"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="title-link"
+                >
+                    Integration with amCharts
+                </a>
+                .
+            </p>
         </div>
+
+        <ForwardRefPivot
+            ref={pivotRef}
+            toolbar={true}
+            beforetoolbarcreated={toolbar => {
+                toolbar.showShareReportTab = true;
+            }}
+            shareReportConnection={{
+                url: "https://olap.flexmonster.com:9500"
+            }}
+            width="100%"
+            height={600}
+            report="https://cdn.flexmonster.com/github/demo-report.json"
+            licenseFilePath="https://cdn.flexmonster.com/jsfiddle.charts.key"
+        />
+        <div className="chart-container">
+            <div
+                id="amcharts-container"
+                style={{ width: '100%', height: '500px' }}
+            ></div>
+        </div>
+    </div>
     );
 
 }

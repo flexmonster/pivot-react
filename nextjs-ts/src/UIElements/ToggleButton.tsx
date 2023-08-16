@@ -1,52 +1,30 @@
-"use client"
-import React from "react";
+import React, { useState } from "react";
 
-interface IProps {
+interface ToggleButtonProps {
     labelChecked: string;
     labelUnChecked: string;
+    id: string;
     triggerFunction: (state: boolean) => void;
 }
 
-interface IState {
-    isChecked: boolean;
-}
+const ToggleButton: React.FC<ToggleButtonProps> = (props) => {
+    const { labelChecked, labelUnChecked, triggerFunction, id } = props;
+    const [isChecked, setIsChecked] = useState<boolean>(true);
 
-export default class ToggleButton extends React.Component<IProps, IState> {
+    const onToggleSwitchClicked = () => {
+        const newState = !isChecked;
+        triggerFunction(newState);
+        setIsChecked(newState);
+    };
 
-    labelChecked: string;
-    labelUnChecked: string;
+    return (
+        <div className="toggle-button noselect" id={id} onClick={onToggleSwitchClicked}>
+            <input className="button-checkbox" id={labelChecked} type="checkbox" checked={isChecked} readOnly />
+            <label className="button-checkbox-label">
+                <span className="on">{isChecked ? labelChecked : labelUnChecked}</span>
+            </label>
+        </div>
+    );
+};
 
-    constructor(props: IProps) {
-        super(props);
-
-        this.state = {
-            isChecked: true
-        };
-        this.labelChecked = props.labelChecked;
-        this.labelUnChecked = props.labelUnChecked;
-        this.parentsComponentTriggerFunction = props.triggerFunction;
-    }
-
-    parentsComponentTriggerFunction: (state: boolean) => void;
-
-    onToggleSwitchClicked = () => {
-        const newState = !this.state.isChecked;
-        this.parentsComponentTriggerFunction(newState);
-        this.setState({
-            isChecked: newState
-        });
-    }
-
-    render = () => {
-
-        return (
-            <div className="toggle-button noselect" id="id" onClick={this.onToggleSwitchClicked}>
-                <input className="button-checkbox" id="labelOn" type="checkbox" checked={this.state.isChecked} readOnly/>
-                <label className="button-checkbox-label">
-                    <span className="on">{this.state.isChecked ? this.labelChecked: this.labelUnChecked}</span>
-                </label>
-            </div>
-        );
-    }
-
-}
+export default ToggleButton;

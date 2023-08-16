@@ -38,7 +38,7 @@ export default function CustomizingGrid() {
         }
     }
 
-    const controllCustomization = (isCustomized: boolean) => {
+    const controlCustomization = (isCustomized: boolean) => {
         isCustomized ? applyCustomization() : removeCustomization()
     }
 
@@ -53,35 +53,52 @@ export default function CustomizingGrid() {
 
         return (
             <>
-                <h1 className="page-title">Customizing the grid</h1>
+            <h1 className="page-title">Customizing the grid</h1>
 
-                <div className="description-blocks first-description-block">
-                    <p>Style the grid by adding links, applying custom CSS, or formatting the cells. 
-                        Check our docs for details: <a href="https://www.flexmonster.com/doc/customizing-grid/?r=rm_react" target="_blank" rel="noopener noreferrer" className="title-link">Customizing the grid</a>.
-                    </p>
-                    <p>In this demo, the <strong>Price</strong> measure is customized.</p>
-                </div>
+            <div className="description-blocks first-description-block">
+                <p>
+                    Style the grid by adding links, applying custom CSS, or formatting the
+                    cells. Check our docs for details:{" "}
+                    <a
+                        href="https://www.flexmonster.com/doc/customizing-grid/?r=rm_react"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="title-link"
+                    >
+                        Customizing the grid
+                    </a>
+                    .
+                </p>
+                <p>
+                    In this demo, the <strong>Price</strong> measure is customized.
+                </p>
+            </div>
 
-                <div className="description-blocks">
-                    <ToggleButton triggerFunction={controllCustomization} labelChecked="The grid cells are customized" labelUnChecked="The grid cells are not customized" />
-                </div>
-
-                <ForwardRefPivot
-                    ref={pivotRef}
-                    toolbar={true}
-                    beforetoolbarcreated={toolbar => {
-                        toolbar.showShareReportTab = true;
-                    }}
-                    shareReportConnection={{
-                        url: "https://olap.flexmonster.com:9500"
-                    }}
-                    width="100%"
-                    height={600}
-                    report="https://cdn.flexmonster.com/github/customizing-grid-report.json"
-                    customizeCell={customizeCellFunction}
-                    //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
+            <div className="description-blocks">
+                <ToggleButton
+                    triggerFunction={controlCustomization}
+                    id="customizationToggle"
+                    labelChecked="The grid cells are customized"
+                    labelUnChecked="The grid cells are not customized"
                 />
-            </>
+            </div>
+
+            <ForwardRefPivot
+                ref={pivotRef}
+                toolbar={true}
+                customizeCell={customizeCellFunction}
+                beforetoolbarcreated={toolbar => {
+                    toolbar.showShareReportTab = true;
+                }}
+                shareReportConnection={{
+                    url: "https://olap.flexmonster.com:9500"
+                }}
+                width="100%"
+                height={600}
+                report="https://cdn.flexmonster.com/github/customizing-grid-report.json"
+            //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
+            />
+        </>
         );
     
 }
