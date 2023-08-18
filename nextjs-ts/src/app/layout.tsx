@@ -1,5 +1,5 @@
 import './globals.css'
-import 'flexmonster/flexmonster.css';
+import 'flexmonster/flexmonster.css'
 import TopMenu from '@/UIElements/TopMenu'
 import SideMenu from '@/UIElements/SideMenu'
 import { Inter } from 'next/font/google'

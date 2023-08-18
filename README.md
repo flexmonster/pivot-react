@@ -6,7 +6,7 @@ Website: [www.flexmonster.com](https://www.flexmonster.com/?r=gh_react)
 
 Flexmonster Pivot is a powerful JavaScript tool for interactive web reporting. It allows you to visualize and analyze data from JSON, CSV, SQL, NoSQL, Elasticsearch, and OLAP data sources quickly and conveniently. Flexmonster is designed to integrate seamlessly with any client-side framework and can be easily embedded into your application.
 
-This repository contains a sample [React](https://reactjs.org/) project for Flexmonster Pivot Table & Charts.
+This repository contains sample [Next.js](https://nextjs.org/) and [React](https://reactjs.org/) projects for Flexmonster Pivot Table & Charts.
 
 Table of contents:
 
@@ -16,6 +16,10 @@ Table of contents:
 
 ## Prerequisites
 
+For Next.js:
+- [Node.js 16.0 or later](https://nodejs.org/en/)
+
+For ES6/TypeScript:
 - [Node.js 16.0 or earlier](https://nodejs.org/en/)
 
 ## Installation
@@ -27,8 +31,14 @@ git clone https://github.com/flexmonster/pivot-react.git && cd pivot-react
 ```
 
 2. Choose one of the following projects:
-
-    - To work with the **React+ES6** project, go to the `ES6/` folder:
+    
+    - To work with the **Next.js+TypeScript** project, go to the `nextjs-ts/` folder:
+    
+    ```bash
+    cd nextjs-ts
+    ```
+    
+    - Try out the **React+ES6** project with the following command:
 
     ```bash
     cd ES6
@@ -40,7 +50,7 @@ git clone https://github.com/flexmonster/pivot-react.git && cd pivot-react
     cd typescript
     ```
 
-3. Install the npm dependencies described in `package.json`:
+4. Install the npm dependencies described in `package.json`:
 
 ```bash
 npm install
@@ -56,5 +66,10 @@ To see the result, open `http://localhost:3000/` in your browser.
 
 ## Related Flexmonster docs
 
+For Next.js:
+- [Integration with Next.js](https://www.flexmonster.com/doc/integration-with-next-js/?r=gh_react) — learn how to integrate Flexmonster into a Next.js project.
+- [Usage examples in Next.js](https://www.flexmonster.com/doc/usage-examples-next-js/?r=gh_react) — see details on Flexmonster usage in Next.js.
+
+For ES6/TypeScript
 - [Integration with React](https://www.flexmonster.com/doc/integration-with-react/?r=gh_react) — learn how to integrate Flexmonster into a React project.
-- [Usage examples in React](https://www.flexmonster.com/doc/flexmonster-in-react/?r=gh_react) — see details on Flexmonster usage.
+- [Usage examples in React](https://www.flexmonster.com/doc/usage-examples-react/?r=gh_react) — see details on Flexmonster usage in React.
