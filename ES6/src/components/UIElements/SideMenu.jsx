@@ -36,7 +36,7 @@ function SideMenu() {
                     <NavLink className={({ isActive }) => isActive ? "router-link-exact-active" : ''} to="/with-highcharts">WITH HIGHCHARTS</NavLink>
                 </li>
                 <li className="tab-button">
-                    <NavLink className={({ isActive }) => isActive ? "router-link-exact-active" : ''} to="/with-amcharts5">WITH AMCHARTS</NavLink>
+                    <NavLink className={({ isActive }) => isActive ? "router-link-exact-active" : ''} to="/with-amcharts">WITH AMCHARTS</NavLink>
                 </li>
             </ol>
         </div>

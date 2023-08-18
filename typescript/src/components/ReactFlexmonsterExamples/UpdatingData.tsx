@@ -1,17 +1,12 @@
-import * as React from 'react';
+import { useRef, useEffect, useState } from 'react';
 import * as FlexmonsterReact from 'react-flexmonster';
 import 'flexmonster';
 
-export default class UpdatingData extends React.Component {
+const UpdatingData = () => {
+    const pivotRef: React.RefObject<FlexmonsterReact.Pivot> = useRef<FlexmonsterReact.Pivot>(null);
+    const [flexmonsterRef, setFlexmonsterRef] = useState<Flexmonster.Pivot | null>(null);
 
-    private pivotRef: React.RefObject<FlexmonsterReact.Pivot> = React.createRef<FlexmonsterReact.Pivot>();
-    private flexmonster!: Flexmonster.Pivot;
-
-    componentDidMount() {
-        this.flexmonster = this.pivotRef.current!.flexmonster;
-    }
-
-    data = [
+    let data = [
         {
             Category: "Accessories",
             Size: "262 oz",
@@ -36,14 +31,14 @@ export default class UpdatingData extends React.Component {
         },
     ];
 
-    onReady = () => {
+    const onReady = () => {
         // Connect Flexmonster to the data
-        this.flexmonster.connectTo({ data: this.data });
+        pivotRef.current!.flexmonster.connectTo({ data: data });
     }
 
-    updateTheData = () => {
+    const updateTheData = () => {
         // If the data in React got updated, for example:
-        this.data = [
+        data = [
             {
                 Category: "Accessories",
                 Size: "262 oz",
@@ -69,41 +64,50 @@ export default class UpdatingData extends React.Component {
         ];
         // then the data needs to be updated in Flexmonster as well
         // this can be done via Flexmonster's updateData() API call:
-        this.flexmonster.updateData({ data: this.data });
+        if (flexmonsterRef) {
+            flexmonsterRef.updateData({ data: data });
+        }
     }
 
-    render() {
-        return (
-            <>
-                <h1 className="title-one page-title">Updating the data in Flexmonster</h1>
+    useEffect(() => {
+        if (pivotRef.current) {
+            setFlexmonsterRef(pivotRef.current.flexmonster);
+        }
+    }, []);
+    
 
-                <div className="description-blocks first-description-block">
-                    <p>
-                        This demo shows how to refresh the data at runtime and keep the slice, options, and formatting the same.
-                    </p>
-                    <p>Try it yourself: configure the component as you wish and click the <strong>UPDATE DATA</strong> button.</p>
-                    <p>Learn more about updating the data
-                        in <a href="https://www.flexmonster.com/api/updatedata/?r=rm_react" target="_blank" rel="noopener noreferrer" className="title-link">our documentation</a>.
-                    </p>
-                </div>
+    return (
+        <>
+            <h1 className="title-one page-title">Updating the data in Flexmonster</h1>
 
-                <button className="button-red" onClick={this.updateTheData}>Update data</button>
+            <div className="description-blocks first-description-block">
+                <p>
+                    This demo shows how to refresh the data at runtime and keep the slice, options, and formatting the same.
+                </p>
+                <p>Try it yourself: configure the component as you wish and click the <strong>UPDATE DATA</strong> button.</p>
+                <p>Learn more about updating the data
+                    in <a href="https://www.flexmonster.com/api/updatedata/?r=rm_react" target="_blank" rel="noopener noreferrer" className="title-link">our documentation</a>.
+                </p>
+            </div>
 
-                <FlexmonsterReact.Pivot
-                    ref={this.pivotRef}
-                    toolbar={true}
-                    beforetoolbarcreated={toolbar => {
-                        toolbar.showShareReportTab = true;
-                    }}
-                    shareReportConnection={{
-                        url: "https://olap.flexmonster.com:9500"
-                    }}
-                    width="100%"
-                    height={400}
-                    ready={this.onReady}
-                    //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
-                />
-            </>
-        );
-    }
+            <button className="button-red" onClick={updateTheData}>Update data</button>
+
+            <FlexmonsterReact.Pivot
+                ref={pivotRef}
+                toolbar={true}
+                beforetoolbarcreated={toolbar => {
+                    toolbar.showShareReportTab = true;
+                }}
+                shareReportConnection={{
+                    url: "https://olap.flexmonster.com:9500"
+                }}
+                width="100%"
+                height={400}
+                ready={onReady}
+                //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
+            />
+        </>
+    );
 }
+
+export default UpdatingData;
