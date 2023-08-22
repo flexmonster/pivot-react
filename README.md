@@ -32,19 +32,19 @@ git clone https://github.com/flexmonster/pivot-react.git && cd pivot-react
 
 2. Choose one of the following projects:
     
-    - To work with the **Next.js+TypeScript** project, go to the `nextjs-ts/` folder:
+    - To work with the **Next.js + TypeScript** project, go to the `nextjs-ts/` folder:
     
     ```bash
     cd nextjs-ts
     ```
     
-    - Try out the **React+ES6** project with the following command:
+    - Try out the **React + ES6** project with the following command:
 
     ```bash
     cd ES6
     ```
 
-    - To see how the **React+TypeScript** project works, run the following command:
+    - To see how the **React + TypeScript** project works, run the following command:
 
     ```bash
     cd typescript
