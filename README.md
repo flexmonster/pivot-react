@@ -20,7 +20,7 @@ For Next.js:
 - [Node.js 16.0 or later](https://nodejs.org/en/)
 
 For ES6/TypeScript:
-- [Node.js 16.0 or earlier](https://nodejs.org/en/)
+- [Node.js 14.0 or later](https://nodejs.org/en/)
 
 ## Installation
 
