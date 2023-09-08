@@ -9,8 +9,7 @@ const HandlingEvents: React.FC = () => {
         date: Date;
         event: string;
     }[]>([]);
-    const pivotRef = useRef<FlexmonsterReact.Pivot>(null);
-    const flexmonster = useRef<Flexmonster.Pivot | null>(null);
+    const pivotRef: React.RefObject<FlexmonsterReact.Pivot> = useRef<FlexmonsterReact.Pivot>(null);
 
     const eventList = [
         "afterchartdraw",
@@ -56,7 +55,6 @@ const HandlingEvents: React.FC = () => {
 
     useEffect(() => {
         if (pivotRef.current) {
-            flexmonster.current = pivotRef.current.flexmonster;
             signOnAllEvents();
         }
 
@@ -88,22 +86,18 @@ const HandlingEvents: React.FC = () => {
     };
 
     const signOffAllEvents = () => {
-        if (flexmonster.current) {
-            for (const eventName of eventList) {
-                // remove all handlers for specified event
-                flexmonster.current.off(eventName);
-            }
+        for (const eventName of eventList) {
+            // remove all handlers for specified event
+            pivotRef.current?.flexmonster.off(eventName);
         }
     };
 
     const signOnAllEvents = () => {
-        if (flexmonster.current) {
-            for (const eventName of eventList) {
-                // add handler for specified event
-                flexmonster.current.on(eventName, () => {
-                    printLog(eventName);
-                });
-            }
+        for (const eventName of eventList) {
+            // add handler for specified event
+            pivotRef.current?.flexmonster.on(eventName, () => {
+                printLog(eventName);
+            });
         }
     };
 

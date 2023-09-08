@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import * as FlexmonsterReact from 'react-flexmonster';
 import "flexmonster/lib/flexmonster.amcharts.js";
 import * as am5 from "@amcharts/amcharts5";
@@ -8,28 +8,15 @@ import Flexmonster from 'flexmonster';
 
 const WithAmcharts: React.FC = () => {
     const pivotRef: React.RefObject<FlexmonsterReact.Pivot> = useRef<FlexmonsterReact.Pivot>(null);
-    let flexmonster: Flexmonster.Pivot;
     let root: am5.Root;
 
-    useEffect(() => {
-        if (pivotRef.current) {
-            flexmonster = pivotRef.current.flexmonster;
-            flexmonster.on("reportcomplete", reportComplete);
-        }
-        return () => {
-            if (root) {
-                root.dispose();
-            }
-        };
-    }, []);
-
     const reportComplete = () => {
-        flexmonster.off("reportcomplete", reportComplete);
+        pivotRef.current?.flexmonster.off("reportcomplete", reportComplete);
         drawChart();
     };
 
     const drawChart = () => {
-        flexmonster.amcharts?.getData(
+        pivotRef.current?.flexmonster.amcharts?.getData(
             {},
             createChart,
             updateChart
@@ -44,10 +31,10 @@ const WithAmcharts: React.FC = () => {
             am5themes_Animated.new(root),
         ]);
 
-        root.numberFormatter.set("numberFormat", flexmonster.amcharts?.getNumberFormatPattern((rawData.meta as any).formats[0]));
+        root.numberFormatter.set("numberFormat", pivotRef.current?.flexmonster.amcharts?.getNumberFormatPattern((rawData.meta as any).formats[0]));
 
         let yAxis = chart.yAxes.push(am5xy.CategoryAxis.new(root, {
-            categoryField: flexmonster.amcharts?.getCategoryName(rawData)!,
+            categoryField: pivotRef.current?.flexmonster.amcharts?.getCategoryName(rawData)!,
             renderer: am5xy.AxisRendererY.new(root, {
                 cellStartLocation: 0.1,
                 cellEndLocation: 0.9
@@ -63,12 +50,12 @@ const WithAmcharts: React.FC = () => {
         }));
 
         let series = chart.series.push(am5xy.ColumnSeries.new(root, {
-            name: flexmonster.amcharts?.getMeasureNameByIndex(rawData, 0),
+            name: pivotRef.current?.flexmonster.amcharts?.getMeasureNameByIndex(rawData, 0),
             xAxis: xAxis,
             yAxis: yAxis as any,
             sequencedInterpolation: true,
-            valueXField: flexmonster.amcharts?.getMeasureNameByIndex(rawData, 0),
-            categoryYField: flexmonster.amcharts?.getCategoryName(rawData),
+            valueXField: pivotRef.current?.flexmonster.amcharts?.getMeasureNameByIndex(rawData, 0),
+            categoryYField: pivotRef.current?.flexmonster.amcharts?.getCategoryName(rawData),
             tooltip: am5.Tooltip.new(root, {
                 labelText: '{name}: [bold]{valueX}[/]'
             })
@@ -120,6 +107,7 @@ const WithAmcharts: React.FC = () => {
                 beforetoolbarcreated={toolbar => {
                     toolbar.showShareReportTab = true;
                 }}
+                reportcomplete={reportComplete}
                 shareReportConnection={{
                     url: "https://olap.flexmonster.com:9500"
                 }}

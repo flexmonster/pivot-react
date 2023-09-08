@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import * as FlexmonsterReact from 'react-flexmonster';
 import "flexmonster/lib/flexmonster.amcharts.js";
 import * as am4core from '@amcharts/amcharts4/core';
@@ -8,28 +8,15 @@ import Flexmonster from 'flexmonster';
 
 const WithAmcharts4: React.FC = () => {
     const pivotRef: React.RefObject<FlexmonsterReact.Pivot> = useRef<FlexmonsterReact.Pivot>(null);
-    let flexmonster: Flexmonster.Pivot;
     let chart: am4charts.PieChart;
 
-    useEffect(() => {
-        if (pivotRef.current) {
-            flexmonster = pivotRef.current.flexmonster;
-            flexmonster.on("reportcomplete", reportComplete);
-        }
-        return () => {
-            if (chart) {
-                chart.dispose();
-            }
-        };
-    }, []);
-
     const reportComplete = () => {
-        flexmonster.off("reportcomplete", reportComplete);
+        pivotRef.current?.flexmonster.off("reportcomplete", reportComplete);
         drawChart();
     };
 
     const drawChart = () => {
-        flexmonster.amcharts?.getData(
+        pivotRef.current?.flexmonster.amcharts?.getData(
             {},
             createChart,
             updateChart
@@ -37,7 +24,7 @@ const WithAmcharts4: React.FC = () => {
     };
 
     const createChart = (chartData: Flexmonster.GetDataValueObject, rawData: Flexmonster.GetDataValueObject) => {
-        if (flexmonster.amcharts) {
+        if (pivotRef.current?.flexmonster.amcharts) {
             am4core.useTheme(am4themes_animated);
             chart = am4core.create("chartContainer", am4charts.PieChart);
             
@@ -45,8 +32,8 @@ const WithAmcharts4: React.FC = () => {
             chart.innerRadius = am4core.percent(50);
             
             var pieSeries = chart.series.push(new am4charts.PieSeries());
-            pieSeries.dataFields.category = flexmonster.amcharts.getCategoryName(rawData);
-            pieSeries.dataFields.value = flexmonster.amcharts.getMeasureNameByIndex(rawData, 0);
+            pieSeries.dataFields.category = pivotRef.current?.flexmonster.amcharts.getCategoryName(rawData);
+            pieSeries.dataFields.value = pivotRef.current?.flexmonster.amcharts.getMeasureNameByIndex(rawData, 0);
             pieSeries.slices.template.stroke = am4core.color("#fff");
             pieSeries.slices.template.strokeWidth = 2;
             pieSeries.slices.template.strokeOpacity = 1;
@@ -78,6 +65,7 @@ const WithAmcharts4: React.FC = () => {
                 beforetoolbarcreated={toolbar => {
                     toolbar.showShareReportTab = true;
                 }}
+                reportcomplete={reportComplete}
                 shareReportConnection={{
                     url: "https://olap.flexmonster.com:9500"
                 }}
