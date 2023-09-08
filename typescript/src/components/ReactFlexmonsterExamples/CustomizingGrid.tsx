@@ -1,17 +1,14 @@
-import * as React from "react";
+import { useRef, useState, useEffect } from 'react';
 import * as FlexmonsterReact from 'react-flexmonster';
 import ToggleButton from '../UIElements/ToggleButton';
 import 'flexmonster';
 
 const CustomizingGrid: React.FC = () => {
-    const pivotRef: React.RefObject<FlexmonsterReact.Pivot> = React.useRef<FlexmonsterReact.Pivot>(null);
-    const [isCustomized, setIsCustomized] = React.useState<boolean>(true);
+    const pivotRef: React.RefObject<FlexmonsterReact.Pivot> = useRef<FlexmonsterReact.Pivot>(null);
+    const [isCustomized, setIsCustomized] = useState<boolean>(true);
 
-    React.useEffect(() => {
-        const flexmonster = pivotRef.current?.flexmonster;
-        if (flexmonster) {
-            customizeGridCells(flexmonster);
-        }
+    useEffect(() => {
+        customizeGridCells();
     }, [isCustomized]);
 
     const customizeCellFunction = (cell: Flexmonster.CellBuilder, data: Flexmonster.CellData) => {
@@ -31,11 +28,11 @@ const CustomizingGrid: React.FC = () => {
         }
     }
 
-    const customizeGridCells = (flexmonster: Flexmonster.Pivot) => {
+    const customizeGridCells = () => {
         if (isCustomized) {
-            flexmonster.customizeCell(customizeCellFunction);
+            pivotRef.current?.flexmonster.customizeCell(customizeCellFunction);
         } else {
-            flexmonster.customizeCell(null as any);
+            pivotRef.current?.flexmonster.customizeCell(null as any);
         }
     };
 
@@ -88,7 +85,7 @@ const CustomizingGrid: React.FC = () => {
                 width="100%"
                 height={600}
                 report="https://cdn.flexmonster.com/github/customizing-grid-report.json"
-            //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
+                //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
             />
         </>
     );

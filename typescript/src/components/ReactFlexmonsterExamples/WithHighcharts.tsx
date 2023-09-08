@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import * as FlexmonsterReact from 'react-flexmonster';
 import 'flexmonster';
 import 'flexmonster/lib/flexmonster.highcharts.js';
@@ -6,22 +6,15 @@ import * as Highcharts from 'highcharts';
 
 const WithHighcharts = () => {
   const pivotRef: React.RefObject<FlexmonsterReact.Pivot> = useRef<FlexmonsterReact.Pivot>(null);
-  let flexmonster!: Flexmonster.Pivot;
-
-  useEffect(() => {
-    if (pivotRef.current) {
-    flexmonster = pivotRef.current?.flexmonster;
-    }
-  }, []);
 
   const reportComplete = () => {
-    flexmonster.off('reportComplete', reportComplete);
+    pivotRef.current?.flexmonster.off('reportComplete', reportComplete);
     createChart();
   };
 
   const createChart = () => {
     console.log("create")
-      flexmonster.highcharts?.getData(
+    pivotRef.current?.flexmonster.highcharts?.getData(
         {
           type: 'spline',
         },

@@ -1,17 +1,10 @@
-import { useRef, useEffect, useState } from 'react';
+import { useRef } from 'react';
 import ToggleSwitch from '../UIElements/ToggleSwitch';
 import * as FlexmonsterReact from 'react-flexmonster';
 import 'flexmonster';
 
 const UsingAPICalls = () => {
   const pivotRef: React.RefObject<FlexmonsterReact.Pivot> = useRef<FlexmonsterReact.Pivot>(null);
-  const [flexmonster, setFlexmonster] = useState<Flexmonster.Pivot | null>(null);
-
-  useEffect(() => {
-    if (pivotRef.current) {
-      setFlexmonster(pivotRef.current.flexmonster);
-    }
-  }, []);
 
   const controllGridCharts = (isGrid: boolean) => {
     isGrid ? showGrid() : showChart();
@@ -22,33 +15,33 @@ const UsingAPICalls = () => {
   };
 
   const showChart = () => {
-    flexmonster?.showCharts('column');
+    pivotRef.current?.flexmonster.showCharts('column');
   };
 
   const showGrid = () => {
-    flexmonster?.showGrid();
+    pivotRef.current?.flexmonster.showGrid();
   };
 
   const readOnly = () => {
-    flexmonster?.setOptions({
+    pivotRef.current?.flexmonster.setOptions({
       readOnly: true
     });
-    flexmonster?.refresh();
+    pivotRef.current?.flexmonster.refresh();
   };
 
   const interactive = () => {
-    flexmonster?.setOptions({
+    pivotRef.current?.flexmonster.setOptions({
       readOnly: false
     });
-    flexmonster?.refresh();
+    pivotRef.current?.flexmonster.refresh();
   };
 
   // const hideContextMenu = () => {
-  //   flexmonster?.customizeContextMenu?.(() => []);
+  //   pivotRef.current?.flexmonster.customizeContextMenu?.(() => []);
   // };
 
   // const showContextMenu = () => {
-  //   flexmonster?.customizeContextMenu?.((items) => {
+  //   pivotRef.current?.flexmonster.customizeContextMenu?.((items) => {
   //     return items;
   //   });
   // };
@@ -99,7 +92,7 @@ const UsingAPICalls = () => {
         height={600}
         componentFolder="https://cdn.flexmonster.com/"
         report="https://cdn.flexmonster.com/github/demo-report.json"
-      //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
+        //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
       />
     </>
   );

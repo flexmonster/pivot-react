@@ -1,17 +1,13 @@
-import * as React from "react";
+import { useRef } from 'react';
 import * as FlexmonsterReact from 'react-flexmonster';
 import 'flexmonster';
 
 const CustomizingToolbar: React.FC = () => {
-    const pivotRef: React.RefObject<FlexmonsterReact.Pivot> = React.useRef<FlexmonsterReact.Pivot>(null);
-    const flexmonster = React.useRef<Flexmonster.Pivot | null>(null);
+    const pivotRef: React.RefObject<FlexmonsterReact.Pivot> = useRef<FlexmonsterReact.Pivot>(null);
 
-    React.useEffect(() => {
-        flexmonster.current = pivotRef.current?.flexmonster || null;
-    }, []);
 
     const showInfo = () => {
-        flexmonster.current?.alert({
+        pivotRef.current?.flexmonster.alert({
             title: "Customizing Flexmonster",
             message:
                 "How to customize the Toolbar: <a style='text-decoration:underline; color:#00A45A' target='blank' rel='noopener noreferrer' href='https://www.flexmonster.com/doc/customizing-toolbar/?r=rm_react'>https://www.flexmonster.com/doc/customizing-toolbar/</a> <br>",
@@ -54,7 +50,7 @@ const CustomizingToolbar: React.FC = () => {
                 height={600}
                 report="https://cdn.flexmonster.com/github/demo-report.json"
                 beforetoolbarcreated={customizeToolbar}
-            //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
+                //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
             />
         </>
     );

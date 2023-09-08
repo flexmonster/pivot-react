@@ -1,10 +1,9 @@
-import { useRef, useEffect, useState } from 'react';
+import { useRef } from 'react';
 import * as FlexmonsterReact from 'react-flexmonster';
 import 'flexmonster';
 
 const UpdatingData = () => {
     const pivotRef: React.RefObject<FlexmonsterReact.Pivot> = useRef<FlexmonsterReact.Pivot>(null);
-    const [flexmonsterRef, setFlexmonsterRef] = useState<Flexmonster.Pivot | null>(null);
 
     let data = [
         {
@@ -33,7 +32,7 @@ const UpdatingData = () => {
 
     const onReady = () => {
         // Connect Flexmonster to the data
-        pivotRef.current!.flexmonster.connectTo({ data: data });
+        pivotRef.current?.flexmonster.connectTo({ data: data });
     }
 
     const updateTheData = () => {
@@ -64,17 +63,10 @@ const UpdatingData = () => {
         ];
         // then the data needs to be updated in Flexmonster as well
         // this can be done via Flexmonster's updateData() API call:
-        if (flexmonsterRef) {
-            flexmonsterRef.updateData({ data: data });
-        }
+
+        pivotRef.current?.flexmonster.updateData({ data: data });
     }
 
-    useEffect(() => {
-        if (pivotRef.current) {
-            setFlexmonsterRef(pivotRef.current.flexmonster);
-        }
-    }, []);
-    
 
     return (
         <>
