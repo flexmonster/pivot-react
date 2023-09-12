@@ -1,9 +1,20 @@
-import dynamic from 'next/dynamic';
+// Must be a client component because we pass function in the beforetoolbarcreated param
+"use client"
+import * as React from "react";
+// Types are static, so we can safely import it for use in references
+import type { Pivot } from "react-flexmonster";
+import dynamic from "next/dynamic";
 
-const PivotWrapper = dynamic(() => import('@/UIElements/PivotWrapper'), {
+// Wrapper must be imported dynamically, since it contains Flexmonster pivot
+const PivotWrap = dynamic(() => import('@/UIElements/PivotWrapper'), {
     ssr: false,
     loading: () => <h1>Loading Flexmonster...</h1>
-  });
+});
+
+// Forward ref because PivotWrap is imported dynamically and we need to pass a ref to it
+const ForwardRefPivot = React.forwardRef<Pivot, Flexmonster.Params>((props, ref?: React.ForwardedRef<Pivot>) =>
+    <PivotWrap {...props} pivotRef={ref} />
+)
 
 export default function PivotTableDemo() {
     return (
@@ -21,12 +32,18 @@ export default function PivotTableDemo() {
             </div>
 
             <div className="App">
-                <PivotWrapper
+                <ForwardRefPivot
                     toolbar={true}
+                    beforetoolbarcreated={toolbar => {
+                        toolbar.showShareReportTab = true;
+                    }}
+                    shareReportConnection={{
+                        url: "https://olap.flexmonster.com:9500"
+                    }}
                     width="100%"
                     height={600}
                     report="https://cdn.flexmonster.com/github/demo-report.json"
-                    //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
+                //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
                 />
             </div>
         </>

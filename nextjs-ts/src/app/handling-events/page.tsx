@@ -126,7 +126,7 @@ export default function HandlingEvents() {
             </div>
 
             <div className="description-blocks">
-                <ToggleButton triggerFunction={eventsSignerController} labelChecked="Events are tracked" labelUnChecked="Events are not tracked" />
+                <ToggleButton id="eventsToggle" triggerFunction={eventsSignerController} labelChecked="Events are tracked" labelUnChecked="Events are not tracked" />
             </div>
 
             <div>
@@ -147,10 +147,13 @@ export default function HandlingEvents() {
                     //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
                 />
             </div>
-
             <div className="section">
                 <LogsList title="Log Output" logsList={logs} />
-                <button className="button-red" onClick={clearLogs}>Clear Log Output</button>
+                <div className="section--button">
+                    <button className="button-red" onClick={clearLogs}>
+                        Clear Log Output
+                    </button>
+                </div>
             </div>
         </>
     );

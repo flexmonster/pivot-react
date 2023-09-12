@@ -74,8 +74,8 @@ export default function UsingAPICalls() {
                 </div>
 
                 <div className="description-blocks">
-                    <ToggleSwitch triggerFunction={controllGridCharts} labelChecked="Grid" labelUnChecked="Column chart" />
-                    <ToggleSwitch triggerFunction={controllInteractiveness} labelChecked="Interactive" labelUnChecked="Read-only" />
+                    <ToggleSwitch id="viewToggle" triggerFunction={controllGridCharts} labelChecked="Grid" labelUnChecked="Column chart" />
+                    <ToggleSwitch id="modeToggle" triggerFunction={controllInteractiveness} labelChecked="Interactive" labelUnChecked="Read-only" />
                 </div>
 
                 <ForwardRefPivot

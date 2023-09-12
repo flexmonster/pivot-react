@@ -3,6 +3,7 @@ import 'flexmonster/flexmonster.css'
 import TopMenu from '@/UIElements/TopMenu'
 import SideMenu from '@/UIElements/SideMenu'
 import { Inter } from 'next/font/google'
+import "flexmonster/flexmonster.css"
 
 const inter = Inter({ subsets: ['latin'] })
 
