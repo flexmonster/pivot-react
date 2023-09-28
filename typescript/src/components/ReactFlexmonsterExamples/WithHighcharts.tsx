@@ -13,7 +13,6 @@ const WithHighcharts = () => {
   };
 
   const createChart = () => {
-    console.log("create")
     pivotRef.current?.flexmonster.highcharts?.getData(
         {
           type: 'spline',
