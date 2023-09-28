@@ -10,22 +10,8 @@ function WithAmcharts4() {
     const pivotRef = useRef(null);
     const chartRef = useRef(null);
 
-    useEffect(() => {
-        if(pivotRef.current) {
-            pivotRef.current.flexmonster.on('reportcomplete', reportComplete);
-        }
-
-        return () => {
-            if(pivotRef.current) {
-                pivotRef.current.flexmonster.off('reportcomplete', reportComplete);
-            }
-            if (chartRef.current) {
-                chartRef.current.dispose();
-            }
-        };
-    }, []);
-
     const reportComplete = () => {
+        pivotRef.current.flexmonster.off('reportcomplete', reportComplete);
         drawChart();
     };
 
@@ -99,6 +85,7 @@ function WithAmcharts4() {
                 beforetoolbarcreated={(toolbar) => {
                     toolbar.showShareReportTab = true;
                 }}
+                reportcomplete={reportComplete}
                 shareReportConnection={{
                     url: 'https://olap.flexmonster.com:9500',
                 }}

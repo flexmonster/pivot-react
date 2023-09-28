@@ -6,19 +6,8 @@ import Highcharts from 'highcharts';
 function WithHighcharts() {
     const pivotRef = useRef(null);
 
-    useEffect(() => {
-        if(pivotRef.current) {
-            pivotRef.current.flexmonster.on('reportcomplete', reportComplete);
-        }
-        // Clean up the event listener when the component is unmounted
-        return () => {
-            if(pivotRef.current) {
-                pivotRef.current.flexmonster.off('reportcomplete', reportComplete);
-            }
-        };
-    }, []);
-
     const reportComplete = () => {
+        pivotRef.current.flexmonster.off('reportcomplete', reportComplete);
         createChart();
     };
 
@@ -61,6 +50,7 @@ function WithHighcharts() {
                 beforetoolbarcreated={(toolbar) => {
                     toolbar.showShareReportTab = true;
                 }}
+                reportcomplete={reportComplete}
                 shareReportConnection={{
                     url: 'https://olap.flexmonster.com:9500',
                 }}
