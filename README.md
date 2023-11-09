@@ -50,7 +50,7 @@ git clone https://github.com/flexmonster/pivot-react.git && cd pivot-react
     cd typescript
     ```
 
-4. Install the npm dependencies described in `package.json`:
+3. Install the npm dependencies described in `package.json`:
 
 ```bash
 npm install
