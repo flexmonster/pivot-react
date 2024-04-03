@@ -7,7 +7,7 @@ Website: [flexmonster.com](https://www.flexmonster.com?r=gh_react)
 ## Flexmonster Pivot Table & Charts
 Flexmonster Pivot Table & Charts is a powerful and fully customizable JavaScript component for web reporting. It is packed with all core features for data analysis and can easily become a part of your React data visualization project. The tool supports popular frameworks like Angular, React, Vue, Blazor, and [more](https://www.flexmonster.com/doc/available-tutorials-integration?r=gh_react). Also, Flexmonster connects to any data source, including SQL and NoSQL databases, JSON and CSV files, OLAP cubes, and Elasticsearch. 
 
-This repository contains a sample [React](https://reactjs.org/) project for Flexmonster Pivot Table & Charts.
+This repository contains a sample [React](https://reactjs.org/) TypeScript project for Flexmonster Pivot Table & Charts.
 
 Table of contents:
 
