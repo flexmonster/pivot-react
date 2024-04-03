@@ -1,11 +1,11 @@
 # React + TypeScript pivot table | Flexmonster Pivot Table & Charts sample project with React + TypeScript
-[![Flexmonster Pivot Table & Charts](https://static.flexmonster.com/uploads/2023/09/08090559/react.png)](https://www.flexmonster.com?r=gh_react)
-Website: [flexmonster.com](https://www.flexmonster.com?r=gh_react)
+[![Flexmonster Pivot Table & Charts](https://static.flexmonster.com/uploads/2023/09/08090559/react.png)](https://www.flexmonster.com?r=sample_react)
+Website: [flexmonster.com](https://www.flexmonster.com?r=sample_react)
 
 [![Github Stars](https://img.shields.io/github/stars/flexmonster?style=social)](https://github.com/flexmonster) [![Twitter](https://img.shields.io/twitter/follow/Flexmonster?style=social)](https://twitter.com/Flexmonster)
 
 ## Flexmonster Pivot Table & Charts
-Flexmonster Pivot Table & Charts is a powerful and fully customizable JavaScript component for web reporting. It is packed with all core features for data analysis and can easily become a part of your React data visualization project. The tool supports popular frameworks like Angular, React, Vue, Blazor, and [more](https://www.flexmonster.com/doc/available-tutorials-integration?r=gh_react). Also, Flexmonster connects to any data source, including SQL and NoSQL databases, JSON and CSV files, OLAP cubes, and Elasticsearch. 
+Flexmonster Pivot Table & Charts is a powerful and fully customizable JavaScript component for web reporting. It is packed with all core features for data analysis and can easily become a part of your React data visualization project. The tool supports popular frameworks like Angular, React, Vue, Blazor, and [more](https://www.flexmonster.com/doc/available-tutorials-integration?r=sample_react). Also, Flexmonster connects to any data source, including SQL and NoSQL databases, JSON and CSV files, OLAP cubes, and Elasticsearch. 
 
 This repository contains a sample [React](https://reactjs.org/) TypeScript project for Flexmonster Pivot Table & Charts.
 
@@ -62,23 +62,23 @@ You can try all of these examples right from the project’s starting page.
 
 ## Related Flexmonster docs
 
-- [Integration with React](https://www.flexmonster.com/doc/integration-with-react/?r=gh_react) — learn how to integrate Flexmonster into a React project.
-- [Usage examples in React](https://www.flexmonster.com/doc/usage-examples-react/?r=gh_react) — see details on Flexmonster usage.
+- [Integration with React](https://www.flexmonster.com/doc/integration-with-react/?r=sample_react) — learn how to integrate Flexmonster into a React project.
+- [Usage examples in React](https://www.flexmonster.com/doc/usage-examples-react/?r=sample_react) — see details on Flexmonster usage.
 
 ## Support and feedback
 
-In case of any issues, visit our [troubleshooting section](https://www.flexmonster.com/doc/typical-errors?r=gh_react). You can also search among the [resolved cases](https://www.flexmonster.com/technical-support?r=gh_react) for a solution to your problem.
+In case of any issues, visit our [troubleshooting section](https://www.flexmonster.com/doc/typical-errors?r=sample_react). You can also search among the [resolved cases](https://www.flexmonster.com/technical-support?r=sample_react) for a solution to your problem.
 
-To share your feedback or ask questions, contact our Tech team by raising a ticket on [Flexmonster Help Center](https://www.flexmonster.com/help-center?r=gh_react). You can also find a list of samples, technical specifications, and a user interface guide there.
+To share your feedback or ask questions, contact our Tech team by raising a ticket on [Flexmonster Help Center](https://www.flexmonster.com/help-center?r=sample_react). You can also find a list of samples, technical specifications, and a user interface guide there.
 
 ## Flexmonster licensing
 
-This sample project uses [Flexmonster React wrapper](https://github.com/flexmonster/react-flexmonster?=gh_react), which is released as an MIT-licensed (free and open-source) add-on to Flexmonster Pivot.
+This sample project uses [Flexmonster React wrapper](https://github.com/flexmonster/react-flexmonster), which is released as an MIT-licensed (free and open-source) add-on to Flexmonster Pivot.
 
-To learn about Flexmonster Pivot licenses, visit the [Flexmonster licensing page](https://www.flexmonster.com/pivot-table-editions-and-pricing?r=gh_react). 
+To learn about Flexmonster Pivot licenses, visit the [Flexmonster licensing page](https://www.flexmonster.com/pivot-table-editions-and-pricing?r=sample_react). 
 If you want to test our product, we provide a 30-day free trial.
 
-If you need any help with your license — fill out our [Contact form](https://www.flexmonster.com/contact-our-team?r=gh_react), and we will get in touch with you.
+If you need any help with your license — fill out our [Contact form](https://www.flexmonster.com/contact-our-team?r=sample_react), and we will get in touch with you.
 
 ## Social media
 
