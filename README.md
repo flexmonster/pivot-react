@@ -1,5 +1,5 @@
 # React pivot grid | Flexmonster Pivot Table & Charts sample project with React
-[![Flexmonster Pivot Table & Charts](https://static.flexmonster.com/uploads/2023/09/08090559/react.png)](https://www.flexmonster.com?r=sample_react)
+[![Flexmonster Pivot Table & Charts](https://cdn.flexmonster.com/readmes/react.webp)](https://www.flexmonster.com?r=sample_react)
 Website: [flexmonster.com](https://www.flexmonster.com?r=sample_react)
 
 [![Github Stars](https://img.shields.io/github/stars/flexmonster?style=social)](https://github.com/flexmonster) [![Twitter](https://img.shields.io/twitter/follow/Flexmonster?style=social)](https://twitter.com/Flexmonster)
