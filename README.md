@@ -90,7 +90,7 @@ For Next.js:
 - [Integration with Next.js](https://www.flexmonster.com/doc/integration-with-next-js/?r=sample_react) — learn how to integrate Flexmonster into a Next.js project.
 - [Usage examples in Next.js](https://www.flexmonster.com/doc/usage-examples-next-js/?r=sample_react) — see details on Flexmonster usage in Next.js.
 
-For ES6/TypeScript
+For ES6/TypeScript:
 - [Integration with React](https://www.flexmonster.com/doc/integration-with-react/?r=sample_react) — learn how to integrate Flexmonster into a React project.
 - [Usage examples in React](https://www.flexmonster.com/doc/usage-examples-react/?r=sample_react) — see details on Flexmonster usage in React.
 
