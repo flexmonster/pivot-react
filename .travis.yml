@@ -32,6 +32,6 @@ script:
 - bash ./framework-integration-testing/launchScripts/react/reactKillPorts.sh
 notifications:
   slack:
+    if: branch = master
     rooms:
-      if: branch = master
       secure: ZWoFLiDyRSoA3ydmafVLR1gk9IBxPcum3KzqSPXtLDgkbt6/OHz61WISCTrTtmTaih8n6x9JmzQdcE1+68/qSHbwB2PDRR0KtYZ8cZgcNuTGyWRUIxDLyHyOIYhl2S9Me71TI542iHFLs+j1RTIBKZLDqPHiUPI5JiIM6+hXXzNxqDMfdPuOuBASpHBbSl+pG8aHPQzwSow3j3AmOtbYpCazxh71LAF0JaX1EiqZb8HIJZ8eo0ms9hqbuHd0uTAc7hXdq6ZVhYYSshDn2Bvde9WWWfJxWzqYZjenWsV0YDgSvaYjf9jocKL/cABaVie7PsCEyEt+vTas/hZP158JmN1U48MIhI3EC7vDgGvLkvSH4h1e7/vUUqTfe2k1ggmrYm/eQZIa4uhmnt0LuuzAhA9CXab7zwmUdh7Z7QUzzKwPBNZcl2BmXShbUsldxzXuRjMKd7KxoxFrZvJqWCRB3HqOF4feMpzo6Jp2bPPsY8e4OpaJdoGPx5+AJuXzXnZqgUhw11+veJkV80bIf6O61mj2ukUiG84W3/dOMtA0FRIsV8Y9QD/mqr8PwbOXolM3LEH0Lv0JXH+xZbGdK04BrRqWpmfX7yRYuwcYECl8Pi8ny4bXG8XqKGWEYOe/t9FnjcRrYzMM4tY3xxGqFub1SrzAeJHjeXWjyEWMkf9oTNI=
