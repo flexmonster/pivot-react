@@ -1,14 +1,12 @@
 import './globals.css'
-import 'flexmonster/flexmonster.css'
 import TopMenu from '@/UIElements/TopMenu'
 import SideMenu from '@/UIElements/SideMenu'
 import { Inter } from 'next/font/google'
-import "flexmonster/flexmonster.css"
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'Flexmonster Next App',
+  title: 'Flexmonster Next App'
 }
 
 export default function RootLayout({
@@ -31,4 +29,4 @@ export default function RootLayout({
       </body>
     </html>
   )
-}
+}   
