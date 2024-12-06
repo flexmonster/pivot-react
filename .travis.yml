@@ -29,7 +29,7 @@ script:
 - bash ./framework-integration-testing/launchScripts/react/reactKillPorts.sh
 - bash ./framework-integration-testing/launchScripts/react/reactNext.sh
 - bash ./framework-integration-testing/launchScripts/react/reactTestLaunch.sh
-- bash ./framework-integration-testing/launchScripts/react/reactKillPorts.sh
+# - bash ./framework-integration-testing/launchScripts/react/reactKillPorts.sh
 notifications:
   slack:
     if: branch = master
