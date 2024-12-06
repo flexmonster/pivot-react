@@ -44,7 +44,7 @@ export default function WithAmcharts() {
     const createChart = (chartData: Flexmonster.GetDataValueObject, rawData: Flexmonster.GetDataValueObject) => {
 
         /* Create root element and chart instance */
-        root = am5.Root.new("chartContainer");
+        root = am5.Root.new("amcharts-container");
         let chart = root.container.children.push(am5xy.XYChart.new(root, {
         }));
 
@@ -140,6 +140,8 @@ export default function WithAmcharts() {
             height={600}
             report="https://cdn.flexmonster.com/github/demo-report.json"
             licenseFilePath="https://cdn.flexmonster.com/jsfiddle.charts.key"
+            reportcomplete={reportComplete}
+        //licenseKey="XXXX-XXXX-XXXX-XXXX-XXXX"
         />
         <div className="chart-container">
             <div
