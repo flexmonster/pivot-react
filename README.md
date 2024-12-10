@@ -22,7 +22,7 @@ Table of contents:
 ## Prerequisites
 
 For Next.js:
-- [Node.js 16.0 or later](https://nodejs.org/en/)
+- [Node.js 18.18.0 or later](https://nodejs.org/en/)
 
 For ES6/TypeScript:
 - [Node.js 14.0 or later](https://nodejs.org/en/)
@@ -42,15 +42,11 @@ git clone https://github.com/flexmonster/pivot-react.git && cd pivot-react
     ```bash
     cd nextjs-ts
     ```
-    
     - Try out the **React + ES6** project with the following command:
-
     ```bash
     cd ES6
     ```
-
     - To see how the **React + TypeScript** project works, run the following command:
-
     ```bash
     cd typescript
     ```
