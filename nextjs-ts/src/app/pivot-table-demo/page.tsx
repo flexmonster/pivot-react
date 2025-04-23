@@ -11,11 +11,6 @@ const PivotWrap = dynamic(() => import('@/UIElements/PivotWrapper'), {
     loading: () => <h1>Loading Flexmonster...</h1>
 });
 
-// Forward ref because PivotWrap is imported dynamically and we need to pass a ref to it
-const ForwardRefPivot = React.forwardRef<Pivot, Flexmonster.Params>((props, ref?: React.ForwardedRef<Pivot>) =>
-    <PivotWrap {...props} pivotRef={ref} />
-)
-
 export default function PivotTableDemo() {
     return (
         <>
@@ -32,7 +27,7 @@ export default function PivotTableDemo() {
             </div>
 
             <div className="App">
-                <ForwardRefPivot
+                <PivotWrap
                     toolbar={true}
                     beforetoolbarcreated={toolbar => {
                         toolbar.showShareReportTab = true;

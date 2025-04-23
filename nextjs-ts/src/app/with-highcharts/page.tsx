@@ -11,15 +11,11 @@ const PivotWrap = dynamic(() => import('@/UIElements/PivotWrapper'), {
     loading: () => <h1>Loading Flexmonster...</h1>
 });
 
-// Forward ref because PivotWrap is imported dynamically and we need to pass a ref to it
-const ForwardRefPivot = React.forwardRef<Pivot, Flexmonster.Params>((props, ref?: React.ForwardedRef<Pivot>) =>
-    <PivotWrap {...props} pivotRef={ref} />
-)
 import * as Highcharts from 'highcharts';
 
 export default function WithHighcharts() {
 
-    const pivotRef: React.RefObject<Pivot> = React.useRef<Pivot>(null);
+    const pivotRef: React.RefObject<Pivot | null> = React.useRef<Pivot>(null);
 
     const reportComplete = () => {
         pivotRef.current!.flexmonster.off("reportComplete", reportComplete);
@@ -52,7 +48,7 @@ export default function WithHighcharts() {
                 </p>
             </div>
 
-            <ForwardRefPivot
+            <PivotWrap
                 ref={pivotRef}
                 toolbar={true}
                 beforetoolbarcreated={toolbar => {
