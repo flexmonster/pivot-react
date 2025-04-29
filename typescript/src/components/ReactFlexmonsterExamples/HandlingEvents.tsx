@@ -9,7 +9,7 @@ const HandlingEvents: React.FC = () => {
         date: Date;
         event: string;
     }[]>([]);
-    const pivotRef: React.RefObject<FlexmonsterReact.Pivot> = useRef<FlexmonsterReact.Pivot>(null);
+    const pivotRef: React.RefObject<FlexmonsterReact.Pivot | null> = useRef<FlexmonsterReact.Pivot>(null);
 
     const eventList = [
         "afterchartdraw",

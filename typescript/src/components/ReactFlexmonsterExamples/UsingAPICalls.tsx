@@ -4,7 +4,7 @@ import * as FlexmonsterReact from 'react-flexmonster';
 import 'flexmonster';
 
 const UsingAPICalls = () => {
-  const pivotRef: React.RefObject<FlexmonsterReact.Pivot> = useRef<FlexmonsterReact.Pivot>(null);
+  const pivotRef: React.RefObject<FlexmonsterReact.Pivot | null> = useRef<FlexmonsterReact.Pivot>(null);
 
   const controllGridCharts = (isGrid: boolean) => {
     isGrid ? showGrid() : showChart();

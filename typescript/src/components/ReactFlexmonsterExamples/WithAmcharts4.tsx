@@ -7,7 +7,7 @@ import am4themes_animated from '@amcharts/amcharts4/themes/animated';
 import Flexmonster from 'flexmonster';
 
 const WithAmcharts4: React.FC = () => {
-    const pivotRef: React.RefObject<FlexmonsterReact.Pivot> = useRef<FlexmonsterReact.Pivot>(null);
+  const pivotRef: React.RefObject<FlexmonsterReact.Pivot | null> = useRef<FlexmonsterReact.Pivot>(null);
     let chart: am4charts.PieChart;
 
     const reportComplete = () => {
