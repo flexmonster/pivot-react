@@ -5,7 +5,7 @@ import 'flexmonster/lib/flexmonster.highcharts.js';
 import * as Highcharts from 'highcharts';
 
 const WithHighcharts = () => {
-  const pivotRef: React.RefObject<FlexmonsterReact.Pivot> = useRef<FlexmonsterReact.Pivot>(null);
+  const pivotRef: React.RefObject<FlexmonsterReact.Pivot | null> = useRef<FlexmonsterReact.Pivot>(null);
 
   const reportComplete = () => {
     pivotRef.current?.flexmonster.off('reportComplete', reportComplete);

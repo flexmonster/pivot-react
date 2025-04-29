@@ -8,14 +8,14 @@ import "flexmonster/lib/flexmonster.highcharts.js";
 
 // A custom type so we can pass a reference along with other Flexmonster params
 type PivotProps = Flexmonster.Params & {
-    pivotRef?: React.ForwardedRef<FlexmonsterReact.Pivot>;
+    ref?: React.Ref<FlexmonsterReact.Pivot>; //Ref
   }
   
-const PivotWrapper: React.FC<PivotProps> = ({ pivotRef, ...params}) => {
+const PivotWrapper: React.FC<PivotProps> = ({ ref, ...params}) => {
     return (
         <FlexmonsterReact.Pivot
             {...params}
-            ref={pivotRef}
+            ref={ref}
         />
     )
 }

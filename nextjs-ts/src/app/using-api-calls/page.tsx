@@ -12,14 +12,9 @@ const PivotWrap = dynamic(() => import('@/UIElements/PivotWrapper'), {
     loading: () => <h1>Loading Flexmonster...</h1>
 });
 
-// Forward ref because PivotWrap is imported dynamically and we need to pass a ref to it
-const ForwardRefPivot = React.forwardRef<Pivot, Flexmonster.Params>((props, ref?: React.ForwardedRef<Pivot>) =>
-    <PivotWrap {...props} pivotRef={ref} />
-)
-
 export default function UsingAPICalls() {
 
-    const pivotRef: React.RefObject<Pivot> = React.useRef<Pivot>(null);
+    const pivotRef: React.RefObject<Pivot | null> = React.useRef<Pivot>(null);
 
     const controllGridCharts = (isGrid: boolean) => {
         isGrid ? showGrid() : showChart();
@@ -78,7 +73,7 @@ export default function UsingAPICalls() {
                     <ToggleSwitch id="modeToggle" triggerFunction={controllInteractiveness} labelChecked="Interactive" labelUnChecked="Read-only" />
                 </div>
 
-                <ForwardRefPivot
+                <PivotWrap
                     ref={pivotRef}
                     toolbar={true}
                     beforetoolbarcreated={toolbar => {

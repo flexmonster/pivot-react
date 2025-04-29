@@ -4,7 +4,7 @@ import ToggleButton from '../UIElements/ToggleButton';
 import 'flexmonster';
 
 const CustomizingGrid: React.FC = () => {
-    const pivotRef: React.RefObject<FlexmonsterReact.Pivot> = useRef<FlexmonsterReact.Pivot>(null);
+    const pivotRef: React.RefObject<FlexmonsterReact.Pivot | null> = useRef<FlexmonsterReact.Pivot>(null);
     const [isCustomized, setIsCustomized] = useState<boolean>(true);
 
     useEffect(() => {

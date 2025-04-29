@@ -11,20 +11,14 @@ const PivotWrap = dynamic(() => import('@/UIElements/PivotWrapper'), {
     loading: () => <h1>Loading Flexmonster...</h1>
 });
 
-// Forward ref because PivotWrap is imported dynamically and we need to pass a ref to it
-const ForwardRefPivot = React.forwardRef<Pivot, Flexmonster.Params>((props, ref?: React.ForwardedRef<Pivot>) =>
-    <PivotWrap {...props} pivotRef={ref} />
-)
-
 // amCharts imports
 import * as am4core from '@amcharts/amcharts4/core';
 import * as am4charts from '@amcharts/amcharts4/charts';
 import am4themes_animated from '@amcharts/amcharts4/themes/animated';
 
-
 export default function WithAmcharts4() {
 
-    const pivotRef: React.RefObject<Pivot> = React.useRef<Pivot>(null);
+    const pivotRef: React.RefObject<Pivot | null> = React.useRef<Pivot>(null);
     let chart!: am4charts.PieChart;
 
 
@@ -91,7 +85,7 @@ export default function WithAmcharts4() {
                 </p>
             </div>
 
-            <ForwardRefPivot
+            <PivotWrap
                 ref={pivotRef}
                 toolbar={true}
                 beforetoolbarcreated={toolbar => {
