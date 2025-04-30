@@ -8,7 +8,7 @@ import type {Pivot} from "react-flexmonster";
 import dynamic from "next/dynamic";
 
 // Wrapper must be imported dynamically, since it contains Flexmonster pivot
-const PivotWrap = dynamic(() => import('@/UIElements/PivotWrapper'), {
+const FlexmonsterPivot = dynamic(() => import('@/UIElements/PivotWrapper'), {
     ssr: false,
     loading: () => <h1>Loading Flexmonster...</h1>
 });
@@ -125,7 +125,7 @@ export default function HandlingEvents() {
             </div>
 
             <div>
-                <PivotWrap
+                <FlexmonsterPivot
                     ref={pivotRef}
                     toolbar={true}
                     // Can't be serialized, so this must be a client component

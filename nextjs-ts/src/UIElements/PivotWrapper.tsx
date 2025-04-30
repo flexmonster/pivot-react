@@ -11,10 +11,10 @@ type PivotProps = Flexmonster.Params & {
     ref?: React.Ref<FlexmonsterReact.Pivot>; //Ref
   }
   
-const PivotWrapper: React.FC<PivotProps> = ({ ref, ...params}) => {
+const PivotWrapper: React.FC<PivotProps> = ({ ref, ...fmConfigs}) => {
     return (
         <FlexmonsterReact.Pivot
-            {...params}
+            {...fmConfigs}
             ref={ref}
         />
     )
