@@ -31,7 +31,7 @@ body {
 }
 
 .chart-container {
-  margin-top: 70px;
+  margin-top: 50px;
 }
 
 .first-description-block {
@@ -78,6 +78,7 @@ body {
   margin: 5px 5px 5px 0;
   position: relative;
   width: auto;
+  appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
   -webkit-box-sizing: border-box;
