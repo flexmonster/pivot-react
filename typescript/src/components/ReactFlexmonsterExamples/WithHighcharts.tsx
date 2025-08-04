@@ -12,7 +12,7 @@ const WithHighcharts = () => {
   const [chartOptions, setChartOptions] = useState<Highcharts.Options>({});
 
   const reportComplete = () => {
-    pivotRef.current?.flexmonster.off("reportComplete");
+    pivotRef.current?.flexmonster.off("reportcomplete");
     createChart();
   };
 
