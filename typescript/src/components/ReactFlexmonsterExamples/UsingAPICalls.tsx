@@ -5,11 +5,11 @@ import ToggleSwitch from "../UIElements/ToggleSwitch";
 const UsingAPICalls = () => {
   const pivotRef: React.RefObject<FlexmonsterReact.Pivot | null> = useRef<FlexmonsterReact.Pivot>(null);
 
-  const controllGridCharts = (isGrid: boolean) => {
+  const switchGridCharts = (isGrid: boolean) => {
     isGrid ? showGrid() : showChart();
   };
 
-  const controllInteractiveness = (isInteractive: boolean) => {
+  const toggleInteractiveness = (isInteractive: boolean) => {
     isInteractive ? interactive() : readOnly();
   };
 
@@ -55,13 +55,13 @@ const UsingAPICalls = () => {
       <div className="description-blocks">
         <ToggleSwitch
           id="viewToggle"
-          triggerFunction={controllGridCharts}
+          triggerFunction={switchGridCharts}
           labelChecked="Grid"
           labelUnChecked="Column chart"
         />
         <ToggleSwitch
           id="modeToggle"
-          triggerFunction={controllInteractiveness}
+          triggerFunction={toggleInteractiveness}
           labelChecked="Interactive"
           labelUnChecked="Read-only"
         />

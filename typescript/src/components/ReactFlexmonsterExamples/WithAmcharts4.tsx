@@ -11,7 +11,7 @@ am4core.useTheme(am4themes_animated);
 
 const WithAmcharts4: React.FC = () => {
   const pivotRef: React.RefObject<FlexmonsterReact.Pivot | null> = useRef<FlexmonsterReact.Pivot>(null);
-  let chartRef: React.RefObject<am4charts.PieChart | null> = useRef(null);
+  const chartRef: React.RefObject<am4charts.PieChart | null> = useRef(null);
 
   const reportComplete = () => {
     pivotRef.current?.flexmonster.off("reportcomplete");

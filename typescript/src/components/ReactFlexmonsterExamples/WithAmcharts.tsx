@@ -1,8 +1,10 @@
 import { useEffect, useRef } from "react";
 import * as FlexmonsterReact from "react-flexmonster";
 import Flexmonster from "flexmonster";
+// Importing Flexmonster Connector for amCharts
 import "flexmonster/lib/flexmonster.amcharts.js";
 
+// Importing amCharts
 import * as am5 from "@amcharts/amcharts5";
 import * as am5percent from "@amcharts/amcharts5/percent";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
@@ -17,14 +19,19 @@ const WithAmcharts: React.FC = () => {
   };
 
   const drawChart = () => {
+    // Running Flexmonster's getData() method for amCharts
     pivotRef.current?.flexmonster.amcharts?.getData({}, createChart, updateChart);
   };
 
   const createChart = (chartData: Flexmonster.GetDataValueObject, rawData: Flexmonster.GetDataValueObject) => {
+    // Initializing the root element
     root = am5.Root.new("amcharts-container");
+    // Applying the amCharts theme
     root.setThemes([am5themes_Animated.new(root)]);
+    // Applying number format from Flexmonster
     root.numberFormatter.set("numberFormat", pivotRef.current?.flexmonster.amcharts?.getNumberFormatPattern((rawData.meta as any).formats[0]));
 
+    // Creating a chart instance
     const chart = root.container.children.push(
       am5percent.PieChart.new(root, {
         layout: root.verticalLayout,
@@ -87,6 +94,7 @@ const WithAmcharts: React.FC = () => {
 
   useEffect(() => {
     return () => {
+      // Disposing of the chart instance when the component is unmounted
       root?.dispose();
     };
   }, []);

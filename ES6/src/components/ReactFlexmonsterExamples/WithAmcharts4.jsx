@@ -11,7 +11,7 @@ am4core.useTheme(am4themes_animated);
 
 function WithAmcharts4() {
   const pivotRef = useRef(null);
-  let chartRef = useRef(null);
+  const chartRef = useRef(null);
 
   const reportComplete = () => {
     pivotRef.current.flexmonster.off("reportcomplete");

@@ -13,11 +13,11 @@ function UsingAPICalls() {
     pivotRef.current.flexmonster.showGrid();
   };
 
-  const controllGridCharts = (isGrid) => {
+  const switchGridCharts = (isGrid) => {
     isGrid ? showGrid() : showChart();
   };
 
-  const controllInteractiveness = (isInteractive) => {
+  const toggleInteractiveness = (isInteractive) => {
     isInteractive ? interactive() : readOnly();
   };
 
@@ -55,13 +55,13 @@ function UsingAPICalls() {
       <div className="description-blocks">
         <ToggleSwitch
           id="viewToggle"
-          triggerFunction={controllGridCharts}
+          triggerFunction={switchGridCharts}
           labelChecked="Grid"
           labelUnChecked="Column chart"
         />
         <ToggleSwitch
           id="modeToggle"
-          triggerFunction={controllInteractiveness}
+          triggerFunction={toggleInteractiveness}
           labelChecked="Interactive"
           labelUnChecked="Read-only"
         />
