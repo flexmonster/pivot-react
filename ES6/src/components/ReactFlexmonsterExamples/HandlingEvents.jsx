@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import LogsList from "../UIElements/LogsList";
 import ToggleButton from "../UIElements/ToggleButton";
 import * as FlexmonsterReact from "react-flexmonster";
@@ -46,8 +46,8 @@ const eventList = [
 ];
 
 function HandlingEvents() {
+  const pivotRef = useRef(null);
   const [logs, setLogs] = useState([]);
-  const logsContainer = useRef(null);
 
   const printLog = (log) => {
     setLogs((prevLogs) => [
@@ -57,6 +57,12 @@ function HandlingEvents() {
         event: log,
       },
     ]);
+    requestAnimationFrame(() => {
+      const logsContainer = document.getElementById("logsContainer");
+      if (logsContainer) {
+        logsContainer.scrollTop = logsContainer.scrollHeight;
+      }
+    });
   };
 
   const signOffAllEvents = () => {
@@ -75,18 +81,9 @@ function HandlingEvents() {
     }
   };
 
-  useEffect(() => {
-    const logsContainerElement = logsContainer.current;
-    if (logsContainerElement) {
-      logsContainerElement.scrollTop = logsContainerElement.scrollHeight;
-    }
-  }, [logs]);
-
   const clearLogs = () => {
     setLogs([]);
   };
-
-  const pivotRef = useRef(null);
 
   return (
     <>
@@ -132,8 +129,8 @@ function HandlingEvents() {
 
       <div className="section">
         <LogsList
+          id="logsContainer"
           title="Log Output"
-          ref={logsContainer}
           logsList={logs}
         />
         <div className="section--button">

@@ -1,7 +1,49 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import * as FlexmonsterReact from "react-flexmonster";
 import LogsList from "../UIElements/LogsList";
 import ToggleButton from "../UIElements/ToggleButton";
+
+const eventList = [
+  "afterchartdraw",
+  "aftergriddraw",
+  "beforegriddraw",
+  "beforetoolbarcreated",
+  "cellclick",
+  "celldoubleclick",
+  "chartclick",
+  "datachanged",
+  "dataerror",
+  "datafilecancelled",
+  "dataloaded",
+  "drillthroughclose",
+  "drillthroughopen",
+  "exportcomplete",
+  "exportstart",
+  "fieldslistclose",
+  "fieldslistopen",
+  "filterclose",
+  "filteropen",
+  "loadingdata",
+  "loadinglocalization",
+  "loadingolapstructure",
+  "loadingreportfile",
+  "localizationerror",
+  "localizationloaded",
+  "olapstructureerror",
+  "olapstructureloaded",
+  "openingreportfile",
+  "printcomplete",
+  "printstart",
+  "querycomplete",
+  "queryerror",
+  "ready",
+  "reportchange",
+  "reportcomplete",
+  "reportfilecancelled",
+  "reportfileerror",
+  "runningquery",
+  "update",
+];
 
 const HandlingEvents: React.FC = () => {
   const [logs, setLogs] = useState<
@@ -11,58 +53,6 @@ const HandlingEvents: React.FC = () => {
     }[]
   >([]);
   const pivotRef: React.RefObject<FlexmonsterReact.Pivot | null> = useRef<FlexmonsterReact.Pivot>(null);
-
-  const eventList = [
-    "afterchartdraw",
-    "aftergriddraw",
-    "beforegriddraw",
-    "beforetoolbarcreated",
-    "cellclick",
-    "celldoubleclick",
-    "chartclick",
-    "datachanged",
-    "dataerror",
-    "datafilecancelled",
-    "dataloaded",
-    "drillthroughclose",
-    "drillthroughopen",
-    "exportcomplete",
-    "exportstart",
-    "fieldslistclose",
-    "fieldslistopen",
-    "filterclose",
-    "filteropen",
-    "loadingdata",
-    "loadinglocalization",
-    "loadingolapstructure",
-    "loadingreportfile",
-    "localizationerror",
-    "localizationloaded",
-    "olapstructureerror",
-    "olapstructureloaded",
-    "openingreportfile",
-    "printcomplete",
-    "printstart",
-    "querycomplete",
-    "queryerror",
-    "ready",
-    "reportchange",
-    "reportcomplete",
-    "reportfilecancelled",
-    "reportfileerror",
-    "runningquery",
-    "update",
-  ];
-
-  useEffect(() => {
-    if (pivotRef.current) {
-      signOnAllEvents();
-    }
-
-    return () => {
-      signOffAllEvents();
-    };
-  }, []);
 
   const printLog = (event: string) => {
     const newLog = {
@@ -136,6 +126,7 @@ const HandlingEvents: React.FC = () => {
           toolbar={true}
           height={600}
           report="https://cdn.flexmonster.com/github/demo-report.json"
+          ready={signOnAllEvents}
           beforetoolbarcreated={(toolbar) => {
             toolbar.showShareReportTab = true;
           }}
@@ -146,6 +137,7 @@ const HandlingEvents: React.FC = () => {
       </div>
       <div className="section">
         <LogsList
+          id="logsContainer"
           title="Log Output"
           logsList={logs}
         />

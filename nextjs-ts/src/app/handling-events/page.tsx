@@ -1,6 +1,6 @@
 // Must be a client component because we pass a function in the beforetoolbarcreated param
 "use client";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import LogsList from "@/UIElements/LogsList";
 import ToggleButton from "@/UIElements/ToggleButton";
 // Types are static, so we can safely import them to use in refs
@@ -13,58 +13,51 @@ const FlexmonsterPivot = dynamic(() => import("@/UIElements/PivotWrapper"), {
   loading: () => <h1>Loading Flexmonster...</h1>,
 });
 
+const eventList = [
+  "afterchartdraw",
+  "aftergriddraw",
+  "beforegriddraw",
+  "beforetoolbarcreated",
+  "cellclick",
+  "celldoubleclick",
+  "chartclick",
+  "datachanged",
+  "dataerror",
+  "datafilecancelled",
+  "dataloaded",
+  "drillthroughclose",
+  "drillthroughopen",
+  "exportcomplete",
+  "exportstart",
+  "fieldslistclose",
+  "fieldslistopen",
+  "filterclose",
+  "filteropen",
+  "loadingdata",
+  "loadinglocalization",
+  "loadingolapstructure",
+  "loadingreportfile",
+  "localizationerror",
+  "localizationloaded",
+  "olapstructureerror",
+  "olapstructureloaded",
+  "openingreportfile",
+  "printcomplete",
+  "printstart",
+  "querycomplete",
+  "queryerror",
+  "ready",
+  "reportchange",
+  "reportcomplete",
+  "reportfilecancelled",
+  "reportfileerror",
+  "runningquery",
+  "update",
+];
+
 export default function HandlingEvents() {
   const [logs, setLogs] = useState<{date: Date; event: string;}[]>([]);
   const pivotRef: React.RefObject<Pivot | null> = useRef<Pivot>(null);
-
-  useEffect(() => {
-    const logsContainer = document.querySelector(".event-logs-wrapper .content");
-    if (logsContainer) {
-      logsContainer.scrollTop = logsContainer.scrollHeight;
-    }
-  }, [logs]);
-
-  const eventList = [
-    "afterchartdraw",
-    "aftergriddraw",
-    "beforegriddraw",
-    "beforetoolbarcreated",
-    "cellclick",
-    "celldoubleclick",
-    "chartclick",
-    "datachanged",
-    "dataerror",
-    "datafilecancelled",
-    "dataloaded",
-    "drillthroughclose",
-    "drillthroughopen",
-    "exportcomplete",
-    "exportstart",
-    "fieldslistclose",
-    "fieldslistopen",
-    "filterclose",
-    "filteropen",
-    "loadingdata",
-    "loadinglocalization",
-    "loadingolapstructure",
-    "loadingreportfile",
-    "localizationerror",
-    "localizationloaded",
-    "olapstructureerror",
-    "olapstructureloaded",
-    "openingreportfile",
-    "printcomplete",
-    "printstart",
-    "querycomplete",
-    "queryerror",
-    "ready",
-    "reportchange",
-    "reportcomplete",
-    "reportfilecancelled",
-    "reportfileerror",
-    "runningquery",
-    "update",
-  ];
 
   const printLog = (event: string) => {
     const newLog = {
@@ -72,6 +65,12 @@ export default function HandlingEvents() {
       event: event,
     };
     setLogs((prevLogs) => [...prevLogs, newLog]);
+    requestAnimationFrame(() => {
+      const logsContainer = document.getElementById("logsContainer");
+      if (logsContainer) {
+        logsContainer.scrollTop = logsContainer.scrollHeight;
+      }
+    });
   };
 
   const eventsSignerController = (isSigned: boolean) => {
@@ -141,6 +140,7 @@ export default function HandlingEvents() {
       </div>
       <div className="section">
         <LogsList
+          id="logsContainer"
           title="Log Output"
           logsList={logs}
         />
