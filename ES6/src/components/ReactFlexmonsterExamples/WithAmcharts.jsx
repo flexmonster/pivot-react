@@ -1,149 +1,141 @@
-import React, { useEffect, useRef } from 'react';
-import * as FlexmonsterReact from 'react-flexmonster';
-import 'flexmonster/lib/flexmonster.amcharts.js';
-import * as am5 from '@amcharts/amcharts5';
-import * as am5xy from '@amcharts/amcharts5/xy';
-import am5themes_Animated from '@amcharts/amcharts5/themes/Animated';
+import { useEffect, useRef } from "react";
+import * as FlexmonsterReact from "react-flexmonster";
+// Importing Flexmonster Connector for amCharts
+import "flexmonster/lib/flexmonster.amcharts.js";
+
+// Importing amCharts
+import * as am5 from "@amcharts/amcharts5";
+import * as am5percent from "@amcharts/amcharts5/percent";
+import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 
 function WithAmcharts() {
-    const pivotRef = useRef(null);
-    const rootRef = useRef(null);
+  const pivotRef = useRef(null);
+  let root;
 
-    const reportComplete = () => {
-        pivotRef.current.flexmonster.off('reportcomplete', reportComplete);
-        drawChart();
-    };
+  const reportComplete = () => {
+    pivotRef.current.flexmonster.off("reportcomplete");
+    drawChart();
+  };
 
-    const drawChart = () => {
-        pivotRef.current.flexmonster.amcharts.getData(
-            {},
-            (chartData, rawData) => createChart(chartData, rawData),
-            (chartData, rawData) => updateChart(chartData, rawData)
-        );
-    };
+  const drawChart = () => {
+    // Running Flexmonster's getData() method for amCharts
+    pivotRef.current.flexmonster.amcharts.getData({}, createChart, updateChart);
+  };
 
-    const createChart = (chartData, rawData) => {
-        const root = am5.Root.new('amcharts-container');
-        rootRef.current = root;
+  const createChart = (chartData, rawData) => {
+    // Initializing the root element
+    root = am5.Root.new("amcharts-container");
+    // Applying the amCharts theme
+    root.setThemes([am5themes_Animated.new(root)]);
+    // Applying number format from Flexmonster
+    root.numberFormatter.set("numberFormat", pivotRef.current.flexmonster.amcharts.getNumberFormatPattern(rawData.meta.formats[0]));
 
-        const chart = root.container.children.push(
-            am5xy.XYChart.new(root, {})
-        );
-
-        root.setThemes([am5themes_Animated.new(root)]);
-
-        root.numberFormatter.set(
-            'numberFormat',
-            pivotRef.current.flexmonster.amcharts.getNumberFormatPattern(
-                rawData.meta.formats[0]
-            )
-        );
-
-        const yAxis = chart.yAxes.push(
-            am5xy.CategoryAxis.new(root, {
-                categoryField: pivotRef.current.flexmonster.amcharts.getCategoryName(
-                    rawData
-                ),
-                renderer: am5xy.AxisRendererY.new(root, {
-                    cellStartLocation: 0.1,
-                    cellEndLocation: 0.9,
-                }),
-            })
-        );
-
-        const xAxis = chart.xAxes.push(am5xy.ValueAxis.new(root, {
-            renderer: am5xy.AxisRendererX.new(root, {}),
-        }));
-
-        xAxis.set('numberFormatter', am5.NumberFormatter.new(root, {
-            'numberFormat': '#a'
-        }));
-
-        const series = chart.series.push(
-            am5xy.ColumnSeries.new(root, {
-                name: pivotRef.current.flexmonster.amcharts.getMeasureNameByIndex(
-                    rawData,
-                    0
-                ),
-                xAxis: xAxis,
-                yAxis: yAxis,
-                sequencedInterpolation: true,
-                valueXField: pivotRef.current.flexmonster.amcharts.getMeasureNameByIndex(
-                    rawData,
-                    0
-                ),
-                categoryYField: pivotRef.current.flexmonster.amcharts.getCategoryName(
-                    rawData
-                ),
-                tooltip: am5.Tooltip.new(root, {
-                    labelText: '{name}: [bold]{valueX}[/]',
-                }),
-            })
-        );
-
-        chart.set('cursor', am5xy.XYCursor.new(root, {
-            behavior: 'none',
-            xAxis: xAxis,
-            yAxis: yAxis,
-        }));
-
-        yAxis.data.setAll(chartData.data);
-        series.data.setAll(chartData.data);
-
-        series.appear(1000);
-        chart.appear(1000, 100);
-    };
-
-    const updateChart = (chartData, rawData) => {
-        if (rootRef.current) {
-            rootRef.current.dispose();
-        }
-        createChart(chartData, rawData);
-    };
-
-    return (
-        <div className="App">
-            <h1 className="page-title">Integrating with amCharts</h1>
-
-            <div className="description-blocks first-description-block">
-                <p>
-                    Extend Flexmonster’s visualization functionality by integrating
-                    with the amCharts library:{' '}
-                    <a
-                        href="https://www.flexmonster.com/doc/integration-with-amcharts/?r=rm_react"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="title-link"
-                    >
-                        Integration with amCharts
-                    </a>
-                    .
-                </p>
-            </div>
-
-            <FlexmonsterReact.Pivot
-                ref={pivotRef}
-                toolbar={true}
-                beforetoolbarcreated={(toolbar) => {
-                    toolbar.showShareReportTab = true;
-                }}
-                reportcomplete={reportComplete}
-                shareReportConnection={{
-                    url: 'https://olap.flexmonster.com:9500',
-                }}
-                width="100%"
-                height={600}
-                report="https://cdn.flexmonster.com/github/demo-report.json"
-                licenseFilePath="https://cdn.flexmonster.com/jsfiddle.charts.key"
-            />
-            <div className="chart-container">
-                <div
-                    id="amcharts-container"
-                    style={{ width: '100%', height: '500px' }}
-                ></div>
-            </div>
-        </div>
+    // Creating a chart instance
+    const chart = root.container.children.push(
+      am5percent.PieChart.new(root, {
+        layout: root.verticalLayout,
+        innerRadius: 100,
+      })
     );
-};
+
+    const series = chart.series.push(
+      am5percent.PieSeries.new(root, {
+        valueField: pivotRef.current.flexmonster.amcharts.getMeasureNameByIndex(rawData, 0),
+        categoryField: pivotRef.current.flexmonster.amcharts.getCategoryName(rawData),
+      })
+    );
+
+    series.children.push(
+      am5.Label.new(root, {
+        text: "[#999]TOTAL:[/]\n{valueSum.formatNumber()}",
+        populateText: true,
+        textAlign: "center",
+        centerX: am5.p50,
+        centerY: am5.p50,
+        fontSize: 24,
+        fontWeight: "500",
+        fill: am5.color(0x555555),
+        oversizedBehavior: "fit",
+      })
+    );
+
+    series.slices.template.set("tooltipText", "{category}: {value} ({valuePercentTotal.formatNumber('0.00')}%)");
+    series.labels.template.set("visible", false);
+    series.ticks.template.set("visible", false);
+
+    series.data.setAll(chartData.data);
+
+    const legend = chart.children.push(
+      am5.Legend.new(root, {
+        centerX: am5.percent(50),
+        x: am5.percent(50),
+        layout: am5.GridLayout.new(root, {
+          maxColumns: 3,
+          fixedWidthGrid: true,
+        }),
+        height: am5.percent(20),
+        verticalScrollbar: am5.Scrollbar.new(root, {
+          orientation: "vertical",
+        }),
+      })
+    );
+    legend.data.setAll(series.dataItems);
+    legend.valueLabels.template.set("forceHidden", true);
+
+    series.appear(1000);
+    chart.appear(1000, 100);
+  };
+
+  const updateChart = (chartData, rawData) => {
+    root?.dispose();
+    createChart(chartData, rawData);
+  };
+
+  useEffect(() => {
+    return () => {
+      // Disposing of the chart instance when the component is unmounted
+      root?.dispose();
+    };
+  }, []);
+
+  return (
+    <>
+      <h1 className='page-title'>Integrating with amCharts</h1>
+
+      <div className='description-blocks first-description-block'>
+        <p>
+          Extend Flexmonster's visualization functionality by integrating with the amCharts library:{" "}
+          <a
+            href='https://www.flexmonster.com/doc/integration-with-amcharts/?r=rm_react'
+            target='_blank'
+            rel='noopener noreferrer'
+            className='title-link'
+          >Integration with amCharts</a>.
+        </p>
+      </div>
+
+      <FlexmonsterReact.Pivot
+        ref={pivotRef}
+        toolbar={true}
+        height={600}
+        report='https://cdn.flexmonster.com/github/charts-report.json'
+        beforetoolbarcreated={(toolbar) => {
+          toolbar.showShareReportTab = true;
+        }}
+        reportcomplete={reportComplete}
+        shareReportConnection={{
+          url: "https://olap.flexmonster.com:9500",
+        }}
+        licenseFilePath='https://cdn.flexmonster.com/jsfiddle.charts.key'
+      />
+      <div className='chart-container'>
+        <div
+          id='amcharts-container'
+          style={{ width: "100%", height: "600px" }}
+        ></div>
+      </div>
+    </>
+  );
+}
 
 export default WithAmcharts;

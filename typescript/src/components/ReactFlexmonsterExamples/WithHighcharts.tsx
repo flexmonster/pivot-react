@@ -1,70 +1,72 @@
-import React, { useRef } from 'react';
-import * as FlexmonsterReact from 'react-flexmonster';
-import 'flexmonster';
-import 'flexmonster/lib/flexmonster.highcharts.js';
-import * as Highcharts from 'highcharts';
+import { useRef, useState } from "react";
+import * as FlexmonsterReact from "react-flexmonster";
+import Flexmonster from "flexmonster";
+import "flexmonster/lib/flexmonster.highcharts.js";
+
+import Highcharts from "highcharts";
+import HighchartsReact from "highcharts-react-official";
+import "highcharts/modules/accessibility";
 
 const WithHighcharts = () => {
   const pivotRef: React.RefObject<FlexmonsterReact.Pivot | null> = useRef<FlexmonsterReact.Pivot>(null);
+  const [chartOptions, setChartOptions] = useState<Highcharts.Options>({});
 
   const reportComplete = () => {
-    pivotRef.current?.flexmonster.off('reportComplete', reportComplete);
+    pivotRef.current?.flexmonster.off("reportcomplete");
     createChart();
   };
 
   const createChart = () => {
     pivotRef.current?.flexmonster.highcharts?.getData(
-        {
-          type: 'spline',
-        },
-        (data: any) => {
-          Highcharts.chart('highcharts-container', data);
-        },
-        (data: any) => {
-          Highcharts.chart('highcharts-container', data);
-        }
-      );
+      {
+        type: "spline",
+      },
+      (data: Flexmonster.GetDataValueObject) => {
+        setChartOptions(data as Highcharts.Options);
+      },
+      (data: Flexmonster.GetDataValueObject) => {
+        setChartOptions(data as Highcharts.Options);
+      }
+    );
   };
 
   return (
-    <div className="App">
+    <>
       <h1 className="page-title">Integrating with Highcharts</h1>
 
       <div className="description-blocks first-description-block">
         <p>
-          Integrate Flexmonster with Highcharts and see your data from a new
-          perspective:{' '}
+          Integrate Flexmonster with Highcharts and see your data from a new perspective:{" "}
           <a
             href="https://www.flexmonster.com/doc/integration-with-highcharts/?r=rm_react"
             target="_blank"
             rel="noopener noreferrer"
             className="title-link"
-          >
-            Integration with Highcharts
-          </a>
-          .
+          >Integration with Highcharts</a>.
         </p>
       </div>
 
       <FlexmonsterReact.Pivot
         ref={pivotRef}
         toolbar={true}
+        height={600}
+        reportcomplete={reportComplete}
+        report="https://cdn.flexmonster.com/github/charts-report.json"
         beforetoolbarcreated={(toolbar) => {
           toolbar.showShareReportTab = true;
         }}
         shareReportConnection={{
-          url: 'https://olap.flexmonster.com:9500',
+          url: "https://olap.flexmonster.com:9500",
         }}
-        width="100%"
-        height={600}
-        reportcomplete={reportComplete}
-        report="https://cdn.flexmonster.com/github/highcharts-report.json"
         licenseFilePath="https://cdn.flexmonster.com/jsfiddle.charts.key"
       />
       <div className="chart-container">
-        <div id="highcharts-container"></div>
+        <HighchartsReact
+          highcharts={Highcharts}
+          options={chartOptions}
+        />
       </div>
-    </div>
+    </>
   );
 };
 
