@@ -25,7 +25,7 @@ For Next.js:
 - [Node.js 18.18.0 or later](https://nodejs.org/en/)
 
 For ES6/TypeScript:
-- [Node.js 14.0 or later](https://nodejs.org/en/)
+- [Node.js 20.19 or later](https://nodejs.org/en/)
 
 ## Installation
 
