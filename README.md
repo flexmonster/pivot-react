@@ -22,10 +22,10 @@ Table of contents:
 ## Prerequisites
 
 For Next.js:
-- [Node.js 18.18.0 or later](https://nodejs.org/en/)
+- [Node.js 18.18 or later](https://nodejs.org/en/)
 
 For ES6/TypeScript:
-- [Node.js 20.19 or later](https://nodejs.org/en/)
+- [Node.js 14.0 or later](https://nodejs.org/en/)
 
 ## Installation
 
@@ -60,7 +60,7 @@ npm install
 4. Run the sample project:
 
 ```bash
-npm start 
+npm start
 ```
 
 To see the result, open `http://localhost:3000/` in your browser.
