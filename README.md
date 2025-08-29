@@ -5,7 +5,7 @@ Website: [flexmonster.com](https://www.flexmonster.com?r=sample_react)
 [![Github Stars](https://img.shields.io/github/stars/flexmonster?style=social)](https://github.com/flexmonster) [![Twitter](https://img.shields.io/twitter/follow/Flexmonster?style=social)](https://twitter.com/Flexmonster)
 
 ## Flexmonster Pivot Table & Charts
-Flexmonster Pivot Table & Charts is a powerful and fully customizable JavaScript component for web reporting. It is packed with all core features for data analysis and can easily become a part of your React data visualization project. The tool supports popular frameworks like Angular, React, Vue, Blazor, and [more](https://www.flexmonster.com/doc/available-tutorials-integration?r=sample_react). Also, Flexmonster connects to any data source, including SQL and NoSQL databases, JSON and CSV files, OLAP cubes, and Elasticsearch. 
+Flexmonster Pivot Table & Charts is a powerful and fully customizable JavaScript component for web reporting. It is packed with all core features for data analysis and can easily become a part of your React data visualization project. The tool supports popular frameworks like React, Vue, Angular, Blazor, and [more](https://www.flexmonster.com/doc/available-tutorials-integration?r=sample_react). Also, Flexmonster connects to [any data source](https://www.flexmonster.com/doc/supported-data-sources?r=sample_react), including SQL and NoSQL databases, JSON and CSV files, OLAP cubes, and Elasticsearch. 
 
 This repository contains sample [Next.js](https://nextjs.org/) and [React](https://reactjs.org/) projects for Flexmonster Pivot Table & Charts.
 
@@ -65,16 +65,16 @@ npm start
 
 To see the result, open `http://localhost:3000/` in your browser.
 
-## What is inside the project
+## What is inside the projects
 
-React sample project contains several examples of Flexmonster Pivot usage and customization:
+React sample projects contain several examples of Flexmonster Pivot usage and customization:
 
-- **Pivot table demo** shows how to define the `report`, `toolbar`, `width`, `height`, `beforetoolbarcreated`, and `shareReportConnection` initialization parameters in the pivot grid for React. 
+- **Pivot table demo** shows how to define the `report`, `toolbar`, and other initialization parameters in the pivot grid for React.
 - **Handling events** demonstrates how to subscribe to events and unsubscribe from them. 
 - **Using API calls** illustrates how to use Flexmonster's methods. 
-- **Updating data** is an example of using the `updateData()` method.
-- **Customizing the Toolbar** illustrates how to customize the Toolbar.
-- **Customizing the grid** shows how to customize the pivot table using the `customizeCell()` API call.
+- **Updating data** is an example of refreshing data at runtime using the `updateData()` method.
+- **Customizing the Toolbar** shows how to customize the Toolbar.
+- **Customizing the grid** illustrates how to customize the pivot table using the `customizeCell()` API call.
 - **Integration with Highcharts** demonstrates how to integrate with the Highcharts charting library.
 - **Integration with amCharts** is an example of integration with the amCharts charting library.
   
@@ -92,18 +92,18 @@ For ES6/TypeScript:
 
 ## Support and feedback
 
-In case of any issues, visit our [troubleshooting section](https://www.flexmonster.com/doc/typical-errors?r=sample_react). You can also search among the [resolved cases](https://www.flexmonster.com/technical-support?r=sample_react) for a solution to your problem.
+In case of any issues, visit our [Troubleshooting](https://www.flexmonster.com/doc/typical-errors?r=sample_react) section. You can also search among the [resolved cases](https://www.flexmonster.com/technical-support?r=sample_react) for a solution to your issue.
 
-To share your feedback or ask questions, contact our Tech team by raising a ticket on [Flexmonster Help Center](https://www.flexmonster.com/help-center?r=sample_react). You can also find a list of samples, technical specifications, and a user interface guide there.
+To share your feedback or ask questions, contact our Tech team by raising a ticket on our [Help Center](https://www.flexmonster.com/help-center?r=sample_react). You can also find a list of samples, technical specifications, and a user interface guide there.
 
 ## Flexmonster licensing
 
-This sample project uses [Flexmonster React wrapper](https://github.com/flexmonster/react-flexmonster), which is released as an MIT-licensed (free and open-source) add-on to Flexmonster Pivot.
+This sample project uses the [Flexmonster React wrapper](https://github.com/flexmonster/react-flexmonster), which is released as an MIT-licensed (free and open-source) add-on to Flexmonster Pivot.
 
 To learn about Flexmonster Pivot licenses, visit the [Flexmonster licensing page](https://www.flexmonster.com/pivot-table-editions-and-pricing?r=sample_react). 
 If you want to test our product, we provide a 30-day free trial.
 
-If you need any help with your license — fill out our [Contact form](https://www.flexmonster.com/contact-our-team?r=sample_react), and we will get in touch with you.
+If you need any help with your license, fill out our [Contact form](https://www.flexmonster.com/contact-our-team?r=sample_react), and we will get in touch with you.
 
 ## Social media
 
