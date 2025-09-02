@@ -63,7 +63,7 @@ You can try all of these examples right from the project’s starting page.
 ## Related Flexmonster docs
 
 - [Integration with React](https://www.flexmonster.com/doc/integration-with-react/?r=sample_react_ts) — learn how to integrate Flexmonster into a React project.
-- [Usage examples in React](https://www.flexmonster.com/doc/usage-examples-react/?r=sample_react_ts) — see details on Flexmonster usage  in React.
+- [Usage examples in React](https://www.flexmonster.com/doc/usage-examples-react/?r=sample_react_ts) — see details on Flexmonster usage in React.
 
 ## Support and feedback
 
