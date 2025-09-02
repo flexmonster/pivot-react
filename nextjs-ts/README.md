@@ -63,7 +63,7 @@ You can try all of these examples right from the project’s starting page.
 ## Related Flexmonster docs
 
 - [Integration with Next.js](https://www.flexmonster.com/doc/integration-with-next-js/?r=sample_nextjs) — learn how to integrate Flexmonster into a Next.js project.
-- [Usage examples in Next.js](https://www.flexmonster.com/doc/usage-examples-next-js/?r=sample_nextjs) — see details on Flexmonster usage  in Next.js.
+- [Usage examples in Next.js](https://www.flexmonster.com/doc/usage-examples-next-js/?r=sample_nextjs) — see details on Flexmonster usage in Next.js.
 
 ## Support and feedback
 
