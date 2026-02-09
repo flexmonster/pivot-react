@@ -18,10 +18,10 @@
     "@types/react-dom": "^19.1.7",
     "flexmonster": "latest",
     "highcharts-react-official": "^3.2.2",
-    "next": "15.4.5",
+    "next": "16.1.6",
     "open-cli": "^8.0.0",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
     "react-flexmonster": "latest",
     "typescript": "5.8.3"
   }
